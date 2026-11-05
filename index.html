@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Home Design Studio</title>
+<meta name="description" content="Pick a style, palette, and real-photo finishes for any room or your home's exterior, then get a decision summary and ballpark cost." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <h1>Home Design Studio</h1>
+      <small>decide the look before you spend</small>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch color theme">Theme</button>
+  </div>
+</header>
+
+<div id="loading" class="loading">Loading the studio&hellip;</div>
+
+<div class="wrap" id="app" hidden>
+  <div class="eyebrow">Choose a space</div>
+  <div class="spaces" role="group" aria-label="Choose a space to design" id="spaceTabs"></div>
+  <div class="kind-label" id="kindLabel"></div>
+
+  <div class="layout">
+    <div>
+      <section class="panel">
+        <h2>1 &middot; Pick a style</h2>
+        <div class="section-note">Sets a starting palette and finishes. Tweak anything after.</div>
+        <div class="body"><div class="styles" id="styleGrid" role="group" aria-label="Design style"></div></div>
+      </section>
+
+      <section class="panel">
+        <h2>2 &middot; Choose your finishes</h2>
+        <div class="section-note" id="finishNote"></div>
+        <div class="body" id="catList"></div>
+      </section>
+    </div>
+
+    <div class="board">
+      <section class="panel">
+        <h2 id="boardTitle">Your plan</h2>
+        <div class="body">
+          <div class="palette-strip" id="paletteStrip" aria-label="Style palette"></div>
+          <p class="tagline" id="tagline"></p>
+
+          <ul class="finish-list" id="finishList"></ul>
+
+          <div class="cost">
+            <div class="area-row">
+              <label for="area" id="areaLabel">Room size</label>
+              <input type="range" id="area" min="40" max="800" step="10" value="200" />
+              <span class="area-val" id="areaVal">200 sq ft</span>
+            </div>
+            <div class="total">
+              <span class="lab">Ballpark budget</span>
+              <span class="amt" id="costAmt">&mdash;</span>
+            </div>
+            <p class="disclaimer" id="costNote"></p>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="copyBtn" type="button">Copy decision summary</button>
+            <button class="btn" id="resetBtn" type="button">Reset to style</button>
+          </div>
+
+          <details class="summary-wrap" id="summaryWrap">
+            <summary><span class="caret" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span> Decision summary &amp; shopping list</summary>
+            <pre class="summary" id="summaryText"></pre>
+          </details>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    Ballpark figures are rough planning ranges for Arizona, 2026 (materials + typical install), not a quote. Get a local contractor bid before you commit. Your choices save in this browser only.
+  </footer>
+</div>
+
+<div class="live" aria-live="polite" id="liveRegion"></div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
