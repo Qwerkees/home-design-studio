@@ -49,8 +49,8 @@
     ],
     "cabinetry": [
       { "id": "shakerwhite", "label": "Shaker White", "img": "cabinetry-shakerwhite.png", "color": "#EDEAE3" },
-      { "id": "naturaloak", "label": "Natural Oak", "color": "#C2996A" },
-      { "id": "deepgreen", "label": "Deep Green", "color": "#33493F" },
+      { "id": "naturaloak", "label": "Natural Oak", "img": "cabinetry-naturaloak.png", "color": "#C2996A" },
+      { "id": "deepgreen", "label": "Deep Green", "img": "cabinetry-deepgreen.png", "color": "#33493F" },
       { "id": "navy", "label": "Navy", "color": "#2C3A4A" },
       { "id": "black", "label": "Matte Black", "color": "#2A2A2C" },
       { "id": "twotone", "label": "Two-Tone", "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)" }
