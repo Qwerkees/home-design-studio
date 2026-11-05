@@ -125,6 +125,28 @@ Build it as its own view gated to the Owner tier; it reuses the existing
 render + palette + finish data, so it's presentation on top of what's already
 there, not new data.
 
+## Member Rewards (Luke 2026-11-05)
+
+A **"Member Rewards" button**. The user joins by providing a **telephone
+number**, which is the membership key. Rewards: points/credits toward a project,
+**referral bonuses**, repeat-customer discounts, early access to options. The
+phone number ties a member to their RFQs/quotes and enables status texts (quote
+ready, reward earned).
+
+- **Compliance (required):** explicit opt-in / consent before any SMS (TCPA), clear terms, easy STOP/opt-out. Use a real SMS provider (e.g. Twilio). Store the number securely server-side — never in client code or logs.
+- Works across tiers as a lead + retention hook; the rewards ledger lives in the Owner backend.
+
+## Owner Studio Generator — always-on image/video (Luke 2026-11-05)
+
+Owner-only, available **24/7/365**: an internal "canvas-like" **image + video
+generator** built into the Owner app, so Luke can produce room renders, finish
+photos, option boards, and promo videos anytime — **not** dependent on an
+interactive sign-in or Canva's per-window trickle.
+
+- **What "always on" requires:** a **server-side generation service with a stored API key** (an image + video model API — e.g. a Gemini / OpenAI image API for stills, fal.ai / Replicate for video). A server key runs without any browser login, which is the whole point. The interactive IMG.LY sign-in (and Canva's quota) can't deliver 24/7 on their own.
+- **Honest cost flag:** these APIs are **metered — pay per generation.** Making it truly always-on needs Luke's API key + a budget (or a genuinely free tier where one exists). Keys stay server-side, never in the app. This decision is Luke's (spend), per the $0-spend rule.
+- This same service becomes the engine behind the free-tier **3-option generation** and the **Presentation Canvas** renders — one generator, used everywhere.
+
 ## Feasibility — honest flags (verify before promising any to a customer)
 
 - **Malware scanning of uploads** — standard and doable, but needs a **backend + object storage** (the app is static today). Use a real engine server-side (e.g. ClamAV, or a cloud scanning API). Never run user files through the frontend.
