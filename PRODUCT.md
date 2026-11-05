@@ -59,6 +59,34 @@ three required outputs plus 20 more I'm proposing:
 24. **Sustainability score** — material + transport carbon estimate; greener swaps.
 25. **Financing estimate** — monthly payment at a given APR/term, clearly labeled an estimate (no lending, no application).
 
+## Companion materials — "also needed to install this" (Luke 2026-11-05)
+
+Every primary finish in the main quote auto-attaches its **recommended companion
+materials** — the consumables, substrates, trims and hardware needed to actually
+install it — each with a one-line description of why. They roll into the running
+total as a separate "install / also needed" line group, so nothing is forgotten
+and the quote is job-complete, not just the headline material. Stored in the
+Material & Quote Library as `companions` on each catalog material
+(`{ item, why, unit, qty_rule }`), so a quote assembles them instantly.
+
+Starter set (expand in the library):
+
+- **LVP / laminate flooring** → underlayment (moisture + sound barrier), transition strips (room-to-room / flooring changes), quarter-round or T-molding (edge trim), spacers + tapping block (install), flooring adhesive (only if glue-down).
+- **Tile flooring** → thinset mortar, grout, cement backer board, waterproof membrane (wet areas), tile spacers, penetrating sealer.
+- **Hardwood flooring** → vapor barrier/underlayment, cleats/staples or adhesive, wood filler, reducers/transitions, finish + sealer (if site-finished).
+- **Polished concrete** → densifier, sealer, optional stain.
+- **Wall paint** → primer, painter's tape, drop cloths, roller frames + covers, brushes, spackle/patching compound, sandpaper, paintable caulk.
+- **Cabinetry** → cabinet screws, shims, filler/scribe strips, toe-kick, knobs/pulls, optional under-cabinet lighting, silicone.
+- **Countertop (stone/quartz)** → adhesive/epoxy, color-matched seam filler, stone sealer (natural stone), support brackets, sink/faucet cutout, optional backsplash.
+- **Fixtures / hardware** → braided supply lines, shutoff valves, plumber's tape + putty, mounting hardware, caulk.
+- **Siding** → house wrap / weather barrier, flashing, fasteners, trim, sealant, starter strip, primer (if paint-grade).
+- **Roof** → underlayment, drip edge, flashing, ice-and-water shield, ridge cap, fasteners, ventilation.
+- **Front door** → weatherstripping, threshold/sill, shims, lockset/hardware, exterior sealant.
+- **Landscaping (xeriscape)** → weed-barrier fabric, edging, gravel/decomposed granite, drip irrigation, soil amendment, plants.
+
+Each companion also carries its own price, tax, store availability and weight, so
+it feeds the totals, store-stock, fuel and trips math like any primary material.
+
 ## Internal Material & Quote Library — the "flash response" backbone (Luke 2026-11-05)
 
 An **Owner-controlled internal database** that lets us assemble a full quote the
