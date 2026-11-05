@@ -104,6 +104,27 @@ library **stores, caches, and reuses**. Every finished quote feeds back in, so
 the library gets faster and better over time. It is internal/Owner-only — never
 exposed to Free users.
 
+## Presentation Canvas — framed gallery view (Owner, Luke 2026-11-05)
+
+Owner-only. Present a design to the client on a **canvas-like board**: each
+option (room/exterior render + palette + chosen finishes) is shown inside a
+**gallery/canvas frame** — matted, framed-art look, like prints hung on a wall —
+rather than a plain web card. The **3 generated options render as three framed
+canvases** side by side, which is exactly what the client sees in the RFQ
+response and the 36-hr deliverable.
+
+- Each canvas = framed render + a caption strip (style name, palette chips,
+  headline finishes, ballpark total).
+- Toggle frame styles (gallery white mat, thin black, natural wood) and
+  wall/background so it reads as a real presentation board.
+- Optional v2: a free-arrange canvas workspace (drag, zoom, pin swatches +
+  notes) where the Owner composes the board before sending.
+- Export the board to image/PDF for sending by any channel.
+
+Build it as its own view gated to the Owner tier; it reuses the existing
+render + palette + finish data, so it's presentation on top of what's already
+there, not new data.
+
 ## Feasibility — honest flags (verify before promising any to a customer)
 
 - **Malware scanning of uploads** — standard and doable, but needs a **backend + object storage** (the app is static today). Use a real engine server-side (e.g. ClamAV, or a cloud scanning API). Never run user files through the frontend.
