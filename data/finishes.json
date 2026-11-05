@@ -36,8 +36,8 @@
       { "id": "engoak", "label": "Wide-Plank Oak", "img": "flooring-engoak.png", "color": "#B98B5E", "lo": 9, "hi": 16 },
       { "id": "walnut", "label": "Walnut Hardwood", "img": "flooring-walnut.png", "color": "#6B4A2F", "lo": 11, "hi": 20 },
       { "id": "portile", "label": "Porcelain Wood-Look", "img": "flooring-portile.png", "color": "#C9BBA8", "lo": 8, "hi": 15 },
-      { "id": "concrete", "label": "Polished Concrete", "color": "#AFACA6", "lo": 5, "hi": 12 },
-      { "id": "travertine", "label": "Travertine", "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)", "lo": 15, "hi": 30 }
+      { "id": "concrete", "label": "Polished Concrete", "img": "flooring-concrete.png", "color": "#AFACA6", "lo": 5, "hi": 12 },
+      { "id": "travertine", "label": "Travertine", "img": "flooring-travertine.png", "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)", "lo": 15, "hi": 30 }
     ],
     "paint": [
       { "id": "warmwhite", "label": "Warm White", "img": "paint-warmwhite.png", "color": "#F4F1EA", "lo": 1.5, "hi": 3 },
@@ -48,7 +48,7 @@
       { "id": "paleblue", "label": "Pale Blue", "color": "#C4D4D6", "lo": 1.5, "hi": 3 }
     ],
     "cabinetry": [
-      { "id": "shakerwhite", "label": "Shaker White", "color": "#EDEAE3" },
+      { "id": "shakerwhite", "label": "Shaker White", "img": "cabinetry-shakerwhite.png", "color": "#EDEAE3" },
       { "id": "naturaloak", "label": "Natural Oak", "color": "#C2996A" },
       { "id": "deepgreen", "label": "Deep Green", "color": "#33493F" },
       { "id": "navy", "label": "Navy", "color": "#2C3A4A" },
