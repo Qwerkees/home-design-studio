@@ -40,10 +40,10 @@
       { "id": "travertine", "label": "Travertine", "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)", "lo": 15, "hi": 30 }
     ],
     "paint": [
-      { "id": "warmwhite", "label": "Warm White", "color": "#F4F1EA", "lo": 1.5, "hi": 3 },
-      { "id": "greige", "label": "Greige", "color": "#C9BDAE", "lo": 1.5, "hi": 3 },
-      { "id": "sage", "label": "Soft Sage", "color": "#9DA68E", "lo": 1.5, "hi": 3 },
-      { "id": "charcoal", "label": "Deep Charcoal", "color": "#33383A", "lo": 1.8, "hi": 3.4 },
+      { "id": "warmwhite", "label": "Warm White", "img": "paint-warmwhite.png", "color": "#F4F1EA", "lo": 1.5, "hi": 3 },
+      { "id": "greige", "label": "Greige", "img": "paint-greige.png", "color": "#C9BDAE", "lo": 1.5, "hi": 3 },
+      { "id": "sage", "label": "Soft Sage", "img": "paint-sage.png", "color": "#9DA68E", "lo": 1.5, "hi": 3 },
+      { "id": "charcoal", "label": "Deep Charcoal", "img": "paint-charcoal.png", "color": "#33383A", "lo": 1.8, "hi": 3.4 },
       { "id": "clay", "label": "Clay", "color": "#B98A6A", "lo": 1.8, "hi": 3.4 },
       { "id": "paleblue", "label": "Pale Blue", "color": "#C4D4D6", "lo": 1.5, "hi": 3 }
     ],
