@@ -1,10 +1,5 @@
 [
   {
-    "id": "fibercement",
-    "cat": "siding",
-    "prompt": "Photorealistic straight-on flat swatch of light grey fiber-cement lap siding, horizontal boards, even studio light, fills the entire square frame, no objects"
-  },
-  {
     "id": "brick",
     "cat": "siding",
     "prompt": "Photorealistic straight-on flat swatch of a red clay brick wall, horizontal rows with grey mortar joints, even studio light, fills the entire square frame, no perspective, no objects"
