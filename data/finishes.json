@@ -590,34 +590,40 @@
       {
         "id": "butcher",
         "label": "Butcher Block",
-        "color": "#B4874E"
+        "color": "#B4874E",
+        "img": "butcher.png"
       },
       {
         "id": "granite",
         "label": "Speckled Granite",
-        "color": "radial-gradient(circle at 25% 30%, #6b6b6b 0 2px, transparent 3px),radial-gradient(circle at 60% 70%, #8a8a8a 0 2px, transparent 3px),linear-gradient(#4a4a4c,#3c3c3e)"
+        "color": "radial-gradient(circle at 25% 30%, #6b6b6b 0 2px, transparent 3px),radial-gradient(circle at 60% 70%, #8a8a8a 0 2px, transparent 3px),linear-gradient(#4a4a4c,#3c3c3e)",
+        "img": "granite.png"
       },
       {
         "id": "concretetop",
         "label": "Concrete",
-        "color": "#AEAAA3"
+        "color": "#AEAAA3",
+        "img": "concretetop.png"
       }
     ],
     "fixtures": [
       {
         "id": "matteblack",
         "label": "Matte Black",
-        "color": "#262627"
+        "color": "#262627",
+        "img": "matteblack.png"
       },
       {
         "id": "brass",
         "label": "Brushed Brass",
-        "color": "#B08D57"
+        "color": "#B08D57",
+        "img": "brass.png"
       },
       {
         "id": "nickel",
         "label": "Brushed Nickel",
-        "color": "#B9BCC0"
+        "color": "#B9BCC0",
+        "img": "nickel.png"
       },
       {
         "id": "chrome",
@@ -634,27 +640,32 @@
       {
         "id": "linen",
         "label": "Natural Linen",
-        "color": "#E7DFD2"
+        "color": "#E7DFD2",
+        "img": "linen.png"
       },
       {
         "id": "boucle",
         "label": "Wool Bouclé",
-        "color": "#DAD3C7"
+        "color": "#DAD3C7",
+        "img": "boucle.png"
       },
       {
         "id": "leather",
         "label": "Cognac Leather",
-        "color": "#8C5A33"
+        "color": "#8C5A33",
+        "img": "leather.png"
       },
       {
         "id": "velvet",
         "label": "Emerald Velvet",
-        "color": "#2F5E4F"
+        "color": "#2F5E4F",
+        "img": "velvet.png"
       },
       {
         "id": "jute",
         "label": "Woven Jute",
-        "color": "repeating-linear-gradient(45deg,#CDBD9C 0 4px,#C2B08A 4px 8px)"
+        "color": "repeating-linear-gradient(45deg,#CDBD9C 0 4px,#C2B08A 4px 8px)",
+        "img": "jute.png"
       }
     ],
     "siding": [
@@ -663,94 +674,110 @@
         "label": "Smooth Stucco",
         "color": "#E7E0D4",
         "lo": 7,
-        "hi": 12
+        "hi": 12,
+        "img": "stucco.png"
       },
       {
         "id": "fibercement",
         "label": "Fiber-Cement Lap",
         "color": "#D9D2C6",
         "lo": 8,
-        "hi": 14
+        "hi": 14,
+        "img": "fibercement.png"
       },
       {
         "id": "brick",
         "label": "Brick",
         "color": "repeating-linear-gradient(0deg,#9C6650 0 6px,#8a5847 6px 7px)",
         "lo": 12,
-        "hi": 20
+        "hi": 20,
+        "img": "brick.png"
       },
       {
         "id": "boardbatten",
         "label": "Board & Batten",
         "color": "repeating-linear-gradient(90deg,#EDEAE3 0 9px,#DcD8CF 9px 11px)",
         "lo": 9,
-        "hi": 16
+        "hi": 16,
+        "img": "boardbatten.png"
       },
       {
         "id": "stone",
         "label": "Stacked Stone",
         "color": "#9A938A",
         "lo": 20,
-        "hi": 40
+        "hi": 40,
+        "img": "stone.png"
       }
     ],
     "trim": [
       {
         "id": "crispwhite",
         "label": "Crisp White",
-        "color": "#F6F4EF"
+        "color": "#F6F4EF",
+        "img": "crispwhite.png"
       },
       {
         "id": "warmwhite2",
         "label": "Warm White",
-        "color": "#ECE6DA"
+        "color": "#ECE6DA",
+        "img": "warmwhite2.png"
       },
       {
         "id": "charcoaltrim",
         "label": "Charcoal",
-        "color": "#3A3E40"
+        "color": "#3A3E40",
+        "img": "charcoaltrim.png"
       },
       {
         "id": "blacktrim",
         "label": "Black",
-        "color": "#1F2020"
+        "color": "#1F2020",
+        "img": "blacktrim.png"
       },
       {
         "id": "greigetrim",
         "label": "Greige",
-        "color": "#B9AF9F"
+        "color": "#B9AF9F",
+        "img": "greigetrim.png"
       }
     ],
     "door": [
       {
         "id": "woodoor",
         "label": "Natural Wood",
-        "color": "#9C6B3F"
+        "color": "#9C6B3F",
+        "img": "woodoor.png"
       },
       {
         "id": "tealdoor",
         "label": "Deep Teal",
-        "color": "#2F6B5E"
+        "color": "#2F6B5E",
+        "img": "tealdoor.png"
       },
       {
         "id": "navydoor",
         "label": "Navy",
-        "color": "#2A3A4C"
+        "color": "#2A3A4C",
+        "img": "navydoor.png"
       },
       {
         "id": "blackdoor",
         "label": "Black",
-        "color": "#1F2020"
+        "color": "#1F2020",
+        "img": "blackdoor.png"
       },
       {
         "id": "claydoor",
         "label": "Clay Red",
-        "color": "#9E4B33"
+        "color": "#9E4B33",
+        "img": "claydoor.png"
       },
       {
         "id": "sagedoor",
         "label": "Sage",
-        "color": "#7E8A6E"
+        "color": "#7E8A6E",
+        "img": "sagedoor.png"
       }
     ],
     "roof": [
@@ -759,72 +786,84 @@
         "label": "Arch. Shingle",
         "color": "#43464A",
         "lo": 4,
-        "hi": 8
+        "hi": 8,
+        "img": "shingle.png"
       },
       {
         "id": "metal",
         "label": "Standing Seam",
         "color": "#5A5E62",
         "lo": 10,
-        "hi": 18
+        "hi": 18,
+        "img": "metal.png"
       },
       {
         "id": "claytile",
         "label": "Clay Tile",
         "color": "#A75B3C",
         "lo": 10,
-        "hi": 20
+        "hi": 20,
+        "img": "claytile.png"
       },
       {
         "id": "concretetile",
         "label": "Concrete Tile",
         "color": "#8C8884",
         "lo": 8,
-        "hi": 15
+        "hi": 15,
+        "img": "concretetile.png"
       }
     ],
     "garage": [
       {
         "id": "flush",
         "label": "Modern Flush",
-        "color": "#D7D1C6"
+        "color": "#D7D1C6",
+        "img": "flush.png"
       },
       {
         "id": "carriage",
         "label": "Carriage",
-        "color": "#B98B5E"
+        "color": "#B98B5E",
+        "img": "carriage.png"
       },
       {
         "id": "glasspanel",
         "label": "Glass Panel",
-        "color": "linear-gradient(135deg,#BcD0D4,#9fb5ba)"
+        "color": "linear-gradient(135deg,#BcD0D4,#9fb5ba)",
+        "img": "glasspanel.png"
       },
       {
         "id": "woodlook",
         "label": "Wood-Look",
-        "color": "#9C6B3F"
+        "color": "#9C6B3F",
+        "img": "woodlook.png"
       }
     ],
     "landscaping": [
       {
         "id": "xeriscape",
         "label": "Desert Xeriscape",
-        "color": "#CDBd9C"
+        "color": "#CDBd9C",
+        "img": "xeriscape.png"
       },
       {
         "id": "native",
         "label": "Low-Water Native",
-        "color": "#A7AE8E"
+        "color": "#A7AE8E",
+        "img": "native.png"
       },
       {
         "id": "turf",
         "label": "Traditional Turf",
-        "color": "#5C8A4A"
+        "color": "#5C8A4A",
+        "img": "turf.png"
       },
       {
         "id": "minimal",
         "label": "Modern Minimal",
-        "color": "#BFC4BD"
+        "color": "#BFC4BD",
+        "img": "minimal.png"
       }
     ]
   }
