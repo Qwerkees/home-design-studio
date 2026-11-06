@@ -211,6 +211,22 @@ when it's ready and reminders ("leave by X to beat traffic").
 - **Feeds the engine:** the real round-trip distance from the route drives the
   fuel/diesel-per-trip and trips-needed math (and delivery-vs-haul breakeven).
 
+## "Start Here" — free onboarding videos (Luke 2026-11-05)
+
+On first use, show a **"Start here for free videos"** panel: a **numbered list of
+short how-to videos** on navigating the app (free, all tiers) — e.g. 1) upload
+your photos/videos, 2) describe your vision, 3) read your 3 options, 4) request
+your quote, 5) use the Drive & store list.
+
+- **Remember their choice by phone number:** a member who completed or dismissed
+  the walkthrough (keyed to their Member Rewards phone number) doesn't see it
+  again on return, on any device.
+- **Skip / don't show again:** anyone can dismiss it; for non-members that
+  preference is stored per device (localStorage), for members against their
+  phone number.
+- Serves as the app's **entry point** and, on the free tier, the on-ramp into
+  the upload → RFQ → **quote** flow.
+
 ## Feasibility — honest flags (verify before promising any to a customer)
 
 - **Malware scanning of uploads** — standard and doable, but needs a **backend + object storage** (the app is static today). Use a real engine server-side (e.g. ClamAV, or a cloud scanning API). Never run user files through the frontend.
