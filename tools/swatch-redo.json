@@ -1,10 +1,5 @@
 [
   {
-    "id": "matteblack",
-    "cat": "fixtures",
-    "prompt": "Photorealistic top-down flat-lay swatch of matte black powder-coated metal, fine even texture, even studio light, fills the entire square frame, no objects"
-  },
-  {
     "id": "bronze",
     "cat": "fixtures",
     "prompt": "Photorealistic top-down flat-lay swatch of aged oil-rubbed bronze metal, dark warm brown patina, even studio light, fills the entire square frame, no objects"
