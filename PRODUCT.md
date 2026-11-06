@@ -1,4 +1,4 @@
-# Home Design Studio — Product Spec
+# LUKE'S Design Studios — Product Spec
 
 Owner: Luke. Status: direction set 2026-11-05. This file is the source of truth
 for tiers, the free-tier intake funnel, and the Pro/Owner materials engine.

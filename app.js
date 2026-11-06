@@ -1,5 +1,5 @@
 "use strict";
-/* Home Design Studio — data-driven from data/finishes.json.
+/* LUKE'S Design Studios — data-driven from data/finishes.json.
    Swatches show a real photo when the finish has an `img` (assets/finishes/<img>);
    otherwise they fall back to a clean color/gradient chip. */
 

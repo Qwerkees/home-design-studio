@@ -5,7 +5,7 @@ Phases: **Foundation** → **Core Prototype / Core** → **Active MVP** (in use)
 
 ---
 
-## Example entry (full detail) — Home Design Studio
+## Example entry (full detail) — LUKE'S Design Studios
 
 - **Phase:** Active MVP — **deployed & live.**
 - **Live:** https://home-design-studio-fieldvision.vercel.app · **Repo:** github.com/Qwerkees/home-design-studio
@@ -22,7 +22,7 @@ Phases: **Foundation** → **Core Prototype / Core** → **Active MVP** (in use)
 
 | Project | Phase | Core Technical Function & Capabilities | Current Status |
 |---------|-------|----------------------------------------|----------------|
-| **Home Design Studio** | Active MVP (live) | Homeowner interior/exterior design decision app: real-photo finishes, live board, ballpark budget, decision summary/shopping list. | **Deployed on Vercel**; finishes 17/62 backfilling; daily AZ contractor sweep live; tiers + RFQ funnel next. |
+| **LUKE'S Design Studios** | Active MVP (live) | Homeowner interior/exterior design decision app: real-photo finishes, live board, ballpark budget, decision summary/shopping list. | **Deployed on Vercel**; finishes 19/62 backfilling; daily AZ contractor sweep live; tiers + RFQ funnel next. |
 | **FieldVisionX** | Active MVP | Civil construction project intelligence and traffic control suite: digital drafting, spatial data mapping, quantity takeoffs, predictive compliance tracking. | 7 containerized services (api, forgelocate, forgeworks, harvey, forgecommand, forgebrain, forgeshield) in CI/CD. DTCP traffic-control suite merged through chunk 5 (MUTCD taper/spacing engine, forgepermit, plan render, PDF + device quantity list, approval/permit workflow). PRs #72/#78/#79 merged to `main` 2026-11-05. Deploys on ARM64 Oracle VPS via `imresamu/postgis`; last blocker a VPS port-22 timeout (infra, not code). **[verified this session]** |
 | **ForgeTraffic** | Arizona Active MVP | Temporary traffic control division tool encoding Peoria + ADOT jurisdiction profiles to generate machine-readable compliance checklists and device loading lists. | Jurisdiction profiles (Peoria, ADOT) encoded; outputs compliance checklists + device loading lists. Build/usage detail owner-reported — send specifics to replace this line. |
 | **MASS-SHOT Surveying** | Integration | Local Windows app for drone quarry mapping, photogrammetry, LAS/LAZ point-cloud grid calculations, and volumetric cut/fill estimation, integrated with WebODM. | Repo `qwerkees/mass-shot` attached to this session; WebODM integration for drone→point-cloud→cut/fill. Current build state owner-reported. |
