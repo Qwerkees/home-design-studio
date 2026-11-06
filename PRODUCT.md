@@ -147,6 +147,26 @@ interactive sign-in or Canva's per-window trickle.
 - **Honest cost flag:** these APIs are **metered — pay per generation.** Making it truly always-on needs Luke's API key + a budget (or a genuinely free tier where one exists). Keys stay server-side, never in the app. This decision is Luke's (spend), per the $0-spend rule.
 - This same service becomes the engine behind the free-tier **3-option generation** and the **Presentation Canvas** renders — one generator, used everywhere.
 
+## Project Improvement Videos — 5 credible picks (Luke 2026-11-05)
+
+Alongside the options, show **5 credible, highly-rated videos** matched to the
+**specific area/project the customer wants to improve** (derived from their
+uploaded photos/video + vision note, or the chosen space/scope). Think: for a
+kitchen refresh, the 5 best-reviewed kitchen-remodel / how-to / inspiration
+videos; for a stucco exterior, the top exterior-refinish videos.
+
+- **"Credible / highly rated"** = reputable channels + strong engagement
+  (views, like ratio), relevance-matched to the project type and the chosen
+  finishes — not random results.
+- Serves as inspiration, how-to, and trust-building in the RFQ response and the
+  Pro/Owner project view.
+- **Source:** YouTube Data API, filtered by relevance + view/like thresholds +
+  an allowlist of reputable channels; cache the picks per project type in the
+  Material & Quote Library so they load instantly and can be hand-curated.
+  Honest flag: the API has a daily free quota and ranking needs tuning to keep
+  "credible," so start with a curated list per common project type and layer
+  the live search on top.
+
 ## Feasibility — honest flags (verify before promising any to a customer)
 
 - **Malware scanning of uploads** — standard and doable, but needs a **backend + object storage** (the app is static today). Use a real engine server-side (e.g. ClamAV, or a cloud scanning API). Never run user files through the frontend.
