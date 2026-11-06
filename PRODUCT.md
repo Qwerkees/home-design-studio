@@ -170,7 +170,9 @@ videos; for a stucco exterior, the top exterior-refinish videos.
 ## Agentic Contractor & Specials Sweep — Yuma / Phoenix (Luke 2026-11-05)
 
 A **scheduled agentic sweep** that scans the web for **licensed contractors in
-the Yuma and Phoenix, AZ areas** running **current specials/promotions** in
+Yuma, AZ and the Greater Phoenix metro area** (Phoenix + Mesa, Scottsdale,
+Tempe, Chandler, Gilbert, Glendale, Peoria, Surprise, Avondale, Goodyear, Queen
+Creek and nearby suburbs) running **current specials/promotions** in
 Luke's lines of work (interior & exterior remodel, flooring, paint, cabinetry,
 countertops, tile/stone, roofing, doors/windows, landscaping/xeriscape).
 
