@@ -56,7 +56,7 @@
       { "id": "twotone", "label": "Two-Tone", "img": "cabinetry-twotone.png", "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)" }
     ],
     "counter": [
-      { "id": "whitequartz", "label": "White Quartz", "color": "#EFEDE8" },
+      { "id": "whitequartz", "label": "White Quartz", "img": "counter-whitequartz.png", "color": "#EFEDE8" },
       { "id": "marblequartz", "label": "Marble-Look", "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)" },
       { "id": "soapstone", "label": "Soapstone", "color": "#3B3F3E" },
       { "id": "butcher", "label": "Butcher Block", "color": "#B4874E" },
