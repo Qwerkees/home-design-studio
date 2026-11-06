@@ -1,121 +1,829 @@
 {
   "_comment": "Edit this file to change finishes. Each option: id, label, optional img (file in assets/finishes/), color fallback (hex or CSS gradient) used when no img, and lo/hi $-per-sqft for per-area categories. Drop a photo in assets/finishes/ and set its img here to upgrade a swatch to a real photo.",
   "spaces": [
-    { "id": "kitchen", "label": "Kitchen", "kind": "interior", "img": "kitchen.png", "cats": ["paint", "cabinetry", "counter", "flooring", "fixtures"] },
-    { "id": "living", "label": "Living Room", "kind": "interior", "img": "living.png", "cats": ["paint", "flooring", "textiles", "fixtures"] },
-    { "id": "bath", "label": "Bathroom", "kind": "interior", "img": "bathroom.png", "cats": ["paint", "cabinetry", "counter", "flooring", "fixtures"] },
-    { "id": "bedroom", "label": "Bedroom", "kind": "interior", "img": "bedroom.png", "cats": ["paint", "flooring", "textiles", "fixtures"] },
-    { "id": "facade", "label": "Exterior", "kind": "exterior", "img": "exterior.png", "cats": ["siding", "trim", "door", "roof", "garage", "landscaping"] }
+    {
+      "id": "kitchen",
+      "label": "Kitchen",
+      "kind": "interior",
+      "img": "kitchen.png",
+      "cats": [
+        "paint",
+        "cabinetry",
+        "counter",
+        "flooring",
+        "fixtures"
+      ]
+    },
+    {
+      "id": "living",
+      "label": "Living Room",
+      "kind": "interior",
+      "img": "living.png",
+      "cats": [
+        "paint",
+        "flooring",
+        "textiles",
+        "fixtures"
+      ]
+    },
+    {
+      "id": "bath",
+      "label": "Bathroom",
+      "kind": "interior",
+      "img": "bathroom.png",
+      "cats": [
+        "paint",
+        "cabinetry",
+        "counter",
+        "flooring",
+        "fixtures"
+      ]
+    },
+    {
+      "id": "bedroom",
+      "label": "Bedroom",
+      "kind": "interior",
+      "img": "bedroom.png",
+      "cats": [
+        "paint",
+        "flooring",
+        "textiles",
+        "fixtures"
+      ]
+    },
+    {
+      "id": "facade",
+      "label": "Exterior",
+      "kind": "exterior",
+      "img": "exterior.png",
+      "cats": [
+        "siding",
+        "trim",
+        "door",
+        "roof",
+        "garage",
+        "landscaping"
+      ]
+    }
   ],
   "categories": {
-    "paint": { "label": "Wall Paint", "per": true },
-    "flooring": { "label": "Flooring", "per": true },
-    "cabinetry": { "label": "Cabinetry", "base": [6000, 14000] },
-    "counter": { "label": "Countertop", "base": [2500, 6000] },
-    "fixtures": { "label": "Fixtures & Hardware", "base": [800, 2500] },
-    "textiles": { "label": "Textiles & Decor", "base": [600, 2500] },
-    "siding": { "label": "Body / Siding", "per": true },
-    "trim": { "label": "Trim", "base": [1500, 3500] },
-    "door": { "label": "Front Door", "base": [600, 2500] },
-    "roof": { "label": "Roof", "per": true },
-    "garage": { "label": "Garage Door", "base": [1200, 4500] },
-    "landscaping": { "label": "Landscaping", "base": [3000, 12000] }
+    "paint": {
+      "label": "Wall Paint",
+      "per": true
+    },
+    "flooring": {
+      "label": "Flooring",
+      "per": true
+    },
+    "cabinetry": {
+      "label": "Cabinetry",
+      "base": [
+        6000,
+        14000
+      ]
+    },
+    "counter": {
+      "label": "Countertop",
+      "base": [
+        2500,
+        6000
+      ]
+    },
+    "fixtures": {
+      "label": "Fixtures & Hardware",
+      "base": [
+        800,
+        2500
+      ]
+    },
+    "textiles": {
+      "label": "Textiles & Decor",
+      "base": [
+        600,
+        2500
+      ]
+    },
+    "siding": {
+      "label": "Body / Siding",
+      "per": true
+    },
+    "trim": {
+      "label": "Trim",
+      "base": [
+        1500,
+        3500
+      ]
+    },
+    "door": {
+      "label": "Front Door",
+      "base": [
+        600,
+        2500
+      ]
+    },
+    "roof": {
+      "label": "Roof",
+      "per": true
+    },
+    "garage": {
+      "label": "Garage Door",
+      "base": [
+        1200,
+        4500
+      ]
+    },
+    "landscaping": {
+      "label": "Landscaping",
+      "base": [
+        3000,
+        12000
+      ]
+    }
   },
   "styles": [
-    { "id": "farmhouse", "name": "Modern Farmhouse", "tag": "White walls, black accents, honest wood — warm and a little rustic.", "colors": [["Warm White", "#F5F2EC"], ["Oatmeal", "#DCD3C5"], ["Greige", "#A79C8C"], ["Soft Black", "#20231F"], ["Honey Oak", "#B07B46"]], "defaults": { "paint": "warmwhite", "flooring": "engoak", "cabinetry": "shakerwhite", "counter": "butcher", "fixtures": "matteblack", "textiles": "linen", "siding": "boardbatten", "trim": "blacktrim", "door": "blackdoor", "roof": "shingle", "garage": "carriage", "landscaping": "native" } },
-    { "id": "transitional", "name": "Transitional", "tag": "Calm and timeless — soft greiges with crisp white trim.", "colors": [["Alabaster", "#F2EFEA"], ["Stone", "#CFC6B8"], ["Sage Grey", "#9AA3A0"], ["Slate", "#566663"], ["Ink", "#2B2E2D"]], "defaults": { "paint": "greige", "flooring": "engoak", "cabinetry": "shakerwhite", "counter": "marblequartz", "fixtures": "nickel", "textiles": "boucle", "siding": "stucco", "trim": "crispwhite", "door": "navydoor", "roof": "shingle", "garage": "flush", "landscaping": "native" } },
-    { "id": "midcentury", "name": "Mid-Century Modern", "tag": "Walnut, warm neutrals, and one confident retro accent.", "colors": [["Cream", "#EFE7D6"], ["Burnt Amber", "#CC7A33"], ["Teal", "#3E7C72"], ["Walnut", "#5C3E27"], ["Charcoal", "#2C2A28"]], "defaults": { "paint": "warmwhite", "flooring": "walnut", "cabinetry": "naturaloak", "counter": "whitequartz", "fixtures": "brass", "textiles": "leather", "siding": "fibercement", "trim": "warmwhite2", "door": "woodoor", "roof": "metal", "garage": "woodlook", "landscaping": "minimal" } },
-    { "id": "scandi", "name": "Scandinavian", "tag": "Pale wood, soft sage, and lots of light.", "colors": [["Snow", "#F7F5F2"], ["Linen", "#E6E1DA"], ["Birch", "#CBC3B8"], ["Pale Sage", "#8D9B93"], ["Pine Char", "#2B2B2A"]], "defaults": { "paint": "warmwhite", "flooring": "oaklvp", "cabinetry": "twotone", "counter": "whitequartz", "fixtures": "nickel", "textiles": "boucle", "siding": "boardbatten", "trim": "crispwhite", "door": "sagedoor", "roof": "shingle", "garage": "flush", "landscaping": "minimal" } },
-    { "id": "coastal", "name": "Coastal", "tag": "Airy whites, soft blues, and sun-bleached wood.", "colors": [["Sea Salt", "#F3F6F6"], ["Mist", "#CFE1E3"], ["Shallow", "#8FB7BE"], ["Harbor", "#3E6B78"], ["Deep Tide", "#22333B"]], "defaults": { "paint": "paleblue", "flooring": "oaklvp", "cabinetry": "shakerwhite", "counter": "whitequartz", "fixtures": "chrome", "textiles": "linen", "siding": "boardbatten", "trim": "crispwhite", "door": "tealdoor", "roof": "shingle", "garage": "flush", "landscaping": "minimal" } },
-    { "id": "desert", "name": "Desert Contemporary", "tag": "Sand, adobe, and sun — built for the Southwest.", "colors": [["Sand", "#F2EBE0"], ["Clay Tan", "#E0CDB4"], ["Adobe", "#C08A5E"], ["Driftwood", "#7A5C48"], ["Char", "#2E2A26"]], "defaults": { "paint": "clay", "flooring": "travertine", "cabinetry": "naturaloak", "counter": "concretetop", "fixtures": "bronze", "textiles": "leather", "siding": "stucco", "trim": "warmwhite2", "door": "claydoor", "roof": "claytile", "garage": "flush", "landscaping": "xeriscape" } },
-    { "id": "industrial", "name": "Industrial", "tag": "Concrete, blackened steel, and raw brick.", "colors": [["Bone", "#E9E6E1"], ["Ash", "#B8B2A9"], ["Graphite", "#6E6A66"], ["Iron", "#3A3A3C"], ["Rust", "#A6551F"]], "defaults": { "paint": "charcoal", "flooring": "concrete", "cabinetry": "black", "counter": "soapstone", "fixtures": "matteblack", "textiles": "leather", "siding": "brick", "trim": "charcoaltrim", "door": "blackdoor", "roof": "metal", "garage": "glasspanel", "landscaping": "minimal" } }
+    {
+      "id": "farmhouse",
+      "name": "Modern Farmhouse",
+      "tag": "White walls, black accents, honest wood — warm and a little rustic.",
+      "colors": [
+        [
+          "Warm White",
+          "#F5F2EC"
+        ],
+        [
+          "Oatmeal",
+          "#DCD3C5"
+        ],
+        [
+          "Greige",
+          "#A79C8C"
+        ],
+        [
+          "Soft Black",
+          "#20231F"
+        ],
+        [
+          "Honey Oak",
+          "#B07B46"
+        ]
+      ],
+      "defaults": {
+        "paint": "warmwhite",
+        "flooring": "engoak",
+        "cabinetry": "shakerwhite",
+        "counter": "butcher",
+        "fixtures": "matteblack",
+        "textiles": "linen",
+        "siding": "boardbatten",
+        "trim": "blacktrim",
+        "door": "blackdoor",
+        "roof": "shingle",
+        "garage": "carriage",
+        "landscaping": "native"
+      }
+    },
+    {
+      "id": "transitional",
+      "name": "Transitional",
+      "tag": "Calm and timeless — soft greiges with crisp white trim.",
+      "colors": [
+        [
+          "Alabaster",
+          "#F2EFEA"
+        ],
+        [
+          "Stone",
+          "#CFC6B8"
+        ],
+        [
+          "Sage Grey",
+          "#9AA3A0"
+        ],
+        [
+          "Slate",
+          "#566663"
+        ],
+        [
+          "Ink",
+          "#2B2E2D"
+        ]
+      ],
+      "defaults": {
+        "paint": "greige",
+        "flooring": "engoak",
+        "cabinetry": "shakerwhite",
+        "counter": "marblequartz",
+        "fixtures": "nickel",
+        "textiles": "boucle",
+        "siding": "stucco",
+        "trim": "crispwhite",
+        "door": "navydoor",
+        "roof": "shingle",
+        "garage": "flush",
+        "landscaping": "native"
+      }
+    },
+    {
+      "id": "midcentury",
+      "name": "Mid-Century Modern",
+      "tag": "Walnut, warm neutrals, and one confident retro accent.",
+      "colors": [
+        [
+          "Cream",
+          "#EFE7D6"
+        ],
+        [
+          "Burnt Amber",
+          "#CC7A33"
+        ],
+        [
+          "Teal",
+          "#3E7C72"
+        ],
+        [
+          "Walnut",
+          "#5C3E27"
+        ],
+        [
+          "Charcoal",
+          "#2C2A28"
+        ]
+      ],
+      "defaults": {
+        "paint": "warmwhite",
+        "flooring": "walnut",
+        "cabinetry": "naturaloak",
+        "counter": "whitequartz",
+        "fixtures": "brass",
+        "textiles": "leather",
+        "siding": "fibercement",
+        "trim": "warmwhite2",
+        "door": "woodoor",
+        "roof": "metal",
+        "garage": "woodlook",
+        "landscaping": "minimal"
+      }
+    },
+    {
+      "id": "scandi",
+      "name": "Scandinavian",
+      "tag": "Pale wood, soft sage, and lots of light.",
+      "colors": [
+        [
+          "Snow",
+          "#F7F5F2"
+        ],
+        [
+          "Linen",
+          "#E6E1DA"
+        ],
+        [
+          "Birch",
+          "#CBC3B8"
+        ],
+        [
+          "Pale Sage",
+          "#8D9B93"
+        ],
+        [
+          "Pine Char",
+          "#2B2B2A"
+        ]
+      ],
+      "defaults": {
+        "paint": "warmwhite",
+        "flooring": "oaklvp",
+        "cabinetry": "twotone",
+        "counter": "whitequartz",
+        "fixtures": "nickel",
+        "textiles": "boucle",
+        "siding": "boardbatten",
+        "trim": "crispwhite",
+        "door": "sagedoor",
+        "roof": "shingle",
+        "garage": "flush",
+        "landscaping": "minimal"
+      }
+    },
+    {
+      "id": "coastal",
+      "name": "Coastal",
+      "tag": "Airy whites, soft blues, and sun-bleached wood.",
+      "colors": [
+        [
+          "Sea Salt",
+          "#F3F6F6"
+        ],
+        [
+          "Mist",
+          "#CFE1E3"
+        ],
+        [
+          "Shallow",
+          "#8FB7BE"
+        ],
+        [
+          "Harbor",
+          "#3E6B78"
+        ],
+        [
+          "Deep Tide",
+          "#22333B"
+        ]
+      ],
+      "defaults": {
+        "paint": "paleblue",
+        "flooring": "oaklvp",
+        "cabinetry": "shakerwhite",
+        "counter": "whitequartz",
+        "fixtures": "chrome",
+        "textiles": "linen",
+        "siding": "boardbatten",
+        "trim": "crispwhite",
+        "door": "tealdoor",
+        "roof": "shingle",
+        "garage": "flush",
+        "landscaping": "minimal"
+      }
+    },
+    {
+      "id": "desert",
+      "name": "Desert Contemporary",
+      "tag": "Sand, adobe, and sun — built for the Southwest.",
+      "colors": [
+        [
+          "Sand",
+          "#F2EBE0"
+        ],
+        [
+          "Clay Tan",
+          "#E0CDB4"
+        ],
+        [
+          "Adobe",
+          "#C08A5E"
+        ],
+        [
+          "Driftwood",
+          "#7A5C48"
+        ],
+        [
+          "Char",
+          "#2E2A26"
+        ]
+      ],
+      "defaults": {
+        "paint": "clay",
+        "flooring": "travertine",
+        "cabinetry": "naturaloak",
+        "counter": "concretetop",
+        "fixtures": "bronze",
+        "textiles": "leather",
+        "siding": "stucco",
+        "trim": "warmwhite2",
+        "door": "claydoor",
+        "roof": "claytile",
+        "garage": "flush",
+        "landscaping": "xeriscape"
+      }
+    },
+    {
+      "id": "industrial",
+      "name": "Industrial",
+      "tag": "Concrete, blackened steel, and raw brick.",
+      "colors": [
+        [
+          "Bone",
+          "#E9E6E1"
+        ],
+        [
+          "Ash",
+          "#B8B2A9"
+        ],
+        [
+          "Graphite",
+          "#6E6A66"
+        ],
+        [
+          "Iron",
+          "#3A3A3C"
+        ],
+        [
+          "Rust",
+          "#A6551F"
+        ]
+      ],
+      "defaults": {
+        "paint": "charcoal",
+        "flooring": "concrete",
+        "cabinetry": "black",
+        "counter": "soapstone",
+        "fixtures": "matteblack",
+        "textiles": "leather",
+        "siding": "brick",
+        "trim": "charcoaltrim",
+        "door": "blackdoor",
+        "roof": "metal",
+        "garage": "glasspanel",
+        "landscaping": "minimal"
+      }
+    }
   ],
   "finishes": {
     "flooring": [
-      { "id": "oaklvp", "label": "Light Oak LVP", "img": "flooring-oaklvp.png", "color": "#CBA77E", "lo": 3, "hi": 7 },
-      { "id": "engoak", "label": "Wide-Plank Oak", "img": "flooring-engoak.png", "color": "#B98B5E", "lo": 9, "hi": 16 },
-      { "id": "walnut", "label": "Walnut Hardwood", "img": "flooring-walnut.png", "color": "#6B4A2F", "lo": 11, "hi": 20 },
-      { "id": "portile", "label": "Porcelain Wood-Look", "img": "flooring-portile.png", "color": "#C9BBA8", "lo": 8, "hi": 15 },
-      { "id": "concrete", "label": "Polished Concrete", "img": "flooring-concrete.png", "color": "#AFACA6", "lo": 5, "hi": 12 },
-      { "id": "travertine", "label": "Travertine", "img": "flooring-travertine.png", "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)", "lo": 15, "hi": 30 }
+      {
+        "id": "oaklvp",
+        "label": "Light Oak LVP",
+        "img": "flooring-oaklvp.png",
+        "color": "#CBA77E",
+        "lo": 3,
+        "hi": 7
+      },
+      {
+        "id": "engoak",
+        "label": "Wide-Plank Oak",
+        "img": "flooring-engoak.png",
+        "color": "#B98B5E",
+        "lo": 9,
+        "hi": 16
+      },
+      {
+        "id": "walnut",
+        "label": "Walnut Hardwood",
+        "img": "flooring-walnut.png",
+        "color": "#6B4A2F",
+        "lo": 11,
+        "hi": 20
+      },
+      {
+        "id": "portile",
+        "label": "Porcelain Wood-Look",
+        "img": "flooring-portile.png",
+        "color": "#C9BBA8",
+        "lo": 8,
+        "hi": 15
+      },
+      {
+        "id": "concrete",
+        "label": "Polished Concrete",
+        "img": "flooring-concrete.png",
+        "color": "#AFACA6",
+        "lo": 5,
+        "hi": 12
+      },
+      {
+        "id": "travertine",
+        "label": "Travertine",
+        "img": "flooring-travertine.png",
+        "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)",
+        "lo": 15,
+        "hi": 30
+      }
     ],
     "paint": [
-      { "id": "warmwhite", "label": "Warm White", "img": "paint-warmwhite.png", "color": "#F4F1EA", "lo": 1.5, "hi": 3 },
-      { "id": "greige", "label": "Greige", "img": "paint-greige.png", "color": "#C9BDAE", "lo": 1.5, "hi": 3 },
-      { "id": "sage", "label": "Soft Sage", "img": "paint-sage.png", "color": "#9DA68E", "lo": 1.5, "hi": 3 },
-      { "id": "charcoal", "label": "Deep Charcoal", "img": "paint-charcoal.png", "color": "#33383A", "lo": 1.8, "hi": 3.4 },
-      { "id": "clay", "label": "Clay", "color": "#B98A6A", "lo": 1.8, "hi": 3.4 },
-      { "id": "paleblue", "label": "Pale Blue", "color": "#C4D4D6", "lo": 1.5, "hi": 3 }
+      {
+        "id": "warmwhite",
+        "label": "Warm White",
+        "img": "paint-warmwhite.png",
+        "color": "#F4F1EA",
+        "lo": 1.5,
+        "hi": 3
+      },
+      {
+        "id": "greige",
+        "label": "Greige",
+        "img": "paint-greige.png",
+        "color": "#C9BDAE",
+        "lo": 1.5,
+        "hi": 3
+      },
+      {
+        "id": "sage",
+        "label": "Soft Sage",
+        "img": "paint-sage.png",
+        "color": "#9DA68E",
+        "lo": 1.5,
+        "hi": 3
+      },
+      {
+        "id": "charcoal",
+        "label": "Deep Charcoal",
+        "img": "paint-charcoal.png",
+        "color": "#33383A",
+        "lo": 1.8,
+        "hi": 3.4
+      },
+      {
+        "id": "clay",
+        "label": "Clay",
+        "color": "#B98A6A",
+        "lo": 1.8,
+        "hi": 3.4,
+        "img": "clay.png"
+      },
+      {
+        "id": "paleblue",
+        "label": "Pale Blue",
+        "color": "#C4D4D6",
+        "lo": 1.5,
+        "hi": 3,
+        "img": "paleblue.png"
+      }
     ],
     "cabinetry": [
-      { "id": "shakerwhite", "label": "Shaker White", "img": "cabinetry-shakerwhite.png", "color": "#EDEAE3" },
-      { "id": "naturaloak", "label": "Natural Oak", "img": "cabinetry-naturaloak.png", "color": "#C2996A" },
-      { "id": "deepgreen", "label": "Deep Green", "img": "cabinetry-deepgreen.png", "color": "#33493F" },
-      { "id": "navy", "label": "Navy", "img": "cabinetry-navy.png", "color": "#2C3A4A" },
-      { "id": "black", "label": "Matte Black", "img": "cabinetry-black.png", "color": "#2A2A2C" },
-      { "id": "twotone", "label": "Two-Tone", "img": "cabinetry-twotone.png", "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)" }
+      {
+        "id": "shakerwhite",
+        "label": "Shaker White",
+        "img": "cabinetry-shakerwhite.png",
+        "color": "#EDEAE3"
+      },
+      {
+        "id": "naturaloak",
+        "label": "Natural Oak",
+        "img": "cabinetry-naturaloak.png",
+        "color": "#C2996A"
+      },
+      {
+        "id": "deepgreen",
+        "label": "Deep Green",
+        "img": "cabinetry-deepgreen.png",
+        "color": "#33493F"
+      },
+      {
+        "id": "navy",
+        "label": "Navy",
+        "img": "cabinetry-navy.png",
+        "color": "#2C3A4A"
+      },
+      {
+        "id": "black",
+        "label": "Matte Black",
+        "img": "cabinetry-black.png",
+        "color": "#2A2A2C"
+      },
+      {
+        "id": "twotone",
+        "label": "Two-Tone",
+        "img": "cabinetry-twotone.png",
+        "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)"
+      }
     ],
     "counter": [
-      { "id": "whitequartz", "label": "White Quartz", "img": "counter-whitequartz.png", "color": "#EFEDE8" },
-      { "id": "marblequartz", "label": "Marble-Look", "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)" },
-      { "id": "soapstone", "label": "Soapstone", "color": "#3B3F3E" },
-      { "id": "butcher", "label": "Butcher Block", "color": "#B4874E" },
-      { "id": "granite", "label": "Speckled Granite", "color": "radial-gradient(circle at 25% 30%, #6b6b6b 0 2px, transparent 3px),radial-gradient(circle at 60% 70%, #8a8a8a 0 2px, transparent 3px),linear-gradient(#4a4a4c,#3c3c3e)" },
-      { "id": "concretetop", "label": "Concrete", "color": "#AEAAA3" }
+      {
+        "id": "whitequartz",
+        "label": "White Quartz",
+        "img": "counter-whitequartz.png",
+        "color": "#EFEDE8"
+      },
+      {
+        "id": "marblequartz",
+        "label": "Marble-Look",
+        "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)"
+      },
+      {
+        "id": "soapstone",
+        "label": "Soapstone",
+        "color": "#3B3F3E"
+      },
+      {
+        "id": "butcher",
+        "label": "Butcher Block",
+        "color": "#B4874E"
+      },
+      {
+        "id": "granite",
+        "label": "Speckled Granite",
+        "color": "radial-gradient(circle at 25% 30%, #6b6b6b 0 2px, transparent 3px),radial-gradient(circle at 60% 70%, #8a8a8a 0 2px, transparent 3px),linear-gradient(#4a4a4c,#3c3c3e)"
+      },
+      {
+        "id": "concretetop",
+        "label": "Concrete",
+        "color": "#AEAAA3"
+      }
     ],
     "fixtures": [
-      { "id": "matteblack", "label": "Matte Black", "color": "#262627" },
-      { "id": "brass", "label": "Brushed Brass", "color": "#B08D57" },
-      { "id": "nickel", "label": "Brushed Nickel", "color": "#B9BCC0" },
-      { "id": "chrome", "label": "Chrome", "color": "#CFD6DB" },
-      { "id": "bronze", "label": "Aged Bronze", "color": "#5E4B38" }
+      {
+        "id": "matteblack",
+        "label": "Matte Black",
+        "color": "#262627"
+      },
+      {
+        "id": "brass",
+        "label": "Brushed Brass",
+        "color": "#B08D57"
+      },
+      {
+        "id": "nickel",
+        "label": "Brushed Nickel",
+        "color": "#B9BCC0"
+      },
+      {
+        "id": "chrome",
+        "label": "Chrome",
+        "color": "#CFD6DB"
+      },
+      {
+        "id": "bronze",
+        "label": "Aged Bronze",
+        "color": "#5E4B38"
+      }
     ],
     "textiles": [
-      { "id": "linen", "label": "Natural Linen", "color": "#E7DFD2" },
-      { "id": "boucle", "label": "Wool Bouclé", "color": "#DAD3C7" },
-      { "id": "leather", "label": "Cognac Leather", "color": "#8C5A33" },
-      { "id": "velvet", "label": "Emerald Velvet", "color": "#2F5E4F" },
-      { "id": "jute", "label": "Woven Jute", "color": "repeating-linear-gradient(45deg,#CDBD9C 0 4px,#C2B08A 4px 8px)" }
+      {
+        "id": "linen",
+        "label": "Natural Linen",
+        "color": "#E7DFD2"
+      },
+      {
+        "id": "boucle",
+        "label": "Wool Bouclé",
+        "color": "#DAD3C7"
+      },
+      {
+        "id": "leather",
+        "label": "Cognac Leather",
+        "color": "#8C5A33"
+      },
+      {
+        "id": "velvet",
+        "label": "Emerald Velvet",
+        "color": "#2F5E4F"
+      },
+      {
+        "id": "jute",
+        "label": "Woven Jute",
+        "color": "repeating-linear-gradient(45deg,#CDBD9C 0 4px,#C2B08A 4px 8px)"
+      }
     ],
     "siding": [
-      { "id": "stucco", "label": "Smooth Stucco", "color": "#E7E0D4", "lo": 7, "hi": 12 },
-      { "id": "fibercement", "label": "Fiber-Cement Lap", "color": "#D9D2C6", "lo": 8, "hi": 14 },
-      { "id": "brick", "label": "Brick", "color": "repeating-linear-gradient(0deg,#9C6650 0 6px,#8a5847 6px 7px)", "lo": 12, "hi": 20 },
-      { "id": "boardbatten", "label": "Board & Batten", "color": "repeating-linear-gradient(90deg,#EDEAE3 0 9px,#DcD8CF 9px 11px)", "lo": 9, "hi": 16 },
-      { "id": "stone", "label": "Stacked Stone", "color": "#9A938A", "lo": 20, "hi": 40 }
+      {
+        "id": "stucco",
+        "label": "Smooth Stucco",
+        "color": "#E7E0D4",
+        "lo": 7,
+        "hi": 12
+      },
+      {
+        "id": "fibercement",
+        "label": "Fiber-Cement Lap",
+        "color": "#D9D2C6",
+        "lo": 8,
+        "hi": 14
+      },
+      {
+        "id": "brick",
+        "label": "Brick",
+        "color": "repeating-linear-gradient(0deg,#9C6650 0 6px,#8a5847 6px 7px)",
+        "lo": 12,
+        "hi": 20
+      },
+      {
+        "id": "boardbatten",
+        "label": "Board & Batten",
+        "color": "repeating-linear-gradient(90deg,#EDEAE3 0 9px,#DcD8CF 9px 11px)",
+        "lo": 9,
+        "hi": 16
+      },
+      {
+        "id": "stone",
+        "label": "Stacked Stone",
+        "color": "#9A938A",
+        "lo": 20,
+        "hi": 40
+      }
     ],
     "trim": [
-      { "id": "crispwhite", "label": "Crisp White", "color": "#F6F4EF" },
-      { "id": "warmwhite2", "label": "Warm White", "color": "#ECE6DA" },
-      { "id": "charcoaltrim", "label": "Charcoal", "color": "#3A3E40" },
-      { "id": "blacktrim", "label": "Black", "color": "#1F2020" },
-      { "id": "greigetrim", "label": "Greige", "color": "#B9AF9F" }
+      {
+        "id": "crispwhite",
+        "label": "Crisp White",
+        "color": "#F6F4EF"
+      },
+      {
+        "id": "warmwhite2",
+        "label": "Warm White",
+        "color": "#ECE6DA"
+      },
+      {
+        "id": "charcoaltrim",
+        "label": "Charcoal",
+        "color": "#3A3E40"
+      },
+      {
+        "id": "blacktrim",
+        "label": "Black",
+        "color": "#1F2020"
+      },
+      {
+        "id": "greigetrim",
+        "label": "Greige",
+        "color": "#B9AF9F"
+      }
     ],
     "door": [
-      { "id": "woodoor", "label": "Natural Wood", "color": "#9C6B3F" },
-      { "id": "tealdoor", "label": "Deep Teal", "color": "#2F6B5E" },
-      { "id": "navydoor", "label": "Navy", "color": "#2A3A4C" },
-      { "id": "blackdoor", "label": "Black", "color": "#1F2020" },
-      { "id": "claydoor", "label": "Clay Red", "color": "#9E4B33" },
-      { "id": "sagedoor", "label": "Sage", "color": "#7E8A6E" }
+      {
+        "id": "woodoor",
+        "label": "Natural Wood",
+        "color": "#9C6B3F"
+      },
+      {
+        "id": "tealdoor",
+        "label": "Deep Teal",
+        "color": "#2F6B5E"
+      },
+      {
+        "id": "navydoor",
+        "label": "Navy",
+        "color": "#2A3A4C"
+      },
+      {
+        "id": "blackdoor",
+        "label": "Black",
+        "color": "#1F2020"
+      },
+      {
+        "id": "claydoor",
+        "label": "Clay Red",
+        "color": "#9E4B33"
+      },
+      {
+        "id": "sagedoor",
+        "label": "Sage",
+        "color": "#7E8A6E"
+      }
     ],
     "roof": [
-      { "id": "shingle", "label": "Arch. Shingle", "color": "#43464A", "lo": 4, "hi": 8 },
-      { "id": "metal", "label": "Standing Seam", "color": "#5A5E62", "lo": 10, "hi": 18 },
-      { "id": "claytile", "label": "Clay Tile", "color": "#A75B3C", "lo": 10, "hi": 20 },
-      { "id": "concretetile", "label": "Concrete Tile", "color": "#8C8884", "lo": 8, "hi": 15 }
+      {
+        "id": "shingle",
+        "label": "Arch. Shingle",
+        "color": "#43464A",
+        "lo": 4,
+        "hi": 8
+      },
+      {
+        "id": "metal",
+        "label": "Standing Seam",
+        "color": "#5A5E62",
+        "lo": 10,
+        "hi": 18
+      },
+      {
+        "id": "claytile",
+        "label": "Clay Tile",
+        "color": "#A75B3C",
+        "lo": 10,
+        "hi": 20
+      },
+      {
+        "id": "concretetile",
+        "label": "Concrete Tile",
+        "color": "#8C8884",
+        "lo": 8,
+        "hi": 15
+      }
     ],
     "garage": [
-      { "id": "flush", "label": "Modern Flush", "color": "#D7D1C6" },
-      { "id": "carriage", "label": "Carriage", "color": "#B98B5E" },
-      { "id": "glasspanel", "label": "Glass Panel", "color": "linear-gradient(135deg,#BcD0D4,#9fb5ba)" },
-      { "id": "woodlook", "label": "Wood-Look", "color": "#9C6B3F" }
+      {
+        "id": "flush",
+        "label": "Modern Flush",
+        "color": "#D7D1C6"
+      },
+      {
+        "id": "carriage",
+        "label": "Carriage",
+        "color": "#B98B5E"
+      },
+      {
+        "id": "glasspanel",
+        "label": "Glass Panel",
+        "color": "linear-gradient(135deg,#BcD0D4,#9fb5ba)"
+      },
+      {
+        "id": "woodlook",
+        "label": "Wood-Look",
+        "color": "#9C6B3F"
+      }
     ],
     "landscaping": [
-      { "id": "xeriscape", "label": "Desert Xeriscape", "color": "#CDBd9C" },
-      { "id": "native", "label": "Low-Water Native", "color": "#A7AE8E" },
-      { "id": "turf", "label": "Traditional Turf", "color": "#5C8A4A" },
-      { "id": "minimal", "label": "Modern Minimal", "color": "#BFC4BD" }
+      {
+        "id": "xeriscape",
+        "label": "Desert Xeriscape",
+        "color": "#CDBd9C"
+      },
+      {
+        "id": "native",
+        "label": "Low-Water Native",
+        "color": "#A7AE8E"
+      },
+      {
+        "id": "turf",
+        "label": "Traditional Turf",
+        "color": "#5C8A4A"
+      },
+      {
+        "id": "minimal",
+        "label": "Modern Minimal",
+        "color": "#BFC4BD"
+      }
     ]
   }
 }
