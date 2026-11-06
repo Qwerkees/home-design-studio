@@ -182,7 +182,8 @@ countertops, tile/stone, roofing, doors/windows, landscaping/xeriscape).
   verified-inactive, or unverified.
 - **Output:** a structured report (company, city, ROC # + status, services,
   the exact current special, rating/reviews, source URL, date seen) cached in
-  the Material & Quote Library and refreshed on a schedule (e.g. weekly).
+  the Material & Quote Library and **refreshed daily at 2:00 AM America/Phoenix
+  (Arizona time, no DST), 365 days a year** via a scheduled agent.
 - **Flags:** specials are volatile (always date-stamp + re-verify before using
   one); respect each site's terms when gathering; the ROC lookup is the source
   of truth for licensing.
