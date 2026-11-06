@@ -1,0 +1,20 @@
+[
+ {"id":"butcher","cat":"counter","prompt":"Photorealistic top-down flat-lay swatch of warm oak butcher block wood countertop, straight continuous wood grain, satin finish, even soft studio light, fills the entire square frame, no objects"},
+ {"id":"granite","cat":"counter","prompt":"Photorealistic top-down flat-lay swatch of polished speckled granite slab, warm beige with brown and black mineral flecks, even studio light, fills the entire square frame, no objects"},
+ {"id":"concretetop","cat":"counter","prompt":"Photorealistic top-down flat-lay swatch of smooth polished concrete countertop surface, light grey with subtle mottling, even studio light, fills the entire square frame, no objects"},
+ {"id":"matteblack","cat":"fixtures","prompt":"Photorealistic top-down flat-lay swatch of matte black powder-coated metal, fine even texture, even studio light, fills the entire square frame, no objects"},
+ {"id":"bronze","cat":"fixtures","prompt":"Photorealistic top-down flat-lay swatch of aged oil-rubbed bronze metal, dark warm brown patina, even studio light, fills the entire square frame, no objects"},
+ {"id":"stucco","cat":"siding","prompt":"Photorealistic straight-on flat swatch of smooth cream stucco exterior wall plaster, fine even texture, even studio light, fills the entire square frame, no objects"},
+ {"id":"fibercement","cat":"siding","prompt":"Photorealistic straight-on flat swatch of light grey fiber-cement lap siding, horizontal boards, even studio light, fills the entire square frame, no objects"},
+ {"id":"brick","cat":"siding","prompt":"Photorealistic straight-on flat swatch of a red clay brick wall, horizontal rows with grey mortar joints, even studio light, fills the entire square frame, no perspective, no objects"},
+ {"id":"boardbatten","cat":"siding","prompt":"Photorealistic straight-on flat swatch of white painted board and batten vertical wood siding, even studio light, fills the entire square frame, no objects"},
+ {"id":"crispwhite","cat":"trim","prompt":"Photorealistic flat-lay swatch of crisp bright white smooth painted wood trim surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"warmwhite2","cat":"trim","prompt":"Photorealistic flat-lay swatch of warm creamy white smooth painted wood trim surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"charcoaltrim","cat":"trim","prompt":"Photorealistic flat-lay swatch of charcoal grey smooth painted wood trim surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"blacktrim","cat":"trim","prompt":"Photorealistic flat-lay swatch of black smooth painted wood trim surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"greigetrim","cat":"trim","prompt":"Photorealistic flat-lay swatch of greige taupe smooth painted wood trim surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"tealdoor","cat":"door","prompt":"Photorealistic flat-lay swatch of a deep teal smooth painted door panel surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"navydoor","cat":"door","prompt":"Photorealistic flat-lay swatch of a navy blue smooth painted door panel surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"blackdoor","cat":"door","prompt":"Photorealistic flat-lay swatch of a black smooth painted door panel surface, even studio light, fills the entire square frame, no objects"},
+ {"id":"sagedoor","cat":"door","prompt":"Photorealistic flat-lay swatch of a sage green smooth painted door panel surface, even studio light, fills the entire square frame, no objects"}
+]
