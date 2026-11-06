@@ -53,7 +53,7 @@
       { "id": "deepgreen", "label": "Deep Green", "img": "cabinetry-deepgreen.png", "color": "#33493F" },
       { "id": "navy", "label": "Navy", "img": "cabinetry-navy.png", "color": "#2C3A4A" },
       { "id": "black", "label": "Matte Black", "img": "cabinetry-black.png", "color": "#2A2A2C" },
-      { "id": "twotone", "label": "Two-Tone", "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)" }
+      { "id": "twotone", "label": "Two-Tone", "img": "cabinetry-twotone.png", "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)" }
     ],
     "counter": [
       { "id": "whitequartz", "label": "White Quartz", "color": "#EFEDE8" },
