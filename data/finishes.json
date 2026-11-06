@@ -628,7 +628,8 @@
       {
         "id": "chrome",
         "label": "Chrome",
-        "color": "#CFD6DB"
+        "color": "#CFD6DB",
+        "img": "chrome.png"
       },
       {
         "id": "bronze",
@@ -690,8 +691,7 @@
         "label": "Brick",
         "color": "repeating-linear-gradient(0deg,#9C6650 0 6px,#8a5847 6px 7px)",
         "lo": 12,
-        "hi": 20,
-        "img": "brick.png"
+        "hi": 20
       },
       {
         "id": "boardbatten",
