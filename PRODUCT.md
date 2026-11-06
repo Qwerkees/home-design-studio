@@ -190,6 +190,27 @@ countertops, tile/stone, roofing, doors/windows, landscaping/xeriscape).
   one); respect each site's terms when gathering; the ROC lookup is the source
   of truth for licensing.
 
+## Drive & Navigate — round-trip store runs, live rerouting + push (Luke 2026-11-05)
+
+From the shopping list, give the customer a **"Drive" option**: an optimized
+**round-trip route** (there and back) to the stores that stock their materials,
+ordered to minimize time/distance, with **unlimited live alternate routes that
+adapt to time of day, traffic, and accidents**, plus a **push notification**
+when it's ready and reminders ("leave by X to beat traffic").
+
+- **Live rerouting for free:** a Drive button that **deep-links to the
+  customer's maps app (Waze / Google Maps / Apple Maps)**, passing the ordered
+  multi-stop route. Those apps already do traffic- and accident-aware
+  turn-by-turn with unlimited automatic reroutes at no cost to us — the best way
+  to deliver "unlimited extra routes based on time, traffic, accidents."
+- **In-app preview (optional, paid):** show the route, alternates, ETAs and
+  round-trip distance inside the app via a routing API (Google Routes / Mapbox)
+  with live traffic + incidents. Metered — a spend decision.
+- **Push:** "route ready" + leave-by reminders, via a push/SMS provider; ties
+  to the Member Rewards phone number and its opt-in/consent (TCPA).
+- **Feeds the engine:** the real round-trip distance from the route drives the
+  fuel/diesel-per-trip and trips-needed math (and delivery-vs-haul breakeven).
+
 ## Feasibility — honest flags (verify before promising any to a customer)
 
 - **Malware scanning of uploads** — standard and doable, but needs a **backend + object storage** (the app is static today). Use a real engine server-side (e.g. ClamAV, or a cloud scanning API). Never run user files through the frontend.
