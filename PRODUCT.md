@@ -167,6 +167,26 @@ videos; for a stucco exterior, the top exterior-refinish videos.
   "credible," so start with a curated list per common project type and layer
   the live search on top.
 
+## Agentic Contractor & Specials Sweep — Yuma / Phoenix (Luke 2026-11-05)
+
+A **scheduled agentic sweep** that scans the web for **licensed contractors in
+the Yuma and Phoenix, AZ areas** running **current specials/promotions** in
+Luke's lines of work (interior & exterior remodel, flooring, paint, cabinetry,
+countertops, tile/stone, roofing, doors/windows, landscaping/xeriscape).
+
+- **Purpose:** competitive intelligence (what others are promoting and at what
+  price) + sourcing (partner subs, and material/store specials Luke can pass
+  into quotes).
+- **License check:** verify against the **Arizona ROC (Registrar of
+  Contractors)** public license lookup — flag each as verified-active,
+  verified-inactive, or unverified.
+- **Output:** a structured report (company, city, ROC # + status, services,
+  the exact current special, rating/reviews, source URL, date seen) cached in
+  the Material & Quote Library and refreshed on a schedule (e.g. weekly).
+- **Flags:** specials are volatile (always date-stamp + re-verify before using
+  one); respect each site's terms when gathering; the ROC lookup is the source
+  of truth for licensing.
+
 ## Feasibility — honest flags (verify before promising any to a customer)
 
 - **Malware scanning of uploads** — standard and doable, but needs a **backend + object storage** (the app is static today). Use a real engine server-side (e.g. ClamAV, or a cloud scanning API). Never run user files through the frontend.
