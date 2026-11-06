@@ -578,12 +578,14 @@
       {
         "id": "marblequartz",
         "label": "Marble-Look",
-        "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)"
+        "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)",
+        "img": "marblequartz.png"
       },
       {
         "id": "soapstone",
         "label": "Soapstone",
-        "color": "#3B3F3E"
+        "color": "#3B3F3E",
+        "img": "soapstone.png"
       },
       {
         "id": "butcher",
