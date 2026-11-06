@@ -634,7 +634,8 @@
       {
         "id": "bronze",
         "label": "Aged Bronze",
-        "color": "#5E4B38"
+        "color": "#5E4B38",
+        "img": "bronze.png"
       }
     ],
     "textiles": [

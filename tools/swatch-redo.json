@@ -1,10 +1,5 @@
 [
   {
-    "id": "bronze",
-    "cat": "fixtures",
-    "prompt": "Photorealistic top-down flat-lay swatch of aged oil-rubbed bronze metal, dark warm brown patina, even studio light, fills the entire square frame, no objects"
-  },
-  {
     "id": "stucco",
     "cat": "siding",
     "prompt": "Photorealistic straight-on flat swatch of smooth cream stucco exterior wall plaster, fine even texture, even studio light, fills the entire square frame, no objects"
