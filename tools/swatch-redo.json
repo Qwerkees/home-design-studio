@@ -1,10 +1,5 @@
 [
   {
-    "id": "stucco",
-    "cat": "siding",
-    "prompt": "Photorealistic straight-on flat swatch of smooth cream stucco exterior wall plaster, fine even texture, even studio light, fills the entire square frame, no objects"
-  },
-  {
     "id": "fibercement",
     "cat": "siding",
     "prompt": "Photorealistic straight-on flat swatch of light grey fiber-cement lap siding, horizontal boards, even studio light, fills the entire square frame, no objects"
