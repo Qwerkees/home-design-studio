@@ -1,43 +1,35 @@
 'use strict';
 
-// Authorizes a direct browser -> Vercel Blob upload for the Free-tier media.
-// The file never passes through this function (that is how we accept videos
-// larger than the serverless body limit). We only mint a short-lived, scoped
-// upload token, capping the content type and size.
+// Authorizes a direct browser -> Vercel Blob upload for Free-tier media. The
+// file never passes through this function (that is how large videos work); we
+// only mint a short-lived, scoped token capping content type + size. Every
+// uploaded file is independently re-verified server-side in api/rfq.js before
+// an RFQ is accepted, so a token alone proves nothing.
 //
-// Needs BLOB_READ_WRITE_TOKEN (set automatically when a Vercel Blob store is
-// connected to the project). Without it we return 501 so the UI can degrade
-// gracefully instead of erroring opaquely.
+// Guards: POST-only, same-origin, per-IP rate limit. Needs BLOB_READ_WRITE_TOKEN.
 
 const { handleUpload } = require('@vercel/blob/client');
-const { ALLOWED_TYPES, MAX_BYTES, readJsonBody } = require('./_lib.js');
+const L = require('./_lib.js');
 
 module.exports = async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ error: 'Method not allowed' }); }
+  if (!L.sameOrigin(req.headers)) return res.status(403).json({ error: 'Blocked cross-site request.' });
+  if (L.rateLimit('upload:' + L.clientIp(req.headers), 30, 60_000)) {
+    return res.status(429).json({ error: 'Too many uploads — slow down a moment.' });
   }
   const token = process.env.BLOB_READ_WRITE_TOKEN;
-  if (!token) {
-    return res.status(501).json({ error: 'Uploads are not configured yet (no Blob store connected).' });
-  }
+  if (!token) return res.status(501).json({ error: 'Uploads are not configured yet (no Blob store connected).' });
+
   try {
-    const body = await readJsonBody(req);
+    const body = await L.readJsonBody(req);
     const json = await handleUpload({
-      body,
-      request: req,
-      token,
+      body, request: req, token,
       onBeforeGenerateToken: async () => ({
-        allowedContentTypes: ALLOWED_TYPES,
-        maximumSizeInBytes: MAX_BYTES,
+        allowedContentTypes: L.ALLOWED_TYPES,
+        maximumSizeInBytes: L.MAX_BYTES,
         addRandomSuffix: true,
-        // Keep Free-tier uploads in their own prefix.
-        // (pathname is provided by the client; Blob stores it under this key.)
       }),
-      onUploadCompleted: async () => {
-        // The URL is attached to the RFQ by the client in a follow-up POST to
-        // /api/rfq, so no server-side bookkeeping is needed here.
-      },
+      onUploadCompleted: async () => { /* RFQ is attached client-side via /api/rfq */ },
     });
     return res.status(200).json(json);
   } catch (e) {
