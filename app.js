@@ -102,6 +102,20 @@ function quantityFor(cat, o) {
   }
 }
 
+/* ---------- Shop link ----------
+   Deep-link each finish to a Home Depot product search for its label plus a
+   category keyword (most of the catalog is Home Depot house brands — LifeProof,
+   Behr, Hampton Bay, Malibu, Marazzi, GAF, Clopay). No API, no account. */
+var SHOP_KW = {
+  flooring: "flooring", paint: "paint", cabinetry: "kitchen cabinets", counter: "countertop",
+  fixtures: "faucet", textiles: "fabric", siding: "siding", trim: "trim moulding",
+  door: "exterior door", roof: "roof shingles", garage: "garage door", landscaping: "landscaping"
+};
+function shopUrl(cat, o) {
+  var q = (o.label || "") + " " + (SHOP_KW[cat] || "");
+  return "https://www.homedepot.com/s/" + encodeURIComponent(q.trim());
+}
+
 /* ---------- Render ---------- */
 function renderSpaces() {
   var el = $("spaceTabs"); el.innerHTML = "";
@@ -189,6 +203,7 @@ function renderBoard() {
     li.innerHTML = '<span class="fsw" style="' + swatchStyle(o) + '"></span>'
       + '<span><span class="ft">' + catMeta(c).label + '</span><br><span class="fn">' + o.label + '</span>'
       + (q ? '<span class="qty">Need about ' + q + '</span>' : '')
+      + '<a class="shop" href="' + shopUrl(c, o) + '" target="_blank" rel="noopener noreferrer">Shop at Home Depot →</a>'
       + installHTML(o) + '</span>';
     list.appendChild(li);
   });
@@ -217,8 +232,9 @@ function renderSummary(cost) {
   L.push("");
   L.push("FINISHES & SHOPPING LIST");
   cost.lines.forEach(function (ln) {
-    var q = quantityFor(ln.cat, optById(ln.cat, state.picks[ln.cat]));
+    var oo = optById(ln.cat, state.picks[ln.cat]), q = quantityFor(ln.cat, oo);
     L.push("- " + ln.label + ": " + ln.opt + "  (" + money(ln.lo) + "–" + money(ln.hi) + ")" + (q ? "  — need about " + q : ""));
+    L.push("    Shop: " + shopUrl(ln.cat, oo));
   });
   L.push("");
   L.push("BALLPARK TOTAL: " + money(cost.lo) + " – " + money(cost.hi));
