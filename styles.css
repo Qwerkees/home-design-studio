@@ -124,3 +124,48 @@ pre.summary { white-space: pre-wrap; font-family: "Hanken Grotesk", sans-serif; 
 footer { max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 0; color: var(--muted); font-size: 12.5px; }
 .live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .loading { padding: 40px 16px; color: var(--muted); text-align: center; }
+
+/* ---------- Free-tier upload page (free.html) ---------- */
+.wrap.free { max-width: 760px; }
+.free-h { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(22px, 4.5vw, 32px);
+  line-height: 1.15; margin: 6px 0 10px; color: var(--text); }
+.free-lead { color: var(--muted); max-width: 60ch; margin: 0 0 18px; }
+.free-form .body { display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; }
+.field.two { grid-template-columns: 1fr 1fr; gap: 14px; }
+.field.two > div { display: grid; gap: 6px; }
+.field label { font-weight: 600; font-size: 14px; color: var(--text); }
+.field .opt { font-weight: 400; color: var(--muted); }
+.field input[type="text"], .field select, .field textarea {
+  width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--text); font: inherit; }
+.field input[type="file"] { font: inherit; color: var(--muted); }
+.field textarea { resize: vertical; }
+.field .hint { font-size: 12.5px; color: var(--muted); }
+.media-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px;
+  background: var(--surface-2); color: var(--text); font-size: 12.5px; border: 1px solid var(--line); }
+.chip-bad { background: #fbe9e6; border-color: #e4b4ab; color: #8a2d1c; }
+.declare { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start;
+  padding: 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); }
+.declare input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--accent); }
+.declare span { font-size: 14px; color: var(--text); }
+.disclaimer.err-msg { color: #8a2d1c; }
+.disclaimer.warn-msg { color: var(--warn); }
+.free-done .body { text-align: center; display: grid; gap: 8px; justify-items: center; }
+.done-badge { width: 48px; height: 48px; border-radius: 999px; background: var(--good); color: #fff;
+  display: grid; place-items: center; font-size: 26px; font-weight: 700; }
+.done-id code { background: var(--surface-2); padding: 3px 8px; border-radius: 8px; border: 1px solid var(--line); }
+@media (max-width: 560px) { .field.two { grid-template-columns: 1fr; } }
+
+/* Home-page CTA into the free upload funnel */
+.free-cta { display: flex; align-items: center; gap: 14px; text-decoration: none; margin: 0 0 20px;
+  padding: 14px 16px; border-radius: var(--radius); border: 1px solid var(--line);
+  background: linear-gradient(0deg, var(--surface-2), var(--surface)); box-shadow: var(--shadow); }
+.free-cta:hover { border-color: var(--accent); }
+.free-cta-tag { flex: none; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--accent-ink); background: var(--accent); padding: 5px 9px; border-radius: 999px; }
+.free-cta-text { color: var(--text); font-size: 14.5px; line-height: 1.35; }
+.free-cta-text strong { color: var(--text); }
+.free-cta-arrow { margin-left: auto; color: var(--accent); font-size: 20px; flex: none; }
+@media (max-width: 560px) { .free-cta-arrow { display: none; } }

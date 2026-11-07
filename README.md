@@ -80,3 +80,24 @@ Everything the app shows comes from `data/finishes.json`:
 
 ---
 © 2026 Salvador Alcantar. Proprietary — see `LICENSE`.
+
+## Free-tier upload → RFQ funnel
+
+`/free` (`free.html` + `free.js`) lets a homeowner upload photos/videos of a
+space and request 3 design options back within 36 hours — no account.
+
+- **Front end:** static page; files upload **client → Vercel Blob** (so large
+  videos bypass the serverless body limit), authorized by `/api/blob-upload`.
+  A mandatory self-declaration ("real and mine, not AI-generated") gates submit.
+- **Back end (Vercel serverless, `/api`):**
+  - `api/blob-upload.js` — mints a scoped Blob upload token (type + 75 MB cap).
+  - `api/rfq.js` — validates, stores the RFQ in Blob (`rfqs/<id>.json`, optional
+    AES-256-GCM encryption), and notifies the owner.
+- **Config** (`.env.example`): `BLOB_READ_WRITE_TOKEN` (connect a Vercel Blob
+  store — required to store anything), `RFQ_NOTIFY_WEBHOOK` (optional owner
+  ping), `LDS_DATA_KEY` (optional at-rest encryption).
+
+**Honest status:** content-type + size are enforced; **malware scanning and
+AI-generated detection are not yet machine-performed** — the gate is the
+self-declaration and every RFQ is flagged `review:"manual"` for the owner.
+Wiring a real scanner is a tracked follow-up.
