@@ -494,6 +494,15 @@
         "hi": 8,
         "product": "LifeProof Rigid Core Luxury Vinyl Plank",
         "install": "floor-lvp"
+      },
+      {
+        "id": "montagna-tile",
+        "label": "Montagna Wood-Look Tile",
+        "img": "flooring-montagna-tile.webp",
+        "color": "#B59A77",
+        "lo": 3,
+        "hi": 6,
+        "install": "floor-tile"
       }
     ],
     "paint": [
@@ -560,6 +569,15 @@
         "hi": 3,
         "product": "Behr Marquee Interior Paint & Primer",
         "install": "paint"
+      },
+      {
+        "id": "silverdrop",
+        "label": "Silver Drop",
+        "img": "paint-silverdrop.webp",
+        "color": "#DAD7CE",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -611,6 +629,13 @@
         "img": "cabinetry-shaker-diamond.webp",
         "color": "#E7E3DA",
         "product": "Diamond NOW Shaker Kitchen Cabinets",
+        "install": "cabinets"
+      },
+      {
+        "id": "pacificblue",
+        "label": "Pacific Blue",
+        "img": "cabinetry-pacificblue.webp",
+        "color": "#2F5468",
         "install": "cabinets"
       }
     ],
@@ -672,6 +697,13 @@
         "color": "#EDEDEA",
         "product": "Subway Tile Backsplash",
         "install": "backsplash-tile"
+      },
+      {
+        "id": "calacatta-laza",
+        "label": "Calacatta Laza Quartz",
+        "img": "counter-calacatta-laza.webp",
+        "color": "#F2F0EC",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -716,6 +748,13 @@
         "img": "fixtures-faucet-single.webp",
         "color": "#9AA0A3",
         "product": "Single-Handle Kitchen Faucet",
+        "install": "faucet"
+      },
+      {
+        "id": "champagnebronze",
+        "label": "Champagne Bronze",
+        "img": "champagnebronze.webp",
+        "color": "#C9A77C",
         "install": "faucet"
       }
     ],
@@ -794,6 +833,15 @@
         "hi": 40,
         "img": "stone.webp",
         "install": "siding-masonry"
+      },
+      {
+        "id": "hardie-pewter",
+        "label": "Aged Pewter Fiber Cement",
+        "img": "hardie-pewter.webp",
+        "color": "#8A8F8C",
+        "lo": 7,
+        "hi": 12,
+        "install": "siding-lap"
       }
     ],
     "trim": [
