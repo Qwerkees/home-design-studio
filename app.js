@@ -21,14 +21,20 @@ function finishes(c) { return DATA.finishes[c] || []; }
 function optById(c, id) { var a = finishes(c), i; for (i = 0; i < a.length; i++) { if (a[i].id === id) return a[i]; } return a[0]; }
 function swatchStyle(o) { return o.img ? "background-image:url(assets/finishes/" + o.img + ")" : "background:" + (o.color || "#ccc"); }
 function roomImg(sp) { return sp.img ? "assets/rooms/" + sp.img : ""; }
-// "How to install" panel for a finish that carries a how-to video + tools/parts
-// (real Home Depot / Lowe's product data). Data is first-party, like the rest.
+// "How to install" panel. A finish references a shared install guide by key
+// (o.install -> DATA.installGuides[key]); the guide carries the official how-to
+// video + machinery / hand tools / parts, so finish variants (colors) reuse one
+// guide. Data is first-party, like the rest of the catalog.
+function installGuide(o) { return o && o.install && DATA.installGuides ? DATA.installGuides[o.install] : null; }
 function installHTML(o) {
-  if (!o || !(o.video || (o.tools && o.tools.length) || (o.parts && o.parts.length))) return "";
-  var h = '<details class="install"><summary>How to install' + (o.product ? " · " + o.product : "") + '</summary>';
-  if (o.video) h += '<a class="iv" href="' + o.video + '" target="_blank" rel="noopener noreferrer">Watch the how-to video on ' + (o.source || "the official site") + '</a>';
-  if (o.tools && o.tools.length) h += '<div class="ih">Tools / machinery</div><ul>' + o.tools.map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>";
-  if (o.parts && o.parts.length) h += '<div class="ih">Parts / materials</div><ul>' + o.parts.map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>";
+  var g = installGuide(o);
+  if (!g) return "";
+  var title = o.product || g.title || "";
+  var h = '<details class="install"><summary>How to install' + (title ? " · " + title : "") + '</summary>';
+  if (g.video) h += '<a class="iv" href="' + g.video + '" target="_blank" rel="noopener noreferrer">Watch the how-to video on ' + (g.source || "the official site") + '</a>';
+  function sec(name, arr) { return (arr && arr.length) ? '<div class="ih">' + name + '</div><ul>' + arr.map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>" : ""; }
+  h += sec("Machinery / power tools", g.machinery) + sec("Hand tools", g.tools) + sec("Parts / materials", g.parts);
+  if (g.note) h += '<div class="inote">' + g.note + "</div>";
   return h + "</details>";
 }
 function defaultAreaFor(kind) { return kind === "exterior" ? 2000 : 200; }
@@ -187,12 +193,13 @@ function renderSummary(cost) {
   L.push("(Arizona, 2026 planning range — materials + typical install. Not a quote; confirm with a local bid.)");
   var notes = [];
   sp.cats.forEach(function (c) {
-    var o = optById(c, state.picks[c]);
-    if (o && (o.video || o.tools || o.parts)) {
-      var n = "- " + o.label + (o.product ? " (" + o.product + (o.source ? ", " + o.source : "") + ")" : "");
-      if (o.tools && o.tools.length) n += "\n    Tools: " + o.tools.join(", ");
-      if (o.parts && o.parts.length) n += "\n    Parts: " + o.parts.join(", ");
-      if (o.video) n += "\n    Video: " + o.video;
+    var o = optById(c, state.picks[c]), g = installGuide(o);
+    if (g) {
+      var n = "- " + o.label + (o.product ? " (" + o.product + ")" : "") + (g.source ? " [" + g.source + "]" : "");
+      if (g.machinery && g.machinery.length) n += "\n    Machinery: " + g.machinery.join(", ");
+      if (g.tools && g.tools.length) n += "\n    Tools: " + g.tools.join(", ");
+      if (g.parts && g.parts.length) n += "\n    Parts: " + g.parts.join(", ");
+      if (g.video) n += "\n    Video: " + g.video;
       notes.push(n);
     }
   });
