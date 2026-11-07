@@ -692,6 +692,33 @@
         "lo": 8,
         "hi": 16,
         "install": "floor-tile"
+      },
+      {
+        "id": "parquetwood",
+        "label": "Parquet Oak",
+        "img": "flooring-parquetwood.webp",
+        "color": "#B08A55",
+        "lo": 8,
+        "hi": 18,
+        "install": "floor-hardwood"
+      },
+      {
+        "id": "blackmarbletile",
+        "label": "Black Marble Tile",
+        "img": "flooring-blackmarbletile.webp",
+        "color": "#2B2B2E",
+        "lo": 10,
+        "hi": 22,
+        "install": "floor-tile"
+      },
+      {
+        "id": "vinylstone",
+        "label": "Stone-Look Vinyl",
+        "img": "flooring-vinylstone.webp",
+        "color": "#B8B2A8",
+        "lo": 3,
+        "hi": 7,
+        "install": "floor-lvp"
       }
     ],
     "paint": [
@@ -965,6 +992,51 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "chocolatebrown",
+        "label": "Chocolate",
+        "img": "paint-chocolatebrown.webp",
+        "color": "#4A3528",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "rosequartz",
+        "label": "Rose Quartz",
+        "img": "paint-rosequartz.webp",
+        "color": "#E3C4C2",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "skyblue",
+        "label": "Sky Blue",
+        "img": "paint-skyblue.webp",
+        "color": "#AFC9DC",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "buttercream",
+        "label": "Buttercream",
+        "img": "paint-buttercream.webp",
+        "color": "#F0E6C8",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "espressopaint",
+        "label": "Espresso",
+        "img": "paint-espressopaint.webp",
+        "color": "#3A2C22",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -1142,6 +1214,27 @@
         "label": "Natural Maple",
         "img": "cabinetry-maplecab.webp",
         "color": "#D6B486",
+        "install": "cabinets"
+      },
+      {
+        "id": "glossblack",
+        "label": "High-Gloss Black",
+        "img": "cabinetry-glossblack.webp",
+        "color": "#1E1E20",
+        "install": "cabinets"
+      },
+      {
+        "id": "mintcab",
+        "label": "Mint Green",
+        "img": "cabinetry-mintcab.webp",
+        "color": "#AFC7B4",
+        "install": "cabinets"
+      },
+      {
+        "id": "rustoak",
+        "label": "Rustic Oak",
+        "img": "cabinetry-rustoak.webp",
+        "color": "#9A6A3C",
         "install": "cabinets"
       }
     ],
@@ -1343,6 +1436,34 @@
         "img": "counter-honedgranite.webp",
         "color": "#5A5B5D",
         "install": "counter-stone"
+      },
+      {
+        "id": "nerogranite",
+        "label": "Nero Granite",
+        "img": "counter-nerogranite.webp",
+        "color": "#2A2A2C",
+        "install": "counter-stone"
+      },
+      {
+        "id": "statuariomarble",
+        "label": "Statuario Marble",
+        "img": "counter-statuariomarble.webp",
+        "color": "#ECEAE6",
+        "install": "counter-stone"
+      },
+      {
+        "id": "bluestone",
+        "label": "Bluestone",
+        "img": "counter-bluestone.webp",
+        "color": "#5E6B72",
+        "install": "counter-stone"
+      },
+      {
+        "id": "paperstone",
+        "label": "Paper Composite",
+        "img": "counter-paperstone.webp",
+        "color": "#3C4440",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -1507,6 +1628,27 @@
         "img": "fixtures-weatheredbrass.webp",
         "color": "#8A7340",
         "install": "faucet"
+      },
+      {
+        "id": "brushedgold",
+        "label": "Brushed Gold",
+        "img": "fixtures-brushedgold.webp",
+        "color": "#C2A14E",
+        "install": "faucet"
+      },
+      {
+        "id": "titanium",
+        "label": "Titanium",
+        "img": "fixtures-titanium.webp",
+        "color": "#9BA0A4",
+        "install": "faucet"
+      },
+      {
+        "id": "venetianbronze",
+        "label": "Venetian Bronze",
+        "img": "fixtures-venetianbronze.webp",
+        "color": "#4A3A2E",
+        "install": "faucet"
       }
     ],
     "textiles": [
@@ -1629,6 +1771,24 @@
         "label": "Navy Velvet",
         "img": "textiles-navyvelvet.webp",
         "color": "#2C3550"
+      },
+      {
+        "id": "creamboucle",
+        "label": "Cream Boucle",
+        "img": "textiles-creamboucle.webp",
+        "color": "#E6DED0"
+      },
+      {
+        "id": "olivevelvet",
+        "label": "Olive Velvet",
+        "img": "textiles-olivevelvet.webp",
+        "color": "#5E6238"
+      },
+      {
+        "id": "cognacleather",
+        "label": "Cognac Leather",
+        "img": "textiles-cognacleather.webp",
+        "color": "#8A4F2E"
       }
     ],
     "siding": [
@@ -1838,6 +1998,33 @@
         "lo": 7,
         "hi": 14,
         "install": "siding-lap"
+      },
+      {
+        "id": "whitebrick",
+        "label": "White Brick",
+        "img": "siding-whitebrick.webp",
+        "color": "#E2DCD2",
+        "lo": 9,
+        "hi": 16,
+        "install": "siding-masonry"
+      },
+      {
+        "id": "darkstucco",
+        "label": "Charcoal Stucco",
+        "img": "siding-darkstucco.webp",
+        "color": "#4E4A44",
+        "lo": 7,
+        "hi": 12,
+        "install": "siding-stucco"
+      },
+      {
+        "id": "greystone",
+        "label": "Grey Stone Veneer",
+        "img": "siding-greystone.webp",
+        "color": "#8E8A82",
+        "lo": 12,
+        "hi": 22,
+        "install": "siding-masonry"
       }
     ],
     "trim": [
@@ -1965,6 +2152,27 @@
         "label": "Hale Navy Trim",
         "img": "trim-bluetrim.webp",
         "color": "#39434E",
+        "install": "trim"
+      },
+      {
+        "id": "espressotrim",
+        "label": "Espresso Trim",
+        "img": "trim-espressotrim.webp",
+        "color": "#3A2C22",
+        "install": "trim"
+      },
+      {
+        "id": "mushroomtrim",
+        "label": "Mushroom Trim",
+        "img": "trim-mushroomtrim.webp",
+        "color": "#B8AEA0",
+        "install": "trim"
+      },
+      {
+        "id": "linenwhitetrim",
+        "label": "Linen White Trim",
+        "img": "trim-linenwhitetrim.webp",
+        "color": "#ECE6DA",
         "install": "trim"
       }
     ],
@@ -2135,6 +2343,34 @@
         "label": "Natural Oak",
         "img": "door-naturaloakdoor.webp",
         "color": "#C8A06A",
+        "install": "door"
+      },
+      {
+        "id": "copperdoor",
+        "label": "Copper",
+        "img": "door-copperdoor.webp",
+        "color": "#9A5A38",
+        "install": "door"
+      },
+      {
+        "id": "brickreddoor",
+        "label": "Brick Red",
+        "img": "door-brickreddoor.webp",
+        "color": "#7A2E26",
+        "install": "door"
+      },
+      {
+        "id": "olivedoor",
+        "label": "Olive",
+        "img": "door-olivedoor.webp",
+        "color": "#5E6238",
+        "install": "door"
+      },
+      {
+        "id": "ironoredoor",
+        "label": "Iron Ore",
+        "img": "door-ironoredoor.webp",
+        "color": "#3A3836",
         "install": "door"
       }
     ],
@@ -2309,6 +2545,33 @@
         "lo": 4,
         "hi": 8,
         "install": "roof-shingle"
+      },
+      {
+        "id": "redmetal",
+        "label": "Barn Red Metal",
+        "img": "roof-redmetal.webp",
+        "color": "#7A2E26",
+        "lo": 9,
+        "hi": 18,
+        "install": "roof-metal"
+      },
+      {
+        "id": "driftwoodshingle",
+        "label": "Driftwood Shingle",
+        "img": "roof-driftwoodshingle.webp",
+        "color": "#8A7E6E",
+        "lo": 4,
+        "hi": 8,
+        "install": "roof-shingle"
+      },
+      {
+        "id": "charcoalmetal",
+        "label": "Charcoal Metal",
+        "img": "roof-charcoalmetal.webp",
+        "color": "#36393C",
+        "lo": 9,
+        "hi": 18,
+        "install": "roof-metal"
       }
     ],
     "garage": [
@@ -2436,6 +2699,27 @@
         "label": "Aluminum Full-View",
         "img": "garage-aluminumfull.webp",
         "color": "#C9D0D4",
+        "install": "garage-door"
+      },
+      {
+        "id": "sagegaragedoor",
+        "label": "Sage Green",
+        "img": "garage-sagegaragedoor.webp",
+        "color": "#8A9079",
+        "install": "garage-door"
+      },
+      {
+        "id": "oakgarage",
+        "label": "White Oak",
+        "img": "garage-oakgarage.webp",
+        "color": "#C8A86A",
+        "install": "garage-door"
+      },
+      {
+        "id": "charcoalgarage",
+        "label": "Charcoal",
+        "img": "garage-charcoalgarage.webp",
+        "color": "#3A3C40",
         "install": "garage-door"
       }
     ],
@@ -2578,6 +2862,27 @@
         "label": "Water Feature",
         "img": "landscaping-waterfeature.webp",
         "color": "#7E8C8A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "japanesemaple",
+        "label": "Japanese Maple Bed",
+        "img": "landscaping-japanesemaple.webp",
+        "color": "#8A5A4A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "herbgarden",
+        "label": "Herb Garden",
+        "img": "landscaping-herbgarden.webp",
+        "color": "#7E8C5A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "poolscape",
+        "label": "Poolside Landscape",
+        "img": "landscaping-poolscape.webp",
+        "color": "#6EA0B0",
         "install": "landscape-general"
       }
     ]
