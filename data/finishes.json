@@ -566,6 +566,42 @@
         "lo": 10,
         "hi": 25,
         "install": "floor-tile"
+      },
+      {
+        "id": "ashlvp",
+        "label": "Grey Ash LVP",
+        "img": "flooring-ashlvp.webp",
+        "color": "#B9B4AC",
+        "lo": 3,
+        "hi": 7,
+        "install": "floor-lvp"
+      },
+      {
+        "id": "hextile",
+        "label": "Hex Mosaic Tile",
+        "img": "flooring-hextile.webp",
+        "color": "#C7C3BA",
+        "lo": 8,
+        "hi": 18,
+        "install": "floor-tile"
+      },
+      {
+        "id": "reclaimedbarn",
+        "label": "Reclaimed Barnwood",
+        "img": "flooring-reclaimedbarn.webp",
+        "color": "#7A6450",
+        "lo": 10,
+        "hi": 22,
+        "install": "floor-hardwood"
+      },
+      {
+        "id": "polishedmarble",
+        "label": "Polished Marble",
+        "img": "flooring-polishedmarble.webp",
+        "color": "#ECEAE6",
+        "lo": 15,
+        "hi": 30,
+        "install": "floor-tile"
       }
     ],
     "paint": [
@@ -695,6 +731,42 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "tricornblack",
+        "label": "Tricorn Black",
+        "img": "paint-tricornblack.webp",
+        "color": "#2A2B2D",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "mushroomtaupe",
+        "label": "Mushroom Taupe",
+        "img": "paint-mushroomtaupe.webp",
+        "color": "#B8AEA0",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "dustyrose",
+        "label": "Dusty Rose",
+        "img": "paint-dustyrose.webp",
+        "color": "#C9A7A2",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "oceanblue",
+        "label": "Ocean Blue",
+        "img": "paint-oceanblue.webp",
+        "color": "#3E6B82",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -781,6 +853,34 @@
         "label": "Walnut Slab",
         "img": "cabinetry-walnut.webp",
         "color": "#5A3E2B",
+        "install": "cabinets"
+      },
+      {
+        "id": "flutedwhite",
+        "label": "Fluted White",
+        "img": "cabinetry-flutedwhite.webp",
+        "color": "#ECE9E2",
+        "install": "cabinets"
+      },
+      {
+        "id": "espressoflat",
+        "label": "Espresso Flat",
+        "img": "cabinetry-espressoflat.webp",
+        "color": "#3A2A20",
+        "install": "cabinets"
+      },
+      {
+        "id": "oliveshaker",
+        "label": "Olive Shaker",
+        "img": "cabinetry-oliveshaker.webp",
+        "color": "#6E7152",
+        "install": "cabinets"
+      },
+      {
+        "id": "whiteoakslab",
+        "label": "White Oak Slab",
+        "img": "cabinetry-whiteoakslab.webp",
+        "color": "#C8B392",
         "install": "cabinets"
       }
     ],
@@ -884,6 +984,34 @@
         "img": "counter-blackgranite.webp",
         "color": "#2B2B2D",
         "install": "counter-stone"
+      },
+      {
+        "id": "whitequartzite",
+        "label": "White Quartzite",
+        "img": "counter-whitequartzite.webp",
+        "color": "#EDEBE6",
+        "install": "counter-stone"
+      },
+      {
+        "id": "terrazzotop",
+        "label": "Terrazzo Counter",
+        "img": "counter-terrazzotop.webp",
+        "color": "#DAD5CA",
+        "install": "counter-stone"
+      },
+      {
+        "id": "greenmarble",
+        "label": "Green Marble",
+        "img": "counter-greenmarble.webp",
+        "color": "#3E5B4C",
+        "install": "counter-stone"
+      },
+      {
+        "id": "stainlesstop",
+        "label": "Stainless Steel",
+        "img": "counter-stainlesstop.webp",
+        "color": "#B8BBBE",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -957,6 +1085,27 @@
         "img": "fixtures-copper.webp",
         "color": "#7B4B3A",
         "install": "faucet"
+      },
+      {
+        "id": "satinbrass",
+        "label": "Satin Brass",
+        "img": "fixtures-satinbrass.webp",
+        "color": "#B9975B",
+        "install": "faucet"
+      },
+      {
+        "id": "blackstainless",
+        "label": "Black Stainless",
+        "img": "fixtures-blackstainless.webp",
+        "color": "#3A3C3E",
+        "install": "faucet"
+      },
+      {
+        "id": "oilbronze",
+        "label": "Oil-Rubbed Bronze",
+        "img": "fixtures-oilbronze.webp",
+        "color": "#4A3B30",
+        "install": "faucet"
       }
     ],
     "textiles": [
@@ -1007,6 +1156,24 @@
         "label": "Charcoal Wool",
         "img": "textiles-woolcharcoal.webp",
         "color": "#3C3E42"
+      },
+      {
+        "id": "mustardvelvet",
+        "label": "Mustard Velvet",
+        "img": "textiles-mustardvelvet.webp",
+        "color": "#C69A3A"
+      },
+      {
+        "id": "navyboucle",
+        "label": "Navy Boucle",
+        "img": "textiles-navyboucle.webp",
+        "color": "#35435A"
+      },
+      {
+        "id": "terracottalinen",
+        "label": "Terracotta Linen",
+        "img": "textiles-terracottalinen.webp",
+        "color": "#B57355"
       }
     ],
     "siding": [
@@ -1108,6 +1275,33 @@
         "lo": 8,
         "hi": 15,
         "install": "siding-lap"
+      },
+      {
+        "id": "charredwood",
+        "label": "Charred Shou Sugi Ban",
+        "img": "siding-charredwood.webp",
+        "color": "#2B2724",
+        "lo": 10,
+        "hi": 20,
+        "install": "siding-lap"
+      },
+      {
+        "id": "limewashbrick",
+        "label": "Limewashed Brick",
+        "img": "siding-limewashbrick.webp",
+        "color": "#D8CFC4",
+        "lo": 9,
+        "hi": 16,
+        "install": "siding-masonry"
+      },
+      {
+        "id": "navylap",
+        "label": "Navy Lap Siding",
+        "img": "siding-navylap.webp",
+        "color": "#2C3A4A",
+        "lo": 7,
+        "hi": 12,
+        "install": "siding-lap"
       }
     ],
     "trim": [
@@ -1151,6 +1345,27 @@
         "label": "Alder Stain-Grade Trim",
         "img": "trim-alder.webp",
         "color": "#A5743F",
+        "install": "trim"
+      },
+      {
+        "id": "oaktrim",
+        "label": "Natural Oak Trim",
+        "img": "trim-oaktrim.webp",
+        "color": "#A5743F",
+        "install": "trim"
+      },
+      {
+        "id": "navytrim",
+        "label": "Navy Trim",
+        "img": "trim-navytrim.webp",
+        "color": "#2A3A4C",
+        "install": "trim"
+      },
+      {
+        "id": "greentrim",
+        "label": "Forest Green Trim",
+        "img": "trim-greentrim.webp",
+        "color": "#2E3D30",
         "install": "trim"
       }
     ],
@@ -1209,6 +1424,34 @@
         "label": "Craftsman Douglas Fir",
         "img": "fir-craftsman.webp",
         "color": "#9A6A3C",
+        "install": "door"
+      },
+      {
+        "id": "yellowdoor",
+        "label": "Marigold Yellow",
+        "img": "door-yellowdoor.webp",
+        "color": "#D7A52E",
+        "install": "door"
+      },
+      {
+        "id": "whitedoor",
+        "label": "Classic White",
+        "img": "door-whitedoor.webp",
+        "color": "#F3F0EA",
+        "install": "door"
+      },
+      {
+        "id": "orangedoor",
+        "label": "Burnt Orange",
+        "img": "door-orangedoor.webp",
+        "color": "#C15A2B",
+        "install": "door"
+      },
+      {
+        "id": "glassdoor",
+        "label": "Glass Panel",
+        "img": "door-glassdoor.webp",
+        "color": "#AEB8BC",
         "install": "door"
       }
     ],
@@ -1275,6 +1518,33 @@
         "lo": 9,
         "hi": 18,
         "install": "roof-metal"
+      },
+      {
+        "id": "coppermetal",
+        "label": "Copper Metal",
+        "img": "roof-coppermetal.webp",
+        "color": "#8A5A3C",
+        "lo": 15,
+        "hi": 30,
+        "install": "roof-metal"
+      },
+      {
+        "id": "barreltile",
+        "label": "Barrel Clay Tile",
+        "img": "roof-barreltile.webp",
+        "color": "#B5693F",
+        "lo": 8,
+        "hi": 18,
+        "install": "roof-tile"
+      },
+      {
+        "id": "blackshingle",
+        "label": "Onyx Black Shingle",
+        "img": "roof-blackshingle.webp",
+        "color": "#26272A",
+        "lo": 4,
+        "hi": 8,
+        "install": "roof-shingle"
       }
     ],
     "garage": [
@@ -1319,6 +1589,27 @@
         "img": "fullview.webp",
         "color": "#C9D0D4",
         "install": "garage-door"
+      },
+      {
+        "id": "cedargarage",
+        "label": "Cedar Wood",
+        "img": "garage-cedargarage.webp",
+        "color": "#9A6B45",
+        "install": "garage-door"
+      },
+      {
+        "id": "farmhousegarage",
+        "label": "Farmhouse White",
+        "img": "garage-farmhousegarage.webp",
+        "color": "#EDE9E1",
+        "install": "garage-door"
+      },
+      {
+        "id": "frostedgarage",
+        "label": "Frosted Glass",
+        "img": "garage-frostedgarage.webp",
+        "color": "#D4DADD",
+        "install": "garage-door"
       }
     ],
     "landscaping": [
@@ -1362,6 +1653,20 @@
         "label": "Decomposed Granite",
         "img": "landscape-gravel.webp",
         "color": "#B8A98C",
+        "install": "landscape-general"
+      },
+      {
+        "id": "mulchbed",
+        "label": "Bark Mulch",
+        "img": "landscaping-mulchbed.webp",
+        "color": "#6B4A33",
+        "install": "landscape-general"
+      },
+      {
+        "id": "flagstone",
+        "label": "Flagstone Patio",
+        "img": "landscaping-flagstone.webp",
+        "color": "#A9A096",
         "install": "landscape-general"
       }
     ]
