@@ -13,6 +13,29 @@ var SPACES_FALLBACK = [
   { id: "facade", label: "Exterior" },
 ];
 
+/* Accepted upload types + extension fallback. Browsers often report an empty
+   File.type for iPhone HEIC/HEIF (and sometimes .mov), which would be rejected
+   by the Blob upload's allowedContentTypes. Derive a valid type from the file
+   extension when the browser doesn't give us an allowed one. The server still
+   verifies real magic bytes + type family, so a lying extension can't bypass. */
+var ALLOWED_TYPES = [
+  "image/jpeg", "image/png", "image/webp", "image/heic", "image/heif",
+  "video/mp4", "video/quicktime", "video/webm",
+];
+var EXT_TYPE = {
+  jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp",
+  heic: "image/heic", heif: "image/heif", mp4: "video/mp4", m4v: "video/mp4",
+  mov: "video/quicktime", webm: "video/webm",
+};
+function pickContentType(file) {
+  var t = (file.type || "").toLowerCase();
+  if (ALLOWED_TYPES.indexOf(t) !== -1) return t;
+  var name = file.name || "";
+  var dot = name.lastIndexOf(".");
+  var ext = dot >= 0 ? name.slice(dot + 1).toLowerCase() : "";
+  return EXT_TYPE[ext] || t || "";
+}
+
 function $(id) { return document.getElementById(id); }
 function esc(s) {
   return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -91,12 +114,13 @@ async function uploadAll(files) {
   for (var i = 0; i < files.length && i < MAX_FILES; i++) {
     var file = files[i];
     if (file.size > MAX_BYTES) continue;
+    var ct = pickContentType(file);
     var res = await window.LDSBlob.upload(file.name, file, {
       access: "public",
       handleUploadUrl: "/api/blob-upload",
-      contentType: file.type || undefined,
+      contentType: ct || undefined,
     });
-    out.push({ url: res.url, contentType: file.type || res.contentType || "", name: file.name });
+    out.push({ url: res.url, contentType: ct || res.contentType || "", name: file.name });
   }
   return out;
 }
