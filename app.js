@@ -47,6 +47,7 @@ var STR = {
     surprise: "Surprise me",
     filterHint: "Filter…",
     noMatches: "No matches — clear the filter.",
+    viewPlan: "View plan",
     yourPlan: "Your plan",
     ballpark: "Ballpark budget",
     roomSize: "Room size",
@@ -75,6 +76,7 @@ var STR = {
     surprise: "Sorpréndeme",
     filterHint: "Filtrar…",
     noMatches: "Sin resultados — limpia el filtro.",
+    viewPlan: "Ver plan",
     yourPlan: "Tu plan",
     ballpark: "Presupuesto aproximado",
     roomSize: "Tamaño del cuarto",
@@ -240,6 +242,17 @@ function shopUrl(cat, o) {
 }
 
 /* ---------- Render ---------- */
+/* After a space is chosen, move the user to step 1: smooth-scroll the
+   "Pick a style" panel into view and focus its first style, so the cursor and
+   attention land where they choose next (honors reduced-motion). */
+function focusStylePicker() {
+  var sg = $("styleGrid"); if (!sg) return;
+  var panel = sg.closest ? sg.closest(".panel") : null;
+  var reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+  (panel || sg).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  var first = sg.querySelector("button");
+  if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
+}
 function renderSpaces() {
   var el = $("spaceTabs"); el.innerHTML = "";
   DATA.spaces.forEach(function (sp) {
@@ -256,6 +269,7 @@ function renderSpaces() {
       state.space = sp.id; state.area = defaultAreaFor(sp.kind);
       applyStyleDefaults(); save(); renderAll();
       announce(sp.label + " selected");
+      focusStylePicker();
     });
     el.appendChild(b);
   });
@@ -266,6 +280,10 @@ function renderSpaces() {
 
 function renderStyles() {
   var el = $("styleGrid"); el.innerHTML = "";
+  function restore() {
+    el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
+    paintBoardVisual(STYLE_BY_ID[state.style]);
+  }
   DATA.styles.forEach(function (p) {
     var b = document.createElement("button");
     b.className = "style"; b.type = "button";
@@ -279,6 +297,16 @@ function renderStyles() {
       state.style = p.id; applyStyleDefaults(); save(); renderAll();
       announce(p.name + " style applied");
     });
+    // Live preview: hovering/focusing a style shows its look on the board
+    // (title + palette + tagline) without changing saved picks; leaving reverts.
+    function preview() {
+      el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
+      b.classList.add("previewing"); paintBoardVisual(p);
+    }
+    b.addEventListener("mouseenter", preview);
+    b.addEventListener("focus", preview);
+    b.addEventListener("mouseleave", restore);
+    b.addEventListener("blur", restore);
     el.appendChild(b);
   });
 }
@@ -340,15 +368,21 @@ function renderCats() {
 /* Escape a value destined for an HTML attribute (labels/filter text). */
 function attr(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
-function renderBoard() {
-  var p = STYLE_BY_ID[state.style], sp = spaceById(state.space);
-  $("boardTitle").textContent = p.name + " · " + sp.label;
+/* Board title + palette strip + tagline for a given style. Shared by renderBoard
+   and the live hover/focus preview in the style picker (preview swaps only this
+   visual, never the saved picks, and restores on mouse-out). */
+function paintBoardVisual(p) {
+  $("boardTitle").textContent = p.name + " · " + spaceById(state.space).label;
   var strip = $("paletteStrip"); strip.innerHTML = "";
   p.colors.forEach(function (c) {
     var s = document.createElement("span"); s.style.background = c[1];
     s.innerHTML = '<span class="pc-name">' + c[0] + '</span>'; strip.appendChild(s);
   });
   $("tagline").textContent = "“" + p.tag + "”";
+}
+function renderBoard() {
+  var p = STYLE_BY_ID[state.style], sp = spaceById(state.space);
+  paintBoardVisual(p);
 
   var list = $("finishList"); list.innerHTML = "";
   sp.cats.forEach(function (c) {
@@ -369,7 +403,9 @@ function renderBoard() {
   if ($("unitBtn")) $("unitBtn").innerHTML = isMetric() ? "sq ft" : "m²";
 
   var cost = computeCost();
-  $("costAmt").textContent = money(cost.lo) + " – " + money(cost.hi);
+  var amt = money(cost.lo) + " – " + money(cost.hi);
+  $("costAmt").textContent = amt;
+  if ($("planBarCost")) $("planBarCost").textContent = amt; // mobile sticky plan bar
   $("costNote").textContent = kind === "exterior"
     ? t("costExterior")
     : t("costInterior");
@@ -564,6 +600,11 @@ function boot(data) {
     else { window.prompt("Copy this plan link", url); }
   });
   $("resetBtn").addEventListener("click", function () { applyStyleDefaults(); save(); renderCats(); renderBoard(); announce("Finishes reset to the " + STYLE_BY_ID[state.style].name + " style"); });
+  if ($("planBarBtn")) $("planBarBtn").addEventListener("click", function () {
+    var bt = $("boardTitle"); var reduce = false;
+    try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+    if (bt) bt.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  });
   if ($("unitBtn")) $("unitBtn").addEventListener("click", function () {
     state.units = isMetric() ? "imperial" : "metric"; save(); renderBoard();
     announce(isMetric() ? "Metric units" : "Imperial units");

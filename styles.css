@@ -63,13 +63,19 @@ header { border-bottom: 1px solid var(--line); background: var(--surface); posit
 .panel .body { padding: 14px 18px 18px; }
 .section-note { color: var(--muted); font-size: 13px; padding: 2px 18px 0; }
 
-.styles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-@media (max-width: 520px) { .styles { grid-template-columns: 1fr; } }
-.style { text-align: left; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 12px; display: flex; gap: 11px; align-items: center; transition: border-color .15s, background .15s; }
-.style[aria-pressed="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); }
-.style .chips { display: grid; grid-template-columns: repeat(5, 1fr); width: 54px; height: 40px; border-radius: 7px; overflow: hidden; flex: none; border: 1px solid var(--line); }
-.style .chips span { display: block; }
-.style .nm { font-weight: 700; font-size: 14.5px; line-height: 1.2; }
+.styles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 520px) { .styles { gap: 8px; } }
+.style { text-align: left; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 12px 14px; display: flex; gap: 16px; align-items: center; transition: border-color .15s, background .15s, box-shadow .15s; }
+.style[aria-pressed="true"], .style.previewing { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); }
+.style:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0, 0, 0, .10); }
+/* Colors read as distinct, more visible swatches (not a merged stripe). */
+.style .chips { display: flex; gap: 5px; flex: none; }
+.style .chips span { display: block; width: 22px; height: 34px; border-radius: 6px; border: 1px solid rgba(0, 0, 0, .10); box-shadow: 0 1px 2px rgba(0, 0, 0, .10); transition: transform .16s ease, box-shadow .16s ease; }
+.style .nm { font-weight: 700; font-size: 15px; line-height: 1.2; margin-left: 2px; }
+/* Hover/focus makes the colors pop out. */
+@media (prefers-reduced-motion: no-preference) {
+  .style:hover .chips span, .style:focus-visible .chips span { transform: translateY(-3px) scale(1.08); box-shadow: 0 5px 12px rgba(0, 0, 0, .22); }
+}
 
 .cat { padding: 15px 0; border-top: 1px solid var(--line); }
 .cat:first-child { border-top: 0; padding-top: 4px; }
@@ -269,3 +275,32 @@ a.shop, a.share-url { display: inline-flex; align-items: center; }
 .pb { position: absolute; top: 4px; right: 4px; display: inline-flex; align-items: center; justify-content: center;
   width: 18px; height: 18px; border-radius: 999px; background: rgba(0,0,0,.55); color: #ffd36b; }
 @media (max-width: 420px) { .cat-chip span { display: none; } .cat-chip { padding: 6px 10px; } }
+
+/* ---------- Mobile: bring the desktop layout across ----------
+   (1) style cards stay 2-across (sized to fit a phone), (2) a sticky plan bar
+   keeps the live budget + a jump-to-plan button in view while picking, and
+   (3) the finish swatches tighten up so the long list scrolls less. */
+.plan-bar { display: none; }
+@media (max-width: 860px) {
+  .wrap { padding-bottom: 84px; }                 /* clear the fixed bar */
+  .plan-bar { display: flex; align-items: center; gap: 12px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    padding: 9px 16px calc(9px + env(safe-area-inset-bottom)); background: var(--surface);
+    border-top: 1.5px solid var(--line); box-shadow: 0 -4px 16px rgba(0, 0, 0, .12); }
+  .pb-info { display: flex; flex-direction: column; line-height: 1.12; min-width: 0; }
+  .pb-lab { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .pb-cost { font-size: 16px; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .pb-view { margin-left: auto; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 0;
+    background: var(--accent); color: var(--accent-ink, #fff); font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; }
+}
+@media (max-width: 480px) {
+  /* 2-up cards stack vertically: full-width color bar on top, name below —
+     keeps the bolder colors and lets names wrap cleanly at spaces. */
+  .style { flex-direction: column; align-items: stretch; gap: 8px; padding: 11px; min-width: 0; }
+  .style .chips { gap: 4px; }
+  .style .chips span { flex: 1; width: auto; height: 30px; }
+  .style .nm { font-size: 14px; margin-left: 0; min-width: 0; overflow-wrap: break-word; }
+  .opts { gap: 7px; }
+  .opt { width: 54px; }
+  .opt .sw { width: 54px; height: 42px; }
+  .opt .lbl { font-size: 10.5px; }
+}
