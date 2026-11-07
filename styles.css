@@ -219,3 +219,32 @@ footer { max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 0; color: va
 .quiz-foot { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
 .quiz-note { color: var(--muted); font-size: 13px; }
 @media (max-width: 420px) { .quiz-opt { flex: 1 1 100%; text-align: left; } }
+
+/* ============================================================
+   Accessibility pass
+   - Contrast already meets WCAG AA in both themes (audited).
+   - Below: 44px tap targets, reduced motion, forced-colors.
+   ============================================================ */
+
+/* Minimum 44x44 tap targets (WCAG 2.5.5). !important so it holds over
+   feature-specific pill styles regardless of stylesheet order. */
+.theme-btn, .unit-btn, .btn, .quiz-opt, .quiz-skip,
+a.shop, a.share-url, select, input[type="range"] { min-height: 44px !important; }
+a.shop, a.share-url { display: inline-flex; align-items: center; }
+
+/* Honor reduced-motion: kill transitions/animations for vestibular safety. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}
+
+/* Windows High Contrast / forced-colors: keep borders and selected/focus
+   states visible when the OS overrides our palette. */
+@media (forced-colors: active) {
+  .btn, .theme-btn, .unit-btn, .quiz-opt, .space-card, .style,
+  .opt button, .shop, .share-url, .finish-list li { border: 1px solid currentColor; }
+  [aria-pressed="true"] { outline: 2px solid; outline-offset: 1px; }
+  :focus-visible { outline: 2px solid; }
+}
