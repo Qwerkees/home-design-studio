@@ -3026,5 +3026,91 @@
         ]
       }
     ]
+  },
+  "editorPicks": {
+    "flooring": [
+      "oaklvp",
+      "herringbone-oak",
+      "walnut",
+      "portile",
+      "concrete"
+    ],
+    "paint": [
+      "warmwhite",
+      "greige",
+      "naval",
+      "sage",
+      "charcoal"
+    ],
+    "cabinetry": [
+      "shakerwhite",
+      "naturaloak",
+      "navy",
+      "deepgreen",
+      "black"
+    ],
+    "counter": [
+      "whitequartz",
+      "carrara-marble",
+      "butcher",
+      "soapstone",
+      "granite"
+    ],
+    "fixtures": [
+      "matteblack",
+      "brass",
+      "chrome",
+      "champagnebronze",
+      "nickel"
+    ],
+    "textiles": [
+      "linen",
+      "boucle",
+      "leather",
+      "velvet",
+      "jute"
+    ],
+    "siding": [
+      "fibercement",
+      "stucco",
+      "brick",
+      "stone",
+      "lp-cedar"
+    ],
+    "trim": [
+      "crispwhite",
+      "charcoaltrim",
+      "alder-trim",
+      "warmwhite2",
+      "blacktrim"
+    ],
+    "door": [
+      "woodoor",
+      "navydoor",
+      "blackdoor",
+      "reddoor",
+      "sagedoor"
+    ],
+    "roof": [
+      "shingle",
+      "standingseam",
+      "claytile",
+      "metal",
+      "slateline"
+    ],
+    "garage": [
+      "flush",
+      "carriage",
+      "modernblack",
+      "woodlook",
+      "fullview"
+    ],
+    "landscaping": [
+      "xeriscape",
+      "native",
+      "pavers",
+      "turf",
+      "minimal"
+    ]
   }
 }
