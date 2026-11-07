@@ -530,6 +530,15 @@
         "lo": 6,
         "hi": 11,
         "install": "floor-hardwood"
+      },
+      {
+        "id": "calibamboo",
+        "label": "Fossilized Bamboo",
+        "img": "flooring-calibamboo.webp",
+        "color": "#C9A977",
+        "lo": 4,
+        "hi": 8,
+        "install": "floor-engineered"
       }
     ],
     "paint": [
@@ -620,6 +629,15 @@
         "label": "Naval Navy",
         "img": "paint-naval.webp",
         "color": "#2E3B4E",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "accessiblebeige",
+        "label": "Accessible Beige",
+        "img": "paint-accessiblebeige.webp",
+        "color": "#D6CBB6",
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
@@ -985,6 +1003,13 @@
         "label": "Greige",
         "color": "#B9AF9F",
         "install": "trim"
+      },
+      {
+        "id": "alder-trim",
+        "label": "Alder Stain-Grade Trim",
+        "img": "trim-alder.webp",
+        "color": "#A5743F",
+        "install": "trim"
       }
     ],
     "door": [
@@ -1031,6 +1056,13 @@
         "label": "Classic Red",
         "img": "reddoor.webp",
         "color": "#8C2B22",
+        "install": "door"
+      },
+      {
+        "id": "fir-craftsman",
+        "label": "Craftsman Douglas Fir",
+        "img": "fir-craftsman.webp",
+        "color": "#9A6A3C",
         "install": "door"
       }
     ],
@@ -1079,6 +1111,15 @@
         "lo": 4,
         "hi": 8,
         "install": "roof-shingle"
+      },
+      {
+        "id": "slateline",
+        "label": "Slate-Look Shingle",
+        "img": "slateline.webp",
+        "color": "#4A4E52",
+        "lo": 5,
+        "hi": 10,
+        "install": "roof-shingle"
       }
     ],
     "garage": [
@@ -1115,6 +1156,13 @@
         "label": "Modern Steel Black",
         "img": "modernblack.webp",
         "color": "#2B2C2E",
+        "install": "garage-door"
+      },
+      {
+        "id": "fullview",
+        "label": "Full-View Aluminum",
+        "img": "fullview.webp",
+        "color": "#C9D0D4",
         "install": "garage-door"
       }
     ],
