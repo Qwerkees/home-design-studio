@@ -434,7 +434,7 @@
       {
         "id": "oaklvp",
         "label": "Light Oak LVP",
-        "img": "flooring-oaklvp.png",
+        "img": "flooring-oaklvp.webp",
         "color": "#CBA77E",
         "lo": 3,
         "hi": 7
@@ -442,7 +442,7 @@
       {
         "id": "engoak",
         "label": "Wide-Plank Oak",
-        "img": "flooring-engoak.png",
+        "img": "flooring-engoak.webp",
         "color": "#B98B5E",
         "lo": 9,
         "hi": 16
@@ -450,7 +450,7 @@
       {
         "id": "walnut",
         "label": "Walnut Hardwood",
-        "img": "flooring-walnut.png",
+        "img": "flooring-walnut.webp",
         "color": "#6B4A2F",
         "lo": 11,
         "hi": 20
@@ -458,7 +458,7 @@
       {
         "id": "portile",
         "label": "Porcelain Wood-Look",
-        "img": "flooring-portile.png",
+        "img": "flooring-portile.webp",
         "color": "#C9BBA8",
         "lo": 8,
         "hi": 15
@@ -466,7 +466,7 @@
       {
         "id": "concrete",
         "label": "Polished Concrete",
-        "img": "flooring-concrete.png",
+        "img": "flooring-concrete.webp",
         "color": "#AFACA6",
         "lo": 5,
         "hi": 12
@@ -474,7 +474,7 @@
       {
         "id": "travertine",
         "label": "Travertine",
-        "img": "flooring-travertine.png",
+        "img": "flooring-travertine.webp",
         "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)",
         "lo": 15,
         "hi": 30
@@ -484,7 +484,7 @@
       {
         "id": "warmwhite",
         "label": "Warm White",
-        "img": "paint-warmwhite.png",
+        "img": "paint-warmwhite.webp",
         "color": "#F4F1EA",
         "lo": 1.5,
         "hi": 3
@@ -492,7 +492,7 @@
       {
         "id": "greige",
         "label": "Greige",
-        "img": "paint-greige.png",
+        "img": "paint-greige.webp",
         "color": "#C9BDAE",
         "lo": 1.5,
         "hi": 3
@@ -500,7 +500,7 @@
       {
         "id": "sage",
         "label": "Soft Sage",
-        "img": "paint-sage.png",
+        "img": "paint-sage.webp",
         "color": "#9DA68E",
         "lo": 1.5,
         "hi": 3
@@ -508,7 +508,7 @@
       {
         "id": "charcoal",
         "label": "Deep Charcoal",
-        "img": "paint-charcoal.png",
+        "img": "paint-charcoal.webp",
         "color": "#33383A",
         "lo": 1.8,
         "hi": 3.4
@@ -519,7 +519,7 @@
         "color": "#B98A6A",
         "lo": 1.8,
         "hi": 3.4,
-        "img": "clay.png"
+        "img": "clay.webp"
       },
       {
         "id": "paleblue",
@@ -527,44 +527,44 @@
         "color": "#C4D4D6",
         "lo": 1.5,
         "hi": 3,
-        "img": "paleblue.png"
+        "img": "paleblue.webp"
       }
     ],
     "cabinetry": [
       {
         "id": "shakerwhite",
         "label": "Shaker White",
-        "img": "cabinetry-shakerwhite.png",
+        "img": "cabinetry-shakerwhite.webp",
         "color": "#EDEAE3"
       },
       {
         "id": "naturaloak",
         "label": "Natural Oak",
-        "img": "cabinetry-naturaloak.png",
+        "img": "cabinetry-naturaloak.webp",
         "color": "#C2996A"
       },
       {
         "id": "deepgreen",
         "label": "Deep Green",
-        "img": "cabinetry-deepgreen.png",
+        "img": "cabinetry-deepgreen.webp",
         "color": "#33493F"
       },
       {
         "id": "navy",
         "label": "Navy",
-        "img": "cabinetry-navy.png",
+        "img": "cabinetry-navy.webp",
         "color": "#2C3A4A"
       },
       {
         "id": "black",
         "label": "Matte Black",
-        "img": "cabinetry-black.png",
+        "img": "cabinetry-black.webp",
         "color": "#2A2A2C"
       },
       {
         "id": "twotone",
         "label": "Two-Tone",
-        "img": "cabinetry-twotone.png",
+        "img": "cabinetry-twotone.webp",
         "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)"
       }
     ],
@@ -572,38 +572,38 @@
       {
         "id": "whitequartz",
         "label": "White Quartz",
-        "img": "counter-whitequartz.png",
+        "img": "counter-whitequartz.webp",
         "color": "#EFEDE8"
       },
       {
         "id": "marblequartz",
         "label": "Marble-Look",
         "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)",
-        "img": "marblequartz.png"
+        "img": "marblequartz.webp"
       },
       {
         "id": "soapstone",
         "label": "Soapstone",
         "color": "#3B3F3E",
-        "img": "soapstone.png"
+        "img": "soapstone.webp"
       },
       {
         "id": "butcher",
         "label": "Butcher Block",
         "color": "#B4874E",
-        "img": "butcher.png"
+        "img": "butcher.webp"
       },
       {
         "id": "granite",
         "label": "Speckled Granite",
         "color": "radial-gradient(circle at 25% 30%, #6b6b6b 0 2px, transparent 3px),radial-gradient(circle at 60% 70%, #8a8a8a 0 2px, transparent 3px),linear-gradient(#4a4a4c,#3c3c3e)",
-        "img": "granite.png"
+        "img": "granite.webp"
       },
       {
         "id": "concretetop",
         "label": "Concrete",
         "color": "#AEAAA3",
-        "img": "concretetop.png"
+        "img": "concretetop.webp"
       }
     ],
     "fixtures": [
@@ -611,31 +611,31 @@
         "id": "matteblack",
         "label": "Matte Black",
         "color": "#262627",
-        "img": "matteblack.png"
+        "img": "matteblack.webp"
       },
       {
         "id": "brass",
         "label": "Brushed Brass",
         "color": "#B08D57",
-        "img": "brass.png"
+        "img": "brass.webp"
       },
       {
         "id": "nickel",
         "label": "Brushed Nickel",
         "color": "#B9BCC0",
-        "img": "nickel.png"
+        "img": "nickel.webp"
       },
       {
         "id": "chrome",
         "label": "Chrome",
         "color": "#CFD6DB",
-        "img": "chrome.png"
+        "img": "chrome.webp"
       },
       {
         "id": "bronze",
         "label": "Aged Bronze",
         "color": "#5E4B38",
-        "img": "bronze.png"
+        "img": "bronze.webp"
       }
     ],
     "textiles": [
@@ -643,31 +643,31 @@
         "id": "linen",
         "label": "Natural Linen",
         "color": "#E7DFD2",
-        "img": "linen.png"
+        "img": "linen.webp"
       },
       {
         "id": "boucle",
         "label": "Wool Bouclé",
         "color": "#DAD3C7",
-        "img": "boucle.png"
+        "img": "boucle.webp"
       },
       {
         "id": "leather",
         "label": "Cognac Leather",
         "color": "#8C5A33",
-        "img": "leather.png"
+        "img": "leather.webp"
       },
       {
         "id": "velvet",
         "label": "Emerald Velvet",
         "color": "#2F5E4F",
-        "img": "velvet.png"
+        "img": "velvet.webp"
       },
       {
         "id": "jute",
         "label": "Woven Jute",
         "color": "repeating-linear-gradient(45deg,#CDBD9C 0 4px,#C2B08A 4px 8px)",
-        "img": "jute.png"
+        "img": "jute.webp"
       }
     ],
     "siding": [
@@ -677,7 +677,7 @@
         "color": "#E7E0D4",
         "lo": 7,
         "hi": 12,
-        "img": "stucco.png"
+        "img": "stucco.webp"
       },
       {
         "id": "fibercement",
@@ -685,7 +685,7 @@
         "color": "#D9D2C6",
         "lo": 8,
         "hi": 14,
-        "img": "fibercement.png"
+        "img": "fibercement.webp"
       },
       {
         "id": "brick",
@@ -707,7 +707,7 @@
         "color": "#9A938A",
         "lo": 20,
         "hi": 40,
-        "img": "stone.png"
+        "img": "stone.webp"
       }
     ],
     "trim": [
@@ -742,7 +742,7 @@
         "id": "woodoor",
         "label": "Natural Wood",
         "color": "#9C6B3F",
-        "img": "woodoor.png"
+        "img": "woodoor.webp"
       },
       {
         "id": "tealdoor",
@@ -763,7 +763,7 @@
         "id": "claydoor",
         "label": "Clay Red",
         "color": "#9E4B33",
-        "img": "claydoor.png"
+        "img": "claydoor.webp"
       },
       {
         "id": "sagedoor",
@@ -778,7 +778,7 @@
         "color": "#43464A",
         "lo": 4,
         "hi": 8,
-        "img": "shingle.png"
+        "img": "shingle.webp"
       },
       {
         "id": "metal",
@@ -786,7 +786,7 @@
         "color": "#5A5E62",
         "lo": 10,
         "hi": 18,
-        "img": "metal.png"
+        "img": "metal.webp"
       },
       {
         "id": "claytile",
@@ -794,7 +794,7 @@
         "color": "#A75B3C",
         "lo": 10,
         "hi": 20,
-        "img": "claytile.png"
+        "img": "claytile.webp"
       },
       {
         "id": "concretetile",
@@ -802,7 +802,7 @@
         "color": "#8C8884",
         "lo": 8,
         "hi": 15,
-        "img": "concretetile.png"
+        "img": "concretetile.webp"
       }
     ],
     "garage": [
@@ -810,25 +810,25 @@
         "id": "flush",
         "label": "Modern Flush",
         "color": "#D7D1C6",
-        "img": "flush.png"
+        "img": "flush.webp"
       },
       {
         "id": "carriage",
         "label": "Carriage",
         "color": "#B98B5E",
-        "img": "carriage.png"
+        "img": "carriage.webp"
       },
       {
         "id": "glasspanel",
         "label": "Glass Panel",
         "color": "linear-gradient(135deg,#BcD0D4,#9fb5ba)",
-        "img": "glasspanel.png"
+        "img": "glasspanel.webp"
       },
       {
         "id": "woodlook",
         "label": "Wood-Look",
         "color": "#9C6B3F",
-        "img": "woodlook.png"
+        "img": "woodlook.webp"
       }
     ],
     "landscaping": [
@@ -836,25 +836,25 @@
         "id": "xeriscape",
         "label": "Desert Xeriscape",
         "color": "#CDBd9C",
-        "img": "xeriscape.png"
+        "img": "xeriscape.webp"
       },
       {
         "id": "native",
         "label": "Low-Water Native",
         "color": "#A7AE8E",
-        "img": "native.png"
+        "img": "native.webp"
       },
       {
         "id": "turf",
         "label": "Traditional Turf",
         "color": "#5C8A4A",
-        "img": "turf.png"
+        "img": "turf.webp"
       },
       {
         "id": "minimal",
         "label": "Modern Minimal",
         "color": "#BFC4BD",
-        "img": "minimal.png"
+        "img": "minimal.webp"
       }
     ]
   }
