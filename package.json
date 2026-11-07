@@ -1,0 +1,10 @@
+{
+  "name": "lukes-design-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LUKE'S Design Studio — homeowner design-decision app. Static front-end + Vercel serverless functions for the Free-tier upload -> RFQ funnel.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
+  }
+}
