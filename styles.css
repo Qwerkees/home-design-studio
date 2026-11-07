@@ -198,3 +198,6 @@ footer { max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 0; color: va
 /* Shop link (deep-link to Home Depot product search) */
 .shop { display: inline-block; margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
 .shop:hover { text-decoration: underline; }
+
+/* Header actions (language + theme) */
+.head-actions { display: flex; gap: 8px; align-items: center; }

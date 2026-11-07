@@ -16,9 +16,12 @@
     <div class="brand">
       <span class="dot" aria-hidden="true"></span>
       <h1>LUKE&rsquo;S Design Studio</h1>
-      <small>decide the look before you spend</small>
+      <small data-i="tagline">decide the look before you spend</small>
     </div>
-    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch color theme">Theme</button>
+    <div class="head-actions">
+      <button class="theme-btn" id="langBtn" type="button" aria-label="Language">ES</button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch color theme">Theme</button>
+    </div>
   </div>
 </header>
 
@@ -30,20 +33,20 @@
     <span class="free-cta-text"><strong>Just show us the space.</strong> Upload photos or a video and get 3 design options back in 36 hours — no account.</span>
     <span class="free-cta-arrow" aria-hidden="true">&rarr;</span>
   </a>
-  <div class="eyebrow">Choose a space</div>
+  <div class="eyebrow" data-i="chooseSpace">Choose a space</div>
   <div class="spaces" role="group" aria-label="Choose a space to design" id="spaceTabs"></div>
   <div class="kind-label" id="kindLabel"></div>
 
   <div class="layout">
     <div>
       <section class="panel">
-        <h2>1 &middot; Pick a style</h2>
-        <div class="section-note">Sets a starting palette and finishes. Tweak anything after.</div>
+        <h2 data-i="pickStyle">1 &middot; Pick a style</h2>
+        <div class="section-note" data-i="pickStyleNote">Sets a starting palette and finishes. Tweak anything after.</div>
         <div class="body"><div class="styles" id="styleGrid" role="group" aria-label="Design style"></div></div>
       </section>
 
       <section class="panel">
-        <h2>2 &middot; Choose your finishes</h2>
+        <h2 data-i="chooseFinishes">2 &middot; Choose your finishes</h2>
         <div class="section-note" id="finishNote"></div>
         <div class="body" id="catList"></div>
       </section>
@@ -65,20 +68,20 @@
               <span class="area-val" id="areaVal">200 sq ft</span>
             </div>
             <div class="total">
-              <span class="lab">Ballpark budget</span>
+              <span class="lab" data-i="ballpark">Ballpark budget</span>
               <span class="amt" id="costAmt">&mdash;</span>
             </div>
             <p class="disclaimer" id="costNote"></p>
           </div>
 
           <div class="actions">
-            <button class="btn primary" id="copyBtn" type="button">Copy decision summary</button>
-            <button class="btn" id="planLinkBtn" type="button">Copy plan link</button>
-            <button class="btn" id="resetBtn" type="button">Reset to style</button>
+            <button class="btn primary" id="copyBtn" type="button" data-i="copySummary">Copy decision summary</button>
+            <button class="btn" id="planLinkBtn" type="button" data-i="copyPlan">Copy plan link</button>
+            <button class="btn" id="resetBtn" type="button" data-i="reset">Reset to style</button>
           </div>
 
           <details class="summary-wrap" id="summaryWrap">
-            <summary><span class="caret" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span> Decision summary &amp; shopping list</summary>
+            <summary><span class="caret" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span> <span data-i="summaryLabel">Decision summary &amp; shopping list</span></summary>
             <pre class="summary" id="summaryText"></pre>
           </details>
         </div>
@@ -87,18 +90,18 @@
   </div>
 
   <section class="panel share-panel">
-    <h2>Share this studio</h2>
-    <div class="section-note">Scan to open LUKE&rsquo;S Design Studio on a phone &mdash; or copy the link.</div>
+    <h2 data-i="shareH">Share this studio</h2>
+    <div class="section-note" data-i="shareNote">Scan to open LUKE&rsquo;S Design Studio on a phone &mdash; or copy the link.</div>
     <div class="body share-body">
       <div class="qr-wrap"><img src="assets/qr.svg" alt="QR code linking to LUKE'S Design Studio" width="148" height="148" /></div>
       <div class="share-actions">
         <a class="share-url" href="https://home-design-studio-seven.vercel.app" target="_blank" rel="noopener noreferrer">home-design-studio-seven.vercel.app</a>
-        <button class="btn primary" id="shareCopyBtn" type="button">Copy link</button>
+        <button class="btn primary" id="shareCopyBtn" type="button" data-i="copyLink">Copy link</button>
       </div>
     </div>
   </section>
 
-  <footer>
+  <footer data-i="footer">
     Ballpark figures are rough planning ranges for Arizona, 2026 (materials + typical install), not a quote. Get a local contractor bid before you commit. Your choices save in this browser only.
   </footer>
 </div>
