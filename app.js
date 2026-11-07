@@ -256,6 +256,30 @@ function load() {
 }
 function spaceExists(id) { var i; for (i = 0; i < DATA.spaces.length; i++) { if (DATA.spaces[i].id === id) return true; } return false; }
 
+/* ---------- Shareable plan link ----------
+   Encodes the current plan (space, style, size, picks) into the URL hash so a
+   shared link opens the exact plan, not just the site. Pure client-side, no
+   backend; falls back to localStorage when there's no hash. */
+function b64urlEncode(s) { try { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); } catch (e) { return ""; } }
+function b64urlDecode(s) { try { s = s.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; return decodeURIComponent(escape(atob(s))); } catch (e) { return ""; } }
+function planLink() {
+  var enc = b64urlEncode(JSON.stringify({ s: state.space, y: state.style, a: state.area, p: state.picks }));
+  return location.origin + location.pathname + (enc ? "#p=" + enc : "");
+}
+function applyPlanFromHash() {
+  var m = (location.hash || "").match(/[#&]p=([^&]+)/);
+  if (!m) return false;
+  var raw = b64urlDecode(m[1]); if (!raw) return false;
+  var s; try { s = JSON.parse(raw); } catch (e) { return false; }
+  if (!s || !spaceExists(s.s) || !STYLE_BY_ID[s.y]) return false;
+  state.space = s.s; state.style = s.y;
+  state.area = (typeof s.a === "number" && isFinite(s.a)) ? s.a : defaultAreaFor(spaceById(s.s).kind);
+  state.picks = {};
+  var cats = spaceById(s.s).cats, i, c; // keep only valid cats with a real finish id
+  for (i = 0; i < cats.length; i++) { c = cats[i]; if (s.p && s.p[c] && optById(c, s.p[c]).id === s.p[c]) state.picks[c] = s.p[c]; }
+  return true;
+}
+
 /* ---------- Theme ---------- */
 function initTheme() {
   var saved; try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
@@ -291,13 +315,23 @@ function boot(data) {
   data.styles.forEach(function (s) { STYLE_BY_ID[s.id] = s; });
   $("app").hidden = false;
   var ld = $("loading"); if (ld) ld.remove();
-  load(); ensurePicks(); initTheme(); renderAll();
+  load();
+  // A shared plan link (#p=...) wins over whatever was saved in this browser.
+  var fromLink = applyPlanFromHash();
+  ensurePicks(); initTheme(); renderAll();
+  if (fromLink) { save(); announce("Opened a shared plan"); }
   $("area").addEventListener("input", function () {
     state.area = +this.value;
     // renderBoard keeps the live board, summary, cost AND the material quantities in sync.
     renderBoard(); save();
   });
   $("copyBtn").addEventListener("click", copySummary);
+  $("planLinkBtn").addEventListener("click", function () {
+    var url = planLink(), btn = $("planLinkBtn");
+    function ok() { btn.textContent = "Plan link copied"; setTimeout(function () { btn.textContent = "Copy plan link"; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(ok).catch(function () { window.prompt("Copy this plan link", url); }); }
+    else { window.prompt("Copy this plan link", url); }
+  });
   $("resetBtn").addEventListener("click", function () { applyStyleDefaults(); save(); renderCats(); renderBoard(); announce("Finishes reset to the " + STYLE_BY_ID[state.style].name + " style"); });
 }
 
