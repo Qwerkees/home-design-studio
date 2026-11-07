@@ -503,6 +503,15 @@
         "lo": 3,
         "hi": 6,
         "install": "floor-tile"
+      },
+      {
+        "id": "malibu-frenchoak",
+        "label": "French Oak Engineered",
+        "img": "flooring-malibu-frenchoak.webp",
+        "color": "#C9AD86",
+        "lo": 5,
+        "hi": 9,
+        "install": "floor-engineered"
       }
     ],
     "paint": [
@@ -578,6 +587,15 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "swisscoffee",
+        "label": "Swiss Coffee",
+        "img": "paint-swisscoffee.webp",
+        "color": "#ECE9DD",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -636,6 +654,13 @@
         "label": "Pacific Blue",
         "img": "cabinetry-pacificblue.webp",
         "color": "#2F5468",
+        "install": "cabinets"
+      },
+      {
+        "id": "shakerjava",
+        "label": "Shaker Java",
+        "img": "cabinetry-shakerjava.webp",
+        "color": "#4A3626",
         "install": "cabinets"
       }
     ],
@@ -703,6 +728,13 @@
         "label": "Calacatta Laza Quartz",
         "img": "counter-calacatta-laza.webp",
         "color": "#F2F0EC",
+        "install": "counter-stone"
+      },
+      {
+        "id": "carrara-marble",
+        "label": "Carrara Marble",
+        "img": "counter-carrara-marble.webp",
+        "color": "#EDEDE8",
         "install": "counter-stone"
       }
     ],
@@ -842,6 +874,15 @@
         "lo": 7,
         "hi": 12,
         "install": "siding-lap"
+      },
+      {
+        "id": "hardie-boothbay",
+        "label": "Boothbay Blue Fiber Cement",
+        "img": "hardie-boothbay.webp",
+        "color": "#5E7687",
+        "lo": 7,
+        "hi": 12,
+        "install": "siding-lap"
       }
     ],
     "trim": [
@@ -952,6 +993,15 @@
         "hi": 15,
         "img": "concretetile.webp",
         "install": "roof-tile"
+      },
+      {
+        "id": "gaf-weatheredwood",
+        "label": "Weathered Wood Shingle",
+        "img": "gaf-weatheredwood.webp",
+        "color": "#6B5D4F",
+        "lo": 4,
+        "hi": 8,
+        "install": "roof-shingle"
       }
     ],
     "garage": [
