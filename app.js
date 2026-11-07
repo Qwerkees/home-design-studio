@@ -275,3 +275,16 @@ fetch("data/finishes.json")
     var ld = $("loading");
     if (ld) ld.innerHTML = "Couldn't load the finish catalog (data/finishes.json). Run this from a local server, e.g. <code>npx serve</code>, not by opening the file directly.";
   });
+
+// Share-this-studio: copy the live site link (QR encodes the same URL).
+(function () {
+  var sb = document.getElementById("shareCopyBtn");
+  if (!sb) return;
+  sb.addEventListener("click", function () {
+    var url = location.origin + "/";
+    function ok() { sb.textContent = "Copied!"; setTimeout(function () { sb.textContent = "Copy link"; }, 1500); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(ok).catch(function () { window.prompt("Copy this link", url); });
+    } else { window.prompt("Copy this link", url); }
+  });
+})();
