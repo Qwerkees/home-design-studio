@@ -437,7 +437,8 @@
         "img": "flooring-oaklvp.webp",
         "color": "#CBA77E",
         "lo": 3,
-        "hi": 7
+        "hi": 7,
+        "install": "floor-lvp"
       },
       {
         "id": "engoak",
@@ -445,7 +446,8 @@
         "img": "flooring-engoak.webp",
         "color": "#B98B5E",
         "lo": 9,
-        "hi": 16
+        "hi": 16,
+        "install": "floor-engineered"
       },
       {
         "id": "walnut",
@@ -453,7 +455,8 @@
         "img": "flooring-walnut.webp",
         "color": "#6B4A2F",
         "lo": 11,
-        "hi": 20
+        "hi": 20,
+        "install": "floor-hardwood"
       },
       {
         "id": "portile",
@@ -461,7 +464,8 @@
         "img": "flooring-portile.webp",
         "color": "#C9BBA8",
         "lo": 8,
-        "hi": 15
+        "hi": 15,
+        "install": "floor-tile"
       },
       {
         "id": "concrete",
@@ -469,7 +473,8 @@
         "img": "flooring-concrete.webp",
         "color": "#AFACA6",
         "lo": 5,
-        "hi": 12
+        "hi": 12,
+        "install": "floor-concrete"
       },
       {
         "id": "travertine",
@@ -477,7 +482,8 @@
         "img": "flooring-travertine.webp",
         "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)",
         "lo": 15,
-        "hi": 30
+        "hi": 30,
+        "install": "floor-tile"
       },
       {
         "id": "lifeproof-lvp",
@@ -487,23 +493,7 @@
         "lo": 3,
         "hi": 8,
         "product": "LifeProof Rigid Core Luxury Vinyl Plank",
-        "source": "The Home Depot",
-        "video": "https://www.homedepot.com/c/ah/how-to-install-vinyl-plank-flooring/9ba683603be9fa5395fab90188fe437f",
-        "tools": [
-          "Tape measure",
-          "Utility knife + straightedge (score & snap)",
-          "Jigsaw or miter saw (notches)",
-          "Tapping block & rubber mallet",
-          "Spacers",
-          "Vacuum",
-          "Knee pads, safety glasses, gloves"
-        ],
-        "parts": [
-          "LVP planks (+10% overage)",
-          "Underlayment (if not pre-attached)",
-          "Quarter-round / transition trim",
-          "100% silicone caulk (wet areas)"
-        ]
+        "install": "floor-lvp"
       }
     ],
     "paint": [
@@ -513,7 +503,8 @@
         "img": "paint-warmwhite.webp",
         "color": "#F4F1EA",
         "lo": 1.5,
-        "hi": 3
+        "hi": 3,
+        "install": "paint"
       },
       {
         "id": "greige",
@@ -521,7 +512,8 @@
         "img": "paint-greige.webp",
         "color": "#C9BDAE",
         "lo": 1.5,
-        "hi": 3
+        "hi": 3,
+        "install": "paint"
       },
       {
         "id": "sage",
@@ -529,7 +521,8 @@
         "img": "paint-sage.webp",
         "color": "#9DA68E",
         "lo": 1.5,
-        "hi": 3
+        "hi": 3,
+        "install": "paint"
       },
       {
         "id": "charcoal",
@@ -537,7 +530,8 @@
         "img": "paint-charcoal.webp",
         "color": "#33383A",
         "lo": 1.8,
-        "hi": 3.4
+        "hi": 3.4,
+        "install": "paint"
       },
       {
         "id": "clay",
@@ -545,7 +539,8 @@
         "color": "#B98A6A",
         "lo": 1.8,
         "hi": 3.4,
-        "img": "clay.webp"
+        "img": "clay.webp",
+        "install": "paint"
       },
       {
         "id": "paleblue",
@@ -553,7 +548,8 @@
         "color": "#C4D4D6",
         "lo": 1.5,
         "hi": 3,
-        "img": "paleblue.webp"
+        "img": "paleblue.webp",
+        "install": "paint"
       },
       {
         "id": "greige-marquee",
@@ -563,23 +559,7 @@
         "lo": 1.5,
         "hi": 3,
         "product": "Behr Marquee Interior Paint & Primer",
-        "source": "The Home Depot",
-        "video": "https://www.homedepot.com/c/ah/how-to-paint-a-room/9ba683603be9fa5395fab90e9ab8187",
-        "tools": [
-          "Roller frame + synthetic covers",
-          "Angled sash brush",
-          "Paint tray",
-          "Painter's tape",
-          "Drop cloths",
-          "Sanding block (220-grit)",
-          "Respirator mask"
-        ],
-        "parts": [
-          "Interior paint (satin/eggshell; ~1 gal per 400 sq ft)",
-          "Primer (bare or patched walls)",
-          "Spackle",
-          "Caulk"
-        ]
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -587,37 +567,43 @@
         "id": "shakerwhite",
         "label": "Shaker White",
         "img": "cabinetry-shakerwhite.webp",
-        "color": "#EDEAE3"
+        "color": "#EDEAE3",
+        "install": "cabinets"
       },
       {
         "id": "naturaloak",
         "label": "Natural Oak",
         "img": "cabinetry-naturaloak.webp",
-        "color": "#C2996A"
+        "color": "#C2996A",
+        "install": "cabinets"
       },
       {
         "id": "deepgreen",
         "label": "Deep Green",
         "img": "cabinetry-deepgreen.webp",
-        "color": "#33493F"
+        "color": "#33493F",
+        "install": "cabinets"
       },
       {
         "id": "navy",
         "label": "Navy",
         "img": "cabinetry-navy.webp",
-        "color": "#2C3A4A"
+        "color": "#2C3A4A",
+        "install": "cabinets"
       },
       {
         "id": "black",
         "label": "Matte Black",
         "img": "cabinetry-black.webp",
-        "color": "#2A2A2C"
+        "color": "#2A2A2C",
+        "install": "cabinets"
       },
       {
         "id": "twotone",
         "label": "Two-Tone",
         "img": "cabinetry-twotone.webp",
-        "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)"
+        "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)",
+        "install": "cabinets"
       },
       {
         "id": "shaker-diamond",
@@ -625,26 +611,7 @@
         "img": "cabinetry-shaker-diamond.webp",
         "color": "#E7E3DA",
         "product": "Diamond NOW Shaker Kitchen Cabinets",
-        "source": "Lowe's",
-        "video": "https://www.lowes.com/n/video/kitchens-bath/kitchen-cabinet-installation-step-by-step-video-guide-lowes/81003911",
-        "tools": [
-          "Drill/driver + bits",
-          "Stud finder",
-          "Level",
-          "Clamps",
-          "Hole saw (plumbing)",
-          "Tape measure",
-          "Hammer & nail set"
-        ],
-        "parts": [
-          "Cabinets",
-          "Cabinet/mounting screws",
-          "Shims",
-          "Fill strips",
-          "Toe kicks",
-          "Finish nails",
-          "Ledger board"
-        ]
+        "install": "cabinets"
       }
     ],
     "counter": [
@@ -652,37 +619,43 @@
         "id": "whitequartz",
         "label": "White Quartz",
         "img": "counter-whitequartz.webp",
-        "color": "#EFEDE8"
+        "color": "#EFEDE8",
+        "install": "counter-stone"
       },
       {
         "id": "marblequartz",
         "label": "Marble-Look",
         "color": "linear-gradient(120deg,#EFEDE8,#E2E0DA 60%,#EFEDE8)",
-        "img": "marblequartz.webp"
+        "img": "marblequartz.webp",
+        "install": "counter-stone"
       },
       {
         "id": "soapstone",
         "label": "Soapstone",
         "color": "#3B3F3E",
-        "img": "soapstone.webp"
+        "img": "soapstone.webp",
+        "install": "counter-stone"
       },
       {
         "id": "butcher",
         "label": "Butcher Block",
         "color": "#B4874E",
-        "img": "butcher.webp"
+        "img": "butcher.webp",
+        "install": "counter-butcherblock"
       },
       {
         "id": "granite",
         "label": "Speckled Granite",
         "color": "radial-gradient(circle at 25% 30%, #6b6b6b 0 2px, transparent 3px),radial-gradient(circle at 60% 70%, #8a8a8a 0 2px, transparent 3px),linear-gradient(#4a4a4c,#3c3c3e)",
-        "img": "granite.webp"
+        "img": "granite.webp",
+        "install": "counter-stone"
       },
       {
         "id": "concretetop",
         "label": "Concrete",
         "color": "#AEAAA3",
-        "img": "concretetop.webp"
+        "img": "concretetop.webp",
+        "install": "counter-concrete"
       },
       {
         "id": "butcherblock-oak",
@@ -690,23 +663,7 @@
         "img": "counter-butcherblock.webp",
         "color": "#C79A5B",
         "product": "Hardwood Reflections Butcher Block Countertop",
-        "source": "The Home Depot",
-        "video": "https://www.homedepot.com/c/ah/how-to-install-butcher-block-countertops/9ba683603be9fa5395fab901f01afa17",
-        "tools": [
-          "Circular or track saw",
-          "Jigsaw (sink cutout)",
-          "Drill/driver",
-          "Clamps",
-          "Orbital sander",
-          "Tape measure, level"
-        ],
-        "parts": [
-          "Butcher block slab",
-          "Heavy-duty construction adhesive",
-          "#6 wood screws",
-          "Food-safe mineral oil or polyurethane",
-          "Sandpaper 120-220"
-        ]
+        "install": "counter-butcherblock"
       },
       {
         "id": "subwaytile-white",
@@ -714,26 +671,7 @@
         "img": "counter-subwaytile.webp",
         "color": "#EDEDEA",
         "product": "Subway Tile Backsplash",
-        "source": "Lowe's",
-        "video": "https://www.lowes.com/n/video/millwork/how-to-install-subway-tile-backsplash/79813523",
-        "tools": [
-          "Tape measure & level",
-          "Notched trowel",
-          "Tile cutter or wet saw + nippers",
-          "Rubber grout float",
-          "Sponge & bucket",
-          "Caulk gun",
-          "Eye protection & gloves"
-        ],
-        "parts": [
-          "Subway tile",
-          "Thinset mortar or mastic",
-          "Tile spacers",
-          "Grout",
-          "Tile caulk",
-          "Grout sealer",
-          "Ledger board + screws"
-        ]
+        "install": "backsplash-tile"
       }
     ],
     "fixtures": [
@@ -741,31 +679,36 @@
         "id": "matteblack",
         "label": "Matte Black",
         "color": "#262627",
-        "img": "matteblack.webp"
+        "img": "matteblack.webp",
+        "install": "faucet"
       },
       {
         "id": "brass",
         "label": "Brushed Brass",
         "color": "#B08D57",
-        "img": "brass.webp"
+        "img": "brass.webp",
+        "install": "faucet"
       },
       {
         "id": "nickel",
         "label": "Brushed Nickel",
         "color": "#B9BCC0",
-        "img": "nickel.webp"
+        "img": "nickel.webp",
+        "install": "faucet"
       },
       {
         "id": "chrome",
         "label": "Chrome",
         "color": "#CFD6DB",
-        "img": "chrome.webp"
+        "img": "chrome.webp",
+        "install": "faucet"
       },
       {
         "id": "bronze",
         "label": "Aged Bronze",
         "color": "#5E4B38",
-        "img": "bronze.webp"
+        "img": "bronze.webp",
+        "install": "faucet"
       },
       {
         "id": "faucet-single",
@@ -773,22 +716,7 @@
         "img": "fixtures-faucet-single.webp",
         "color": "#9AA0A3",
         "product": "Single-Handle Kitchen Faucet",
-        "source": "The Home Depot",
-        "video": "https://www.homedepot.com/c/ah/how-to-install-a-kitchen-faucet/9ba683603be9fa5395fab904f5b3ed0",
-        "tools": [
-          "Basin wrench",
-          "Adjustable wrench",
-          "Screwdriver set",
-          "Putty knife",
-          "Flashlight",
-          "Bucket & towels"
-        ],
-        "parts": [
-          "Kitchen faucet",
-          "Braided supply lines",
-          "Plumber's putty or silicone",
-          "Plumber's (Teflon) tape"
-        ]
+        "install": "faucet"
       }
     ],
     "textiles": [
@@ -830,7 +758,8 @@
         "color": "#E7E0D4",
         "lo": 7,
         "hi": 12,
-        "img": "stucco.webp"
+        "img": "stucco.webp",
+        "install": "siding-stucco"
       },
       {
         "id": "fibercement",
@@ -838,21 +767,24 @@
         "color": "#D9D2C6",
         "lo": 8,
         "hi": 14,
-        "img": "fibercement.webp"
+        "img": "fibercement.webp",
+        "install": "siding-lap"
       },
       {
         "id": "brick",
         "label": "Brick",
         "color": "repeating-linear-gradient(0deg,#9C6650 0 6px,#8a5847 6px 7px)",
         "lo": 12,
-        "hi": 20
+        "hi": 20,
+        "install": "siding-masonry"
       },
       {
         "id": "boardbatten",
         "label": "Board & Batten",
         "color": "repeating-linear-gradient(90deg,#EDEAE3 0 9px,#DcD8CF 9px 11px)",
         "lo": 9,
-        "hi": 16
+        "hi": 16,
+        "install": "siding-lap"
       },
       {
         "id": "stone",
@@ -860,34 +792,40 @@
         "color": "#9A938A",
         "lo": 20,
         "hi": 40,
-        "img": "stone.webp"
+        "img": "stone.webp",
+        "install": "siding-masonry"
       }
     ],
     "trim": [
       {
         "id": "crispwhite",
         "label": "Crisp White",
-        "color": "#F6F4EF"
+        "color": "#F6F4EF",
+        "install": "trim"
       },
       {
         "id": "warmwhite2",
         "label": "Warm White",
-        "color": "#ECE6DA"
+        "color": "#ECE6DA",
+        "install": "trim"
       },
       {
         "id": "charcoaltrim",
         "label": "Charcoal",
-        "color": "#3A3E40"
+        "color": "#3A3E40",
+        "install": "trim"
       },
       {
         "id": "blacktrim",
         "label": "Black",
-        "color": "#1F2020"
+        "color": "#1F2020",
+        "install": "trim"
       },
       {
         "id": "greigetrim",
         "label": "Greige",
-        "color": "#B9AF9F"
+        "color": "#B9AF9F",
+        "install": "trim"
       }
     ],
     "door": [
@@ -895,33 +833,39 @@
         "id": "woodoor",
         "label": "Natural Wood",
         "color": "#9C6B3F",
-        "img": "woodoor.webp"
+        "img": "woodoor.webp",
+        "install": "door"
       },
       {
         "id": "tealdoor",
         "label": "Deep Teal",
-        "color": "#2F6B5E"
+        "color": "#2F6B5E",
+        "install": "door"
       },
       {
         "id": "navydoor",
         "label": "Navy",
-        "color": "#2A3A4C"
+        "color": "#2A3A4C",
+        "install": "door"
       },
       {
         "id": "blackdoor",
         "label": "Black",
-        "color": "#1F2020"
+        "color": "#1F2020",
+        "install": "door"
       },
       {
         "id": "claydoor",
         "label": "Clay Red",
         "color": "#9E4B33",
-        "img": "claydoor.webp"
+        "img": "claydoor.webp",
+        "install": "door"
       },
       {
         "id": "sagedoor",
         "label": "Sage",
-        "color": "#7E8A6E"
+        "color": "#7E8A6E",
+        "install": "door"
       }
     ],
     "roof": [
@@ -931,7 +875,8 @@
         "color": "#43464A",
         "lo": 4,
         "hi": 8,
-        "img": "shingle.webp"
+        "img": "shingle.webp",
+        "install": "roof-shingle"
       },
       {
         "id": "metal",
@@ -939,7 +884,8 @@
         "color": "#5A5E62",
         "lo": 10,
         "hi": 18,
-        "img": "metal.webp"
+        "img": "metal.webp",
+        "install": "roof-metal"
       },
       {
         "id": "claytile",
@@ -947,7 +893,8 @@
         "color": "#A75B3C",
         "lo": 10,
         "hi": 20,
-        "img": "claytile.webp"
+        "img": "claytile.webp",
+        "install": "roof-tile"
       },
       {
         "id": "concretetile",
@@ -955,7 +902,8 @@
         "color": "#8C8884",
         "lo": 8,
         "hi": 15,
-        "img": "concretetile.webp"
+        "img": "concretetile.webp",
+        "install": "roof-tile"
       }
     ],
     "garage": [
@@ -963,25 +911,29 @@
         "id": "flush",
         "label": "Modern Flush",
         "color": "#D7D1C6",
-        "img": "flush.webp"
+        "img": "flush.webp",
+        "install": "garage-door"
       },
       {
         "id": "carriage",
         "label": "Carriage",
         "color": "#B98B5E",
-        "img": "carriage.webp"
+        "img": "carriage.webp",
+        "install": "garage-door"
       },
       {
         "id": "glasspanel",
         "label": "Glass Panel",
         "color": "linear-gradient(135deg,#BcD0D4,#9fb5ba)",
-        "img": "glasspanel.webp"
+        "img": "glasspanel.webp",
+        "install": "garage-door"
       },
       {
         "id": "woodlook",
         "label": "Wood-Look",
         "color": "#9C6B3F",
-        "img": "woodlook.webp"
+        "img": "woodlook.webp",
+        "install": "garage-door"
       }
     ],
     "landscaping": [
@@ -989,26 +941,642 @@
         "id": "xeriscape",
         "label": "Desert Xeriscape",
         "color": "#CDBd9C",
-        "img": "xeriscape.webp"
+        "img": "xeriscape.webp",
+        "install": "landscape-general"
       },
       {
         "id": "native",
         "label": "Low-Water Native",
         "color": "#A7AE8E",
-        "img": "native.webp"
+        "img": "native.webp",
+        "install": "landscape-general"
       },
       {
         "id": "turf",
         "label": "Traditional Turf",
         "color": "#5C8A4A",
-        "img": "turf.webp"
+        "img": "turf.webp",
+        "install": "landscape-general"
       },
       {
         "id": "minimal",
         "label": "Modern Minimal",
         "color": "#BFC4BD",
-        "img": "minimal.webp"
+        "img": "minimal.webp",
+        "install": "landscape-general"
       }
     ]
+  },
+  "installGuides": {
+    "floor-lvp": {
+      "title": "Luxury vinyl plank",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-vinyl-plank-flooring/9ba683603be9fa5395fab90188fe437f",
+      "machinery": [
+        "Miter saw or jigsaw",
+        "Shop vacuum"
+      ],
+      "tools": [
+        "Tape measure",
+        "Utility knife + straightedge",
+        "Tapping block & rubber mallet",
+        "Pull bar",
+        "Spacers",
+        "Knee pads & safety glasses"
+      ],
+      "parts": [
+        "LVP planks (+10% overage)",
+        "Underlayment (if not pre-attached)",
+        "Transition / quarter-round trim",
+        "100% silicone caulk (wet areas)"
+      ],
+      "note": "DIY-friendly floating floor. Acclimate 48 hrs; leave a perimeter expansion gap."
+    },
+    "floor-engineered": {
+      "title": "Engineered hardwood",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-hardwood-flooring/9ba683603be9fa5395fab9069698e54",
+      "machinery": [
+        "Miter or table saw",
+        "Jigsaw",
+        "Drill/driver",
+        "Shop vacuum",
+        "Oscillating multi-tool (jamb undercut)"
+      ],
+      "tools": [
+        "Tapping block",
+        "Pull bar",
+        "Rubber mallet",
+        "Spacers",
+        "Chalk line",
+        "Tape measure"
+      ],
+      "parts": [
+        "Engineered hardwood planks",
+        "Underlayment / vapor barrier (if not attached)",
+        "Flooring adhesive (glue-down)",
+        "Transition strips"
+      ],
+      "note": "Click/float is DIY-friendly; glue-down on concrete is harder. Acclimate 3-5 days; 1/2 in. expansion gap."
+    },
+    "floor-hardwood": {
+      "title": "Solid hardwood",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-hardwood-flooring/9ba683603be9fa5395fab9069698e54",
+      "machinery": [
+        "Pneumatic flooring nailer + air compressor",
+        "Miter saw",
+        "Table saw",
+        "Drill/driver"
+      ],
+      "tools": [
+        "Rubber mallet",
+        "Pry bar",
+        "Tape measure",
+        "Chalk line",
+        "Moisture meter",
+        "Nail set"
+      ],
+      "parts": [
+        "Solid hardwood planks (3/4 in.)",
+        "Flooring cleats or staples",
+        "Rosin paper / moisture barrier",
+        "Wood filler",
+        "Finishing nails"
+      ],
+      "note": "Professional install recommended. Nailer on a wood subfloor; acclimate; straight first row; expansion gaps."
+    },
+    "floor-tile": {
+      "title": "Floor tile",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-lay-out-tile/9ba683603be9fa5395fab9035335ddf",
+      "machinery": [
+        "Wet tile saw",
+        "Angle grinder",
+        "Mortar mixing drill + paddle",
+        "Shop vacuum"
+      ],
+      "tools": [
+        "Notched trowel",
+        "Margin trowel",
+        "Rubber grout float",
+        "Tile spacers",
+        "Level",
+        "Tile nippers",
+        "Sponge & bucket"
+      ],
+      "parts": [
+        "Thinset mortar (stone-rated for stone)",
+        "Cement backer board",
+        "Grout",
+        "Tile",
+        "Waterproofing membrane",
+        "Grout sealer",
+        "Stone sealer (natural stone)"
+      ],
+      "note": "Pro recommended for stone / large-format. Seal natural stone; wait 24 hrs before walking."
+    },
+    "floor-concrete": {
+      "title": "Stained / polished concrete floor",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-stain-concrete/9ba683603be9fa5395fab9015a2889f",
+      "machinery": [
+        "Concrete grinder/polisher (rental)",
+        "Concrete etcher or sander",
+        "Pressure washer",
+        "Wet/dry vacuum",
+        "Pump sprayer"
+      ],
+      "tools": [
+        "Stiff scrub brush / push broom",
+        "Paint roller & tray",
+        "Mop",
+        "Painter's tape",
+        "Plastic sheeting",
+        "Gloves & respirator"
+      ],
+      "parts": [
+        "Concrete degreaser/cleaner",
+        "Acid- or water-based stain",
+        "Etching solution",
+        "Clear concrete sealer (2-3 coats)",
+        "Floor wax/polish"
+      ],
+      "note": "Pro recommended for mechanical polishing. Concrete must be cured ~1 month; test porosity."
+    },
+    "paint": {
+      "title": "Interior paint",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-paint-a-room/9ba683603be9fa5395fab90e9ab8187",
+      "machinery": [],
+      "tools": [
+        "Roller frame + synthetic covers",
+        "Angled sash brush",
+        "Paint tray",
+        "Painter's tape",
+        "Drop cloths",
+        "220-grit sanding block",
+        "Respirator mask"
+      ],
+      "parts": [
+        "Interior paint (~1 gal / 400 sq ft)",
+        "Primer (bare / patched walls)",
+        "Spackle",
+        "Caulk"
+      ],
+      "note": "Ceiling, then walls, then trim. Two coats; 2-4 hrs between."
+    },
+    "cabinets": {
+      "title": "Kitchen cabinets",
+      "source": "Lowe's",
+      "video": "https://www.lowes.com/n/video/kitchens-bath/kitchen-cabinet-installation-step-by-step-video-guide-lowes/81003911",
+      "machinery": [
+        "Drill/driver + bits",
+        "Hole saw (plumbing cutouts)"
+      ],
+      "tools": [
+        "Stud finder",
+        "Level",
+        "Clamps",
+        "Tape measure",
+        "Hammer & nail set"
+      ],
+      "parts": [
+        "Cabinets",
+        "Mounting screws",
+        "Shims",
+        "Fill strips",
+        "Toe kicks",
+        "Finish nails",
+        "Ledger board"
+      ],
+      "note": "Hang uppers first off a level ledger; get a helper."
+    },
+    "counter-stone": {
+      "title": "Stone / quartz countertop",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/services/countertop-installation/",
+      "machinery": [
+        "Angle grinder w/ wet diamond blade",
+        "Variable-speed polisher",
+        "Rail/track saw w/ stone blade",
+        "Shop vacuum"
+      ],
+      "tools": [
+        "Tape measure & template material",
+        "Level",
+        "Straightedge",
+        "Suction-cup slab lifters",
+        "Caulk gun",
+        "Shims"
+      ],
+      "parts": [
+        "Stone slab (granite/quartz/marble/soapstone)",
+        "100% silicone / construction adhesive",
+        "Color-matched seam epoxy",
+        "Stone sealer",
+        "Mounting clips / support brackets"
+      ],
+      "note": "Professional install recommended - slabs are very heavy and need precise templating, seaming and lifting gear."
+    },
+    "counter-concrete": {
+      "title": "Concrete countertop",
+      "source": "Lowe's",
+      "video": "https://www.lowes.com/n/how-to/make-concrete-countertops",
+      "machinery": [
+        "Drill + mixing paddle",
+        "Orbital sander / polisher + diamond pads",
+        "Circular/table saw (forms)",
+        "Angle grinder"
+      ],
+      "tools": [
+        "Tape measure",
+        "Level",
+        "Finishing / margin trowel",
+        "Caulk gun",
+        "Rubber float",
+        "Mixing tub & buckets"
+      ],
+      "parts": [
+        "Countertop concrete mix",
+        "Melamine form board + screws",
+        "100% silicone caulk (form seams)",
+        "Reinforcing wire/rebar or fiber",
+        "Food-safe concrete sealer",
+        "Color pigment"
+      ],
+      "note": "Advanced, multi-day project (cast-in-place or pre-cast); slabs are heavy - 2-4 people to move."
+    },
+    "counter-butcherblock": {
+      "title": "Butcher block countertop",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-butcher-block-countertops/9ba683603be9fa5395fab901f01afa17",
+      "machinery": [
+        "Circular or track saw",
+        "Jigsaw (sink cutout)",
+        "Drill/driver",
+        "Orbital sander"
+      ],
+      "tools": [
+        "Clamps",
+        "Tape measure",
+        "Level"
+      ],
+      "parts": [
+        "Butcher block slab",
+        "Heavy-duty construction adhesive",
+        "#6 wood screws",
+        "Food-safe mineral oil or polyurethane",
+        "Sandpaper 120-220"
+      ],
+      "note": "Acclimate 72 hrs; finish before and after install."
+    },
+    "backsplash-tile": {
+      "title": "Tile backsplash",
+      "source": "Lowe's",
+      "video": "https://www.lowes.com/n/video/millwork/how-to-install-subway-tile-backsplash/79813523",
+      "machinery": [
+        "Wet saw or tile cutter"
+      ],
+      "tools": [
+        "Tape measure & level",
+        "Notched trowel",
+        "Tile nippers",
+        "Rubber grout float",
+        "Sponge & bucket",
+        "Caulk gun"
+      ],
+      "parts": [
+        "Tile",
+        "Thinset mortar or mastic",
+        "Tile spacers",
+        "Grout",
+        "Tile caulk",
+        "Grout sealer"
+      ],
+      "note": "Kill power to outlets; use box extenders. Grout after mortar cures."
+    },
+    "siding-lap": {
+      "title": "Lap / board-and-batten siding",
+      "source": "Lowe's",
+      "video": "https://www.lowes.com/n/how-to/how-to-install-fiber-cement-siding",
+      "machinery": [
+        "Coil/siding nailer + compressor (or screw gun)",
+        "Fiber-cement shears or circular saw w/ PCD blade",
+        "Miter saw",
+        "Shop vacuum (silica dust)"
+      ],
+      "tools": [
+        "Tape measure",
+        "Chalk line",
+        "4-ft level",
+        "Square",
+        "Caulk gun",
+        "Siding gauge",
+        "Respirator"
+      ],
+      "parts": [
+        "Fiber-cement planks (or boards + battens)",
+        "House wrap / weather barrier",
+        "Starter strip",
+        "Galvanized or stainless siding nails/screws",
+        "Joint flashing",
+        "Exterior caulk",
+        "Exterior paint/primer"
+      ],
+      "note": "Overlap ~1-1/4 in., caulk butt joints, don't overdrive nails; follow the maker's nailing schedule."
+    },
+    "siding-masonry": {
+      "title": "Brick / stone veneer",
+      "source": "Lowe's",
+      "video": "https://www.lowes.com/n/how-to/install-faux-stone-veneers",
+      "machinery": [
+        "Angle grinder w/ diamond blade (or masonry wet saw)",
+        "Drill + mortar mixing paddle",
+        "Hammer drill (lath)",
+        "Mortar/grout bag"
+      ],
+      "tools": [
+        "Masonry / margin trowel",
+        "Notched trowel",
+        "Brick jointer",
+        "Level",
+        "Tape measure",
+        "Tin snips",
+        "Stiff brush"
+      ],
+      "parts": [
+        "Brick or stacked-stone veneer + corners",
+        "Weather barrier (two layers)",
+        "Self-furring metal lath",
+        "Corrosion-resistant fasteners",
+        "Stone-veneer mortar",
+        "Grout",
+        "Flashing / weep screed"
+      ],
+      "note": "Professional install recommended - needs lath + scratch coat, correct flashing, dry weather above ~40F; heavy and mortar-dependent."
+    },
+    "siding-stucco": {
+      "title": "Stucco",
+      "source": "Lowe's",
+      "video": "https://www.quikrete.com/lowes/project_41.asp",
+      "machinery": [
+        "Drill + mortar mixing paddle (or mortar mixer)",
+        "Angle grinder / wet saw (trim)",
+        "Stucco sprayer / hopper gun (optional)",
+        "Wheelbarrow"
+      ],
+      "tools": [
+        "Hawk & finishing trowel",
+        "Square trowel",
+        "Scratch rake",
+        "Darby or float",
+        "Straightedge rod",
+        "Level",
+        "Tin snips"
+      ],
+      "parts": [
+        "Stucco base- and finish-coat mix",
+        "Weather barrier (two layers)",
+        "Self-furring metal lath",
+        "Weep screed + corner beads",
+        "Lath fasteners",
+        "Color pigment / acrylic finish"
+      ],
+      "note": "Professional install recommended - three-coat system (scratch, brown, finish ~7/8 in.), 24-48 hr moist cure between coats."
+    },
+    "trim": {
+      "title": "Trim & moulding",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-baseboard/9ba683603be9fa5395fab901a97a162",
+      "machinery": [
+        "Compound miter saw",
+        "Brad/finish nailer + compressor (or cordless)",
+        "Oscillating multi-tool",
+        "Power drill"
+      ],
+      "tools": [
+        "Tape measure",
+        "Combination / speed square",
+        "Coping saw",
+        "Stud finder",
+        "Level",
+        "Hammer",
+        "Nail set"
+      ],
+      "parts": [
+        "Baseboard / crown moulding",
+        "2 in. & 1-1/4 in. finish/brad nails",
+        "Wood shims",
+        "Painter's caulk",
+        "Wood filler",
+        "Construction adhesive",
+        "Sandpaper"
+      ],
+      "note": "DIY-friendly (Intermediate). Cope inside corners, miter outside; nail into studs; caulk before paint."
+    },
+    "door": {
+      "title": "Door",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-an-interior-door/9ba683603be9fa5395fab90880a25d8",
+      "machinery": [
+        "Power drill/driver",
+        "Finish nailer + compressor (or hammer)",
+        "Circular saw or multi-tool (trim old jamb)",
+        "Reciprocating saw (removal)"
+      ],
+      "tools": [
+        "Tape measure",
+        "6-ft level",
+        "Hammer",
+        "Utility knife",
+        "Pry bar",
+        "Screwdriver",
+        "Wood chisel"
+      ],
+      "parts": [
+        "Prehung or slab door unit",
+        "Tapered wood shims",
+        "2-1/2 in. & 3 in. screws",
+        "8d/16d finish nails",
+        "Low-expansion foam or caulk",
+        "Hinge screws",
+        "Casing / trim"
+      ],
+      "note": "DIY-friendly; set plumb and level, shim behind each hinge and the strike, check reveal and swing before fastening."
+    },
+    "garage-door": {
+      "title": "Garage door",
+      "source": "This Old House",
+      "video": "https://www.thisoldhouse.com/garages/how-to-install-a-garage-door",
+      "machinery": [
+        "Power drill / impact driver",
+        "Socket / ratchet set",
+        "Two step ladders",
+        "Locking pliers / clamps"
+      ],
+      "tools": [
+        "Tape measure",
+        "Hammer",
+        "Adjustable wrench",
+        "Screwdrivers",
+        "Level",
+        "Safety glasses & gloves"
+      ],
+      "parts": [
+        "Sectional door panels",
+        "Vertical / horizontal / curved track",
+        "Rollers & hinges",
+        "Lag screws & track bolts",
+        "Torsion/extension springs + cables",
+        "Weatherstripping / bottom seal",
+        "Mounting brackets"
+      ],
+      "note": "Professional install recommended - torsion/extension springs are under extreme tension and can cause serious injury; follow the maker's instructions."
+    },
+    "roof-shingle": {
+      "title": "Asphalt shingle roof",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-roof-shingles/9ba683603be9fa5395fab901c8c66436",
+      "machinery": [
+        "Pneumatic roofing nailer + compressor",
+        "Circular/shingle saw",
+        "Roofing shovel / tear-off bar",
+        "Power drill"
+      ],
+      "tools": [
+        "Chalk line",
+        "Roofing hammer/hatchet",
+        "Utility knife (hook blades)",
+        "Tin snips",
+        "Tape measure",
+        "Caulk gun",
+        "Flat pry bar"
+      ],
+      "parts": [
+        "Architectural asphalt shingles",
+        "Synthetic or felt underlayment",
+        "Ice-and-water shield (eaves/valleys)",
+        "Metal drip edge",
+        "Starter-strip shingles",
+        "Hip-and-ridge cap shingles",
+        "1-1/4 in. galvanized roofing nails"
+      ],
+      "note": "Professional install recommended. Nail in the printed zone (4-6 per shingle); ~3 bundles/square + 10-20% waste; follow maker + local code."
+    },
+    "roof-metal": {
+      "title": "Standing-seam metal roof",
+      "source": "Metal Construction Association / panel maker",
+      "video": "https://www.metalconstruction.org/index.php/online-education/standing-seam-best-practices-clips",
+      "machinery": [
+        "Cordless drill / impact driver",
+        "Electric metal shears or nibbler",
+        "Mechanical or hand seamer/crimper",
+        "Circular saw w/ metal blade",
+        "Sheet-metal brake (on-site bends)"
+      ],
+      "tools": [
+        "Tape measure",
+        "Chalk line",
+        "Aviation snips",
+        "Rubber mallet",
+        "Locking pliers",
+        "Caulk gun",
+        "Straightedge"
+      ],
+      "parts": [
+        "Standing-seam metal panels",
+        "Concealed clips (fixed + sliding)",
+        "High-temp synthetic underlayment",
+        "Drip edge / eave trim",
+        "Ridge cap & closures",
+        "Butyl sealant tape",
+        "Panel fasteners"
+      ],
+      "note": "Professional install recommended. Panels fasten with concealed clips (never face-screwed) to move with thermal expansion; confirm clip, seamer and min slope with the panel maker."
+    },
+    "roof-tile": {
+      "title": "Clay / concrete tile roof",
+      "source": "Tile Roofing Industry Alliance (TRI/WSRCA)",
+      "video": "https://inspectapedia.com/roof/TRI-Concrete-Clay-Tile-Installation-Guide-2015.pdf",
+      "machinery": [
+        "Angle grinder w/ diamond blade or tile saw",
+        "Cordless drill/driver",
+        "Coil roofing nailer",
+        "Circular saw (battens)",
+        "Tile hoist/conveyor"
+      ],
+      "tools": [
+        "Chalk line",
+        "Tape measure",
+        "Tile cutter / nippers",
+        "Roofing hammer",
+        "Margin trowel (hip/ridge mortar)",
+        "Caulk gun",
+        "Pry bar"
+      ],
+      "parts": [
+        "Clay or concrete roof tiles",
+        "Two-ply or single-ply underlayment",
+        "Pressure-treated battens",
+        "Corrosion-resistant nails/screws + wind clips",
+        "Eave riser / bird stop",
+        "Ridge & hip tiles",
+        "Flashing + mortar/foam adhesive"
+      ],
+      "note": "Professional install recommended. Underlayment + flashing do the waterproofing; heavy load - verify roof structure; follow TRI/FRSA high-wind + local code."
+    },
+    "landscape-general": {
+      "title": "Landscaping",
+      "source": "The Home Depot",
+      "video": "https://ecoactions.homedepot.com/blog/projects/how-to-start-xeriscaping-at-home/",
+      "machinery": [
+        "Sod cutter (lawn removal)",
+        "Plate compactor (base)",
+        "Gas tiller",
+        "Power auger (planting)",
+        "Wheelbarrow"
+      ],
+      "tools": [
+        "Landscape rake",
+        "Flat shovel & spade",
+        "Tape measure",
+        "Utility knife (turf/fabric)",
+        "Hand tamper",
+        "Rubber mallet",
+        "Level & string line"
+      ],
+      "parts": [
+        "Landscape fabric / weed barrier",
+        "Decorative gravel or decomposed granite",
+        "Crushed-stone base + sharp sand (paver/turf)",
+        "Paver or steel/plastic edging + stakes",
+        "Drip tubing, emitters, 25-30 PSI regulator + backflow",
+        "Artificial turf or sod + seaming tape + turf nails",
+        "Drought-tolerant plants"
+      ],
+      "note": "DIY-friendly. Drip runs low pressure (~20-30 PSI) - use a regulator + filter; compact base in lifts; check local turf-removal/drip rebates."
+    },
+    "faucet": {
+      "title": "Faucet / fixture",
+      "source": "The Home Depot",
+      "video": "https://www.homedepot.com/c/ah/how-to-install-a-kitchen-faucet/9ba683603be9fa5395fab904f5b3ed0",
+      "machinery": [],
+      "tools": [
+        "Basin wrench",
+        "Adjustable wrench",
+        "Screwdriver set",
+        "Putty knife",
+        "Flashlight",
+        "Bucket & towels"
+      ],
+      "parts": [
+        "Kitchen faucet",
+        "Braided supply lines",
+        "Plumber's putty or silicone",
+        "Plumber's (Teflon) tape"
+      ],
+      "note": "Shut off supply valves first; wrap threads 3x clockwise."
+    }
   }
 }
