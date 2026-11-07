@@ -6,6 +6,8 @@
 var CHECK_SVG = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
 var CHECK_SVG_SM = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
 var CHEVRON_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+var STAR_SVG = '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.4l-5.8 3.05 1.1-6.47-4.7-4.58 6.5-.95z"/></svg>';
+var SHUFFLE_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20l17-17M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>';
 
 var DATA = null;          /* loaded catalog */
 var STYLE_BY_ID = {};     /* id -> style object */
@@ -40,6 +42,11 @@ var STR = {
     pickStyleNote: "Sets a starting palette and finishes. Tweak anything after.",
     chooseFinishes: "2 · Choose your finishes",
     finishNote: "Each swatch is a real finish option with a cost range built in.",
+    topPicks: "Top picks",
+    allOptions: "All",
+    surprise: "Surprise me",
+    filterHint: "Filter…",
+    noMatches: "No matches — clear the filter.",
     yourPlan: "Your plan",
     ballpark: "Ballpark budget",
     roomSize: "Room size",
@@ -63,6 +70,11 @@ var STR = {
     pickStyleNote: "Define una paleta y acabados de inicio. Ajusta lo que quieras después.",
     chooseFinishes: "2 · Elige tus acabados",
     finishNote: "Cada muestra es una opción real de acabado con su rango de costo.",
+    topPicks: "Favoritos",
+    allOptions: "Todos",
+    surprise: "Sorpréndeme",
+    filterHint: "Filtrar…",
+    noMatches: "Sin resultados — limpia el filtro.",
     yourPlan: "Tu plan",
     ballpark: "Presupuesto aproximado",
     roomSize: "Tamaño del cuarto",
@@ -102,6 +114,31 @@ function initI18n() {
 function spaceById(id) { var a = DATA.spaces, i; for (i = 0; i < a.length; i++) { if (a[i].id === id) return a[i]; } return a[0]; }
 function catMeta(c) { return DATA.categories[c]; }
 function finishes(c) { return DATA.finishes[c] || []; }
+/* Per-category browse state (filter text + "top picks only"). Not persisted —
+   it's a transient view helper for a catalog that's grown to 20+ options per
+   category, so it resets each session. editorPicks is a curated shortlist of
+   recommended finishes per category in data/finishes.json. */
+var catUI = {};
+function editorPicks(c) { return (DATA.editorPicks && DATA.editorPicks[c]) || []; }
+function isPick(c, id) { return editorPicks(c).indexOf(id) !== -1; }
+function optMatches(c, o, ui) {
+  if (ui.picksOnly && !isPick(c, o.id)) return false;
+  if (ui.q) { return (o.label || "").toLowerCase().indexOf(ui.q) !== -1; }
+  return true;
+}
+function applyCatFilter(c) {
+  var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
+  var wrap = document.querySelector('.cat[data-cat="' + c + '"]'); if (!wrap) return;
+  var shown = 0, total = 0;
+  wrap.querySelectorAll(".opt").forEach(function (span) {
+    var id = span.querySelector("button").getAttribute("data-id");
+    total++;
+    var vis = optMatches(c, optById(c, id), ui);
+    span.classList.toggle("hide", !vis); if (vis) shown++;
+  });
+  var cnt = wrap.querySelector(".cat-count"); if (cnt) cnt.textContent = shown + " / " + total;
+  var none = wrap.querySelector(".cat-none"); if (none) none.hidden = shown !== 0;
+}
 function optById(c, id) { var a = finishes(c), i; for (i = 0; i < a.length; i++) { if (a[i].id === id) return a[i]; } return a[0]; }
 function swatchStyle(o) { return o.img ? "background-image:url(assets/finishes/" + o.img + ")" : "background:" + (o.color || "#ccc"); }
 function roomImg(sp) { return sp.img ? "assets/rooms/" + sp.img : ""; }
@@ -251,18 +288,26 @@ function renderCats() {
   var cats = spaceById(state.space).cats;
   $("finishNote").textContent = t("finishNote");
   cats.forEach(function (c) {
-    var wrap = document.createElement("div"); wrap.className = "cat";
+    var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
+    var wrap = document.createElement("div"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
     var cur = optById(c, state.picks[c]);
-    var head = '<div class="cat-head"><h3>' + catMeta(c).label + '</h3><span class="pick">' + cur.label + '</span></div>';
+    var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
+    var head = '<div class="cat-head"><h3>' + label + '</h3><span class="pick">' + cur.label + '</span></div>';
+    var tools = '<div class="cat-tools">'
+      + '<input class="cat-search" type="search" autocomplete="off" aria-label="' + t("filterHint") + " " + label + '" placeholder="' + t("filterHint") + '" value="' + attr(ui.q) + '">'
+      + (hasPicks ? '<button type="button" class="cat-chip" data-act="picks" aria-pressed="' + (ui.picksOnly ? "true" : "false") + '">' + STAR_SVG + '<span>' + t("topPicks") + '</span></button>' : "")
+      + '<button type="button" class="cat-chip" data-act="surprise" aria-label="' + t("surprise") + " " + label + '">' + SHUFFLE_SVG + '<span>' + t("surprise") + '</span></button>'
+      + '<span class="cat-count" aria-hidden="true"></span></div>';
     var opts = '<div class="opts">';
     finishes(c).forEach(function (o) {
-      var on = o.id === state.picks[c];
-      opts += '<span class="opt"><button type="button" data-cat="' + c + '" data-id="' + o.id + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' + o.label + '">'
-        + '<span class="sw" style="' + swatchStyle(o) + '"></span><span class="tick" aria-hidden="true">' + CHECK_SVG_SM + '</span>'
+      var on = o.id === state.picks[c], pick = isPick(c, o.id);
+      opts += '<span class="opt"><button type="button" data-cat="' + c + '" data-id="' + o.id + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' + attr(o.label) + (pick ? " (top pick)" : "") + '">'
+        + '<span class="sw" style="' + swatchStyle(o) + '">' + (pick ? '<span class="pb" title="Top pick">' + STAR_SVG + '</span>' : "") + '</span>'
+        + '<span class="tick" aria-hidden="true">' + CHECK_SVG_SM + '</span>'
         + '<span class="lbl">' + o.label + '</span></button></span>';
     });
-    opts += '</div>';
-    wrap.innerHTML = head + opts;
+    opts += '</div><div class="cat-none" role="status" hidden>' + t("noMatches") + '</div>';
+    wrap.innerHTML = head + tools + opts;
     host.appendChild(wrap);
   });
   host.querySelectorAll("button[data-cat]").forEach(function (btn) {
@@ -271,7 +316,29 @@ function renderCats() {
       save(); renderCats(); renderBoard();
     });
   });
+  host.querySelectorAll(".cat").forEach(function (wrap) {
+    var c = wrap.getAttribute("data-cat");
+    var search = wrap.querySelector(".cat-search");
+    search.addEventListener("input", function () { catUI[c].q = this.value.trim().toLowerCase(); applyCatFilter(c); });
+    var pchip = wrap.querySelector('.cat-chip[data-act="picks"]');
+    if (pchip) pchip.addEventListener("click", function () {
+      catUI[c].picksOnly = !catUI[c].picksOnly;
+      this.setAttribute("aria-pressed", catUI[c].picksOnly ? "true" : "false");
+      applyCatFilter(c);
+    });
+    wrap.querySelector('.cat-chip[data-act="surprise"]').addEventListener("click", function () {
+      var vis = [];
+      wrap.querySelectorAll(".opt:not(.hide) button[data-id]").forEach(function (b) { vis.push(b.getAttribute("data-id")); });
+      if (!vis.length) return;
+      state.picks[c] = vis[Math.floor(Math.random() * vis.length)];
+      save(); renderCats(); renderBoard();
+      announce(catMeta(c).label + ": " + optById(c, state.picks[c]).label);
+    });
+    applyCatFilter(c);
+  });
 }
+/* Escape a value destined for an HTML attribute (labels/filter text). */
+function attr(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
 function renderBoard() {
   var p = STYLE_BY_ID[state.style], sp = spaceById(state.space);
