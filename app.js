@@ -21,6 +21,16 @@ function finishes(c) { return DATA.finishes[c] || []; }
 function optById(c, id) { var a = finishes(c), i; for (i = 0; i < a.length; i++) { if (a[i].id === id) return a[i]; } return a[0]; }
 function swatchStyle(o) { return o.img ? "background-image:url(assets/finishes/" + o.img + ")" : "background:" + (o.color || "#ccc"); }
 function roomImg(sp) { return sp.img ? "assets/rooms/" + sp.img : ""; }
+// "How to install" panel for a finish that carries a how-to video + tools/parts
+// (real Home Depot / Lowe's product data). Data is first-party, like the rest.
+function installHTML(o) {
+  if (!o || !(o.video || (o.tools && o.tools.length) || (o.parts && o.parts.length))) return "";
+  var h = '<details class="install"><summary>How to install' + (o.product ? " · " + o.product : "") + '</summary>';
+  if (o.video) h += '<a class="iv" href="' + o.video + '" target="_blank" rel="noopener noreferrer">Watch the how-to video on ' + (o.source || "the official site") + '</a>';
+  if (o.tools && o.tools.length) h += '<div class="ih">Tools / machinery</div><ul>' + o.tools.map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>";
+  if (o.parts && o.parts.length) h += '<div class="ih">Parts / materials</div><ul>' + o.parts.map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>";
+  return h + "</details>";
+}
 function defaultAreaFor(kind) { return kind === "exterior" ? 2000 : 200; }
 
 function applyStyleDefaults() {
@@ -143,7 +153,8 @@ function renderBoard() {
   sp.cats.forEach(function (c) {
     var o = optById(c, state.picks[c]), li = document.createElement("li");
     li.innerHTML = '<span class="fsw" style="' + swatchStyle(o) + '"></span>'
-      + '<span><span class="ft">' + catMeta(c).label + '</span><br><span class="fn">' + o.label + '</span></span>';
+      + '<span><span class="ft">' + catMeta(c).label + '</span><br><span class="fn">' + o.label + '</span>'
+      + installHTML(o) + '</span>';
     list.appendChild(li);
   });
 
@@ -174,6 +185,18 @@ function renderSummary(cost) {
   L.push("");
   L.push("BALLPARK TOTAL: " + money(cost.lo) + " – " + money(cost.hi));
   L.push("(Arizona, 2026 planning range — materials + typical install. Not a quote; confirm with a local bid.)");
+  var notes = [];
+  sp.cats.forEach(function (c) {
+    var o = optById(c, state.picks[c]);
+    if (o && (o.video || o.tools || o.parts)) {
+      var n = "- " + o.label + (o.product ? " (" + o.product + (o.source ? ", " + o.source : "") + ")" : "");
+      if (o.tools && o.tools.length) n += "\n    Tools: " + o.tools.join(", ");
+      if (o.parts && o.parts.length) n += "\n    Parts: " + o.parts.join(", ");
+      if (o.video) n += "\n    Video: " + o.video;
+      notes.push(n);
+    }
+  });
+  if (notes.length) { L.push(""); L.push("HOW TO INSTALL (tools, parts, video)"); notes.forEach(function (n) { L.push(n); }); }
   $("summaryText").textContent = L.join("\n");
 }
 
