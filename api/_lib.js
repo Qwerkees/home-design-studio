@@ -157,7 +157,14 @@ function maybeEncrypt(jsonString, env) {
   const keyB64 = env.LDS_DATA_KEY;
   if (!keyB64) return { body: jsonString, encrypted: false };
   const key = Buffer.from(keyB64, 'base64');
-  if (key.length !== 32) return { body: jsonString, encrypted: false };
+  if (key.length !== 32) {
+    // Key is set but malformed. RFQ blobs are stored with public access, so a
+    // silent plaintext downgrade would expose PII. Keep the funnel working
+    // (don't brick submissions over a typo) but make the misconfig impossible
+    // to miss in the logs so it gets fixed immediately.
+    try { console.error('[rfq] LDS_DATA_KEY is set but is not 32 bytes after base64 decode (got ' + key.length + '); storing WITHOUT encryption. Regenerate with: node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'base64\'))"'); } catch {}
+    return { body: jsonString, encrypted: false };
+  }
   const iv = crypto.randomBytes(12);
   const c = crypto.createCipheriv('aes-256-gcm', key, iv);
   const ct = Buffer.concat([c.update(jsonString, 'utf8'), c.final()]);
