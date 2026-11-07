@@ -1,4 +1,4 @@
-# LUKE'S Design Studios
+# LUKE'S Design Studio
 
 A homeowner-facing **interior & exterior design decision** app. Pick a space
 (kitchen, living room, bathroom, bedroom, or the exterior), choose a style,
