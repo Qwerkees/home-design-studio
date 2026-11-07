@@ -1863,5 +1863,141 @@
       ],
       "note": "Shut off supply valves first; wrap threads 3x clockwise."
     }
+  },
+  "quiz": {
+    "title": "Find your style",
+    "intro": "Four quick taps and we'll start you on a style — tweak anything after.",
+    "questions": [
+      {
+        "q": "Which palette pulls you in?",
+        "options": [
+          {
+            "label": "Warm sand, clay & wood",
+            "scores": {
+              "desert": 2,
+              "farmhouse": 1,
+              "midcentury": 1
+            }
+          },
+          {
+            "label": "Soft greige, sage & white",
+            "scores": {
+              "transitional": 2,
+              "scandi": 1
+            }
+          },
+          {
+            "label": "Airy white & ocean blue",
+            "scores": {
+              "coastal": 2,
+              "scandi": 1
+            }
+          },
+          {
+            "label": "Charcoal, iron & raw brick",
+            "scores": {
+              "industrial": 2,
+              "midcentury": 1
+            }
+          }
+        ]
+      },
+      {
+        "q": "Your dream material?",
+        "options": [
+          {
+            "label": "Honest, knotty wood",
+            "scores": {
+              "farmhouse": 2
+            }
+          },
+          {
+            "label": "Warm walnut with a retro pop",
+            "scores": {
+              "midcentury": 2
+            }
+          },
+          {
+            "label": "Pale birch & light oak",
+            "scores": {
+              "scandi": 2,
+              "coastal": 1
+            }
+          },
+          {
+            "label": "Sun-baked adobe & stone",
+            "scores": {
+              "desert": 2
+            }
+          }
+        ]
+      },
+      {
+        "q": "Pick a mood",
+        "options": [
+          {
+            "label": "Warm & cozy",
+            "scores": {
+              "farmhouse": 2,
+              "desert": 1,
+              "midcentury": 1
+            }
+          },
+          {
+            "label": "Calm & timeless",
+            "scores": {
+              "transitional": 2,
+              "scandi": 1
+            }
+          },
+          {
+            "label": "Fresh & breezy",
+            "scores": {
+              "coastal": 2,
+              "scandi": 1
+            }
+          },
+          {
+            "label": "Bold & edgy",
+            "scores": {
+              "industrial": 2,
+              "midcentury": 1
+            }
+          }
+        ]
+      },
+      {
+        "q": "A standout accent should be…",
+        "options": [
+          {
+            "label": "Matte black",
+            "scores": {
+              "farmhouse": 2,
+              "industrial": 1
+            }
+          },
+          {
+            "label": "A confident retro color",
+            "scores": {
+              "midcentury": 2,
+              "coastal": 1
+            }
+          },
+          {
+            "label": "Soft ocean blue",
+            "scores": {
+              "coastal": 2
+            }
+          },
+          {
+            "label": "Barely any — keep it quiet",
+            "scores": {
+              "transitional": 2,
+              "scandi": 1
+            }
+          }
+        ]
+      }
+    ]
   }
 }
