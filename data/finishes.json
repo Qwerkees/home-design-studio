@@ -602,6 +602,33 @@
         "lo": 15,
         "hi": 30,
         "install": "floor-tile"
+      },
+      {
+        "id": "corkplank",
+        "label": "Cork Plank",
+        "img": "flooring-corkplank.webp",
+        "color": "#C9A878",
+        "lo": 4,
+        "hi": 8,
+        "install": "floor-lvp"
+      },
+      {
+        "id": "pennytile",
+        "label": "Penny Round Tile",
+        "img": "flooring-pennytile.webp",
+        "color": "#D8D3C8",
+        "lo": 9,
+        "hi": 18,
+        "install": "floor-tile"
+      },
+      {
+        "id": "redoaksolid",
+        "label": "Red Oak Solid",
+        "img": "flooring-redoaksolid.webp",
+        "color": "#B0794B",
+        "lo": 8,
+        "hi": 16,
+        "install": "floor-hardwood"
       }
     ],
     "paint": [
@@ -767,6 +794,42 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "softlavender",
+        "label": "Soft Lavender",
+        "img": "paint-softlavender.webp",
+        "color": "#C9C2D6",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "deepburgundy",
+        "label": "Deep Burgundy",
+        "img": "paint-deepburgundy.webp",
+        "color": "#5A2A30",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "softmint",
+        "label": "Soft Mint",
+        "img": "paint-softmint.webp",
+        "color": "#BFD3C2",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "slategrey",
+        "label": "Slate Grey",
+        "img": "paint-slategrey.webp",
+        "color": "#6E7377",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -881,6 +944,27 @@
         "label": "White Oak Slab",
         "img": "cabinetry-whiteoakslab.webp",
         "color": "#C8B392",
+        "install": "cabinets"
+      },
+      {
+        "id": "beadboard",
+        "label": "Beadboard White",
+        "img": "cabinetry-beadboard.webp",
+        "color": "#ECEAE3",
+        "install": "cabinets"
+      },
+      {
+        "id": "charcoalshaker",
+        "label": "Charcoal Shaker",
+        "img": "cabinetry-charcoalshaker.webp",
+        "color": "#3B3F42",
+        "install": "cabinets"
+      },
+      {
+        "id": "cherrywood",
+        "label": "Cherry Wood",
+        "img": "cabinetry-cherrywood.webp",
+        "color": "#7A3B2E",
         "install": "cabinets"
       }
     ],
@@ -1012,6 +1096,34 @@
         "img": "counter-stainlesstop.webp",
         "color": "#B8BBBE",
         "install": "counter-stone"
+      },
+      {
+        "id": "honedlimestone",
+        "label": "Honed Limestone",
+        "img": "counter-honedlimestone.webp",
+        "color": "#D8D2C4",
+        "install": "counter-stone"
+      },
+      {
+        "id": "greyquartz",
+        "label": "Grey Quartz",
+        "img": "counter-greyquartz.webp",
+        "color": "#BFC0BD",
+        "install": "counter-stone"
+      },
+      {
+        "id": "lavastone",
+        "label": "Lava Stone",
+        "img": "counter-lavastone.webp",
+        "color": "#2E2E30",
+        "install": "counter-stone"
+      },
+      {
+        "id": "veinedquartz",
+        "label": "Veined Quartz",
+        "img": "counter-veinedquartz.webp",
+        "color": "#ECEAE6",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -1106,6 +1218,27 @@
         "img": "fixtures-oilbronze.webp",
         "color": "#4A3B30",
         "install": "faucet"
+      },
+      {
+        "id": "pewter",
+        "label": "Pewter",
+        "img": "fixtures-pewter.webp",
+        "color": "#8E9094",
+        "install": "faucet"
+      },
+      {
+        "id": "rosegold",
+        "label": "Rose Gold",
+        "img": "fixtures-rosegold.webp",
+        "color": "#C98E7A",
+        "install": "faucet"
+      },
+      {
+        "id": "brushednickel",
+        "label": "Brushed Nickel",
+        "img": "fixtures-brushednickel.webp",
+        "color": "#B7B8B5",
+        "install": "faucet"
       }
     ],
     "textiles": [
@@ -1174,6 +1307,24 @@
         "label": "Terracotta Linen",
         "img": "textiles-terracottalinen.webp",
         "color": "#B57355"
+      },
+      {
+        "id": "greylinen",
+        "label": "Grey Linen",
+        "img": "textiles-greylinen.webp",
+        "color": "#BFBAB1"
+      },
+      {
+        "id": "camelleather",
+        "label": "Camel Leather",
+        "img": "textiles-camelleather.webp",
+        "color": "#B5824E"
+      },
+      {
+        "id": "rustvelvet",
+        "label": "Rust Velvet",
+        "img": "textiles-rustvelvet.webp",
+        "color": "#9E4F32"
       }
     ],
     "siding": [
@@ -1302,6 +1453,33 @@
         "lo": 7,
         "hi": 12,
         "install": "siding-lap"
+      },
+      {
+        "id": "blackbatten",
+        "label": "Black Board & Batten",
+        "img": "siding-blackbatten.webp",
+        "color": "#2A2A2A",
+        "lo": 7,
+        "hi": 13,
+        "install": "siding-lap"
+      },
+      {
+        "id": "whitestone",
+        "label": "White Stone Veneer",
+        "img": "siding-whitestone.webp",
+        "color": "#D9D4CB",
+        "lo": 12,
+        "hi": 22,
+        "install": "siding-masonry"
+      },
+      {
+        "id": "sagelap",
+        "label": "Sage Lap Siding",
+        "img": "siding-sagelap.webp",
+        "color": "#8A9079",
+        "lo": 7,
+        "hi": 12,
+        "install": "siding-lap"
       }
     ],
     "trim": [
@@ -1366,6 +1544,27 @@
         "label": "Forest Green Trim",
         "img": "trim-greentrim.webp",
         "color": "#2E3D30",
+        "install": "trim"
+      },
+      {
+        "id": "sagetrim",
+        "label": "Sage Trim",
+        "img": "trim-sagetrim.webp",
+        "color": "#7E8A6E",
+        "install": "trim"
+      },
+      {
+        "id": "taupetrim",
+        "label": "Taupe Trim",
+        "img": "trim-taupetrim.webp",
+        "color": "#A99C8A",
+        "install": "trim"
+      },
+      {
+        "id": "bronzetrim",
+        "label": "Bronze Trim",
+        "img": "trim-bronzetrim.webp",
+        "color": "#6B5436",
         "install": "trim"
       }
     ],
@@ -1452,6 +1651,34 @@
         "label": "Glass Panel",
         "img": "door-glassdoor.webp",
         "color": "#AEB8BC",
+        "install": "door"
+      },
+      {
+        "id": "greendoor",
+        "label": "Hunter Green",
+        "img": "door-greendoor.webp",
+        "color": "#2E4636",
+        "install": "door"
+      },
+      {
+        "id": "pinkdoor",
+        "label": "Blush Pink",
+        "img": "door-pinkdoor.webp",
+        "color": "#D6A7A0",
+        "install": "door"
+      },
+      {
+        "id": "turquoisedoor",
+        "label": "Turquoise",
+        "img": "door-turquoisedoor.webp",
+        "color": "#2E8C88",
+        "install": "door"
+      },
+      {
+        "id": "woodglassdoor",
+        "label": "Wood & Glass",
+        "img": "door-woodglassdoor.webp",
+        "color": "#9A6B3F",
         "install": "door"
       }
     ],
@@ -1545,6 +1772,33 @@
         "lo": 4,
         "hi": 8,
         "install": "roof-shingle"
+      },
+      {
+        "id": "greenmetal",
+        "label": "Forest Green Metal",
+        "img": "roof-greenmetal.webp",
+        "color": "#2E3D30",
+        "lo": 9,
+        "hi": 18,
+        "install": "roof-metal"
+      },
+      {
+        "id": "bluemetal",
+        "label": "Slate Blue Metal",
+        "img": "roof-bluemetal.webp",
+        "color": "#3E4E5E",
+        "lo": 9,
+        "hi": 18,
+        "install": "roof-metal"
+      },
+      {
+        "id": "woodshakeroof",
+        "label": "Cedar Shake Roof",
+        "img": "roof-woodshakeroof.webp",
+        "color": "#8A6240",
+        "lo": 8,
+        "hi": 16,
+        "install": "roof-shingle"
       }
     ],
     "garage": [
@@ -1610,6 +1864,27 @@
         "img": "garage-frostedgarage.webp",
         "color": "#D4DADD",
         "install": "garage-door"
+      },
+      {
+        "id": "blackglass",
+        "label": "Black Glass Panel",
+        "img": "garage-blackglass.webp",
+        "color": "#2C2E30",
+        "install": "garage-door"
+      },
+      {
+        "id": "mahoganygarage",
+        "label": "Mahogany Wood",
+        "img": "garage-mahoganygarage.webp",
+        "color": "#6B3A2A",
+        "install": "garage-door"
+      },
+      {
+        "id": "coastalbluegarage",
+        "label": "Coastal Blue",
+        "img": "garage-coastalbluegarage.webp",
+        "color": "#3E6B82",
+        "install": "garage-door"
       }
     ],
     "landscaping": [
@@ -1667,6 +1942,34 @@
         "label": "Flagstone Patio",
         "img": "landscaping-flagstone.webp",
         "color": "#A9A096",
+        "install": "landscape-general"
+      },
+      {
+        "id": "riverrock",
+        "label": "River Rock",
+        "img": "landscaping-riverrock.webp",
+        "color": "#9A948A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "succulents",
+        "label": "Succulent Garden",
+        "img": "landscaping-succulents.webp",
+        "color": "#8FA27E",
+        "install": "landscape-general"
+      },
+      {
+        "id": "wildflower",
+        "label": "Wildflower Meadow",
+        "img": "landscaping-wildflower.webp",
+        "color": "#A7A95C",
+        "install": "landscape-general"
+      },
+      {
+        "id": "steppingstone",
+        "label": "Stepping Stones",
+        "img": "landscaping-steppingstone.webp",
+        "color": "#AEA69A",
         "install": "landscape-general"
       }
     ]
