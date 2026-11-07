@@ -539,6 +539,15 @@
         "lo": 4,
         "hi": 8,
         "install": "floor-engineered"
+      },
+      {
+        "id": "marble-porcelain",
+        "label": "Marble-Look Porcelain",
+        "img": "flooring-marble-porcelain.webp",
+        "color": "#E6E4DF",
+        "lo": 4,
+        "hi": 8,
+        "install": "floor-tile"
       }
     ],
     "paint": [
@@ -641,6 +650,15 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "urbanebronze",
+        "label": "Urbane Bronze",
+        "img": "paint-urbanebronze.webp",
+        "color": "#54504A",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -713,6 +731,13 @@
         "label": "Sage Green",
         "img": "cabinetry-sagecab.webp",
         "color": "#7E8A6E",
+        "install": "cabinets"
+      },
+      {
+        "id": "riftoak",
+        "label": "Rift White Oak",
+        "img": "cabinetry-riftoak.webp",
+        "color": "#CBAE86",
         "install": "cabinets"
       }
     ],
@@ -802,6 +827,13 @@
         "img": "counter-boos-walnut.webp",
         "color": "#5A3C28",
         "install": "counter-butcherblock"
+      },
+      {
+        "id": "cambria-brittanicca",
+        "label": "Brittanicca Quartz",
+        "img": "counter-cambria.webp",
+        "color": "#ECEAE4",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -860,6 +892,13 @@
         "label": "Spot Resist Stainless",
         "img": "moen-stainless.webp",
         "color": "#B8BBBE",
+        "install": "faucet"
+      },
+      {
+        "id": "gunmetal",
+        "label": "Luxe Gunmetal",
+        "img": "gunmetal.webp",
+        "color": "#4E5257",
         "install": "faucet"
       }
     ],
@@ -971,6 +1010,15 @@
         "lo": 12,
         "hi": 25,
         "install": "siding-masonry"
+      },
+      {
+        "id": "lp-cedar",
+        "label": "Cedar Engineered Siding",
+        "img": "lp-cedar.webp",
+        "color": "#A9815A",
+        "lo": 6,
+        "hi": 11,
+        "install": "siding-lap"
       }
     ],
     "trim": [
