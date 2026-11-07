@@ -276,6 +276,19 @@ a.shop, a.share-url { display: inline-flex; align-items: center; }
   width: 18px; height: 18px; border-radius: 999px; background: rgba(0,0,0,.55); color: #ffd36b; }
 @media (max-width: 420px) { .cat-chip span { display: none; } .cat-chip { padding: 6px 10px; } }
 
+/* ---------- Forced-colors: keep color where color IS the content ----------
+   In Windows High Contrast / forced-colors mode the browser repaints
+   background-colors with the system palette, which blanks the style palette
+   chips and the board palette strip to white — losing the exact information
+   this app exists to show. forced-color-adjust:none opts these color-carrying
+   elements out so their real colors (and photo swatches) still render, while
+   the rest of the UI keeps respecting the user's high-contrast preference. */
+.style .chips, .style .chips span,
+.palette-strip, .palette-strip span, .palette-strip .pc-name,
+.opt .sw, .finish-list .fsw, .pb {
+  forced-color-adjust: none;
+}
+
 /* ---------- Mobile: bring the desktop layout across ----------
    (1) style cards stay 2-across (sized to fit a phone), (2) a sticky plan bar
    keeps the live budget + a jump-to-plan button in view while picking, and
