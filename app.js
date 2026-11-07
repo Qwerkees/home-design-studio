@@ -47,6 +47,7 @@ var STR = {
     surprise: "Surprise me",
     filterHint: "Filter…",
     noMatches: "No matches — clear the filter.",
+    viewPlan: "View plan",
     yourPlan: "Your plan",
     ballpark: "Ballpark budget",
     roomSize: "Room size",
@@ -75,6 +76,7 @@ var STR = {
     surprise: "Sorpréndeme",
     filterHint: "Filtrar…",
     noMatches: "Sin resultados — limpia el filtro.",
+    viewPlan: "Ver plan",
     yourPlan: "Tu plan",
     ballpark: "Presupuesto aproximado",
     roomSize: "Tamaño del cuarto",
@@ -401,7 +403,9 @@ function renderBoard() {
   if ($("unitBtn")) $("unitBtn").innerHTML = isMetric() ? "sq ft" : "m²";
 
   var cost = computeCost();
-  $("costAmt").textContent = money(cost.lo) + " – " + money(cost.hi);
+  var amt = money(cost.lo) + " – " + money(cost.hi);
+  $("costAmt").textContent = amt;
+  if ($("planBarCost")) $("planBarCost").textContent = amt; // mobile sticky plan bar
   $("costNote").textContent = kind === "exterior"
     ? t("costExterior")
     : t("costInterior");
@@ -596,6 +600,11 @@ function boot(data) {
     else { window.prompt("Copy this plan link", url); }
   });
   $("resetBtn").addEventListener("click", function () { applyStyleDefaults(); save(); renderCats(); renderBoard(); announce("Finishes reset to the " + STYLE_BY_ID[state.style].name + " style"); });
+  if ($("planBarBtn")) $("planBarBtn").addEventListener("click", function () {
+    var bt = $("boardTitle"); var reduce = false;
+    try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+    if (bt) bt.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  });
   if ($("unitBtn")) $("unitBtn").addEventListener("click", function () {
     state.units = isMetric() ? "imperial" : "metric"; save(); renderBoard();
     announce(isMetric() ? "Metric units" : "Imperial units");
