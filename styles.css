@@ -4,6 +4,7 @@
   --bg: #F2EEE7; --surface: #FBF9F5; --surface-2: #EDE8DF; --line: #DBD3C6;
   --text: #221F1A; --muted: #6C6558; --accent: #2F6B5E; --accent-ink: #FBFAF6;
   --good: #3C7A4E; --warn: #9A6B1E;
+  --cream: #F8F0DC; --cream-line: #E6D3A6;
   --radius: 14px; --radius-sm: 10px;
   --shadow: 0 1px 2px rgba(34,31,26,.06), 0 8px 24px rgba(34,31,26,.07);
   --maxw: 1180px;
@@ -15,6 +16,7 @@
   --bg: #17150F; --surface: #201D16; --surface-2: #2A261D; --line: #39352B;
   --text: #F1ECE2; --muted: #A69E8E; --accent: #5BA895; --accent-ink: #14120D;
   --good: #6FB882; --warn: #D8A24E;
+  --cream: #352F22; --cream-line: #5A4F38;
   --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
   color-scheme: dark;
 }
@@ -316,4 +318,52 @@ a.shop, a.share-url { display: inline-flex; align-items: center; }
   .opt { width: 54px; }
   .opt .sw { width: 54px; height: 42px; }
   .opt .lbl { font-size: 10.5px; }
+}
+
+/* ---------- Creamy popping buttons: warm cream fill + lift on hover ----------
+   Neutral/outline buttons warm to cream and rise; accent/selected buttons
+   brighten and rise (cream would fight their fill). Transforms are gated on
+   prefers-reduced-motion elsewhere; this block adds its own motion guard. */
+.theme-btn, .unit-btn, .btn, .quiz-opt, .cat-chip, .pb-view, .quiz-skip {
+  transition: background .16s ease, border-color .16s ease,
+              box-shadow .16s ease, transform .16s ease, color .16s ease;
+}
+/* Neutral buttons (not selected, not accent-filled) → cream pop */
+.theme-btn:hover,
+.unit-btn:hover,
+.btn:not(.primary):not(.ok):hover,
+.quiz-opt:not([aria-pressed="true"]):hover,
+.cat-chip:not([aria-pressed="true"]):hover {
+  background: var(--cream); border-color: var(--cream-line); color: var(--text);
+  box-shadow: 0 6px 16px rgba(34, 31, 26, .16);
+}
+/* Text-only skip button gets a soft cream pill so it pops too */
+.quiz-skip:hover {
+  background: var(--cream); color: var(--text); border-radius: 999px;
+  text-decoration: none; box-shadow: 0 4px 12px rgba(34, 31, 26, .12);
+}
+/* Accent / selected buttons → brighter accent glow, not cream */
+.btn.primary:hover, .pb-view:hover,
+.quiz-opt[aria-pressed="true"]:hover, .cat-chip[aria-pressed="true"]:hover {
+  background: color-mix(in srgb, var(--accent) 86%, #fff);
+  border-color: color-mix(in srgb, var(--accent) 86%, #fff);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 38%, transparent);
+}
+.btn.ok:hover {
+  background: color-mix(in srgb, var(--good) 86%, #fff);
+  border-color: color-mix(in srgb, var(--good) 86%, #fff);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--good) 38%, transparent);
+}
+/* The lift/scale pop — motion only where the viewer allows it */
+@media (prefers-reduced-motion: no-preference) {
+  .theme-btn:hover, .unit-btn:hover, .btn:hover, .quiz-opt:hover,
+  .cat-chip:hover, .pb-view:hover, .quiz-skip:hover {
+    transform: translateY(-2px) scale(1.03);
+  }
+  .theme-btn:active, .unit-btn:active, .btn:active, .quiz-opt:active,
+  .cat-chip:active, .pb-view:active, .quiz-skip:active {
+    transform: translateY(0) scale(.99);
+  }
+  /* Space & style cards already rise; deepen the shadow so they pop too */
+  .space-card:hover { box-shadow: 0 10px 24px rgba(34, 31, 26, .16); }
 }
