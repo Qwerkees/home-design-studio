@@ -190,3 +190,7 @@ footer { max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 0; color: va
 .share-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
 .share-url { font-weight: 600; color: var(--accent); word-break: break-all; }
 @media (max-width: 420px) { .share-body { gap: 14px; } }
+
+/* Material quantity estimate (how much to buy) */
+.qty { display: block; font-size: 13px; color: var(--muted); margin-top: 3px; }
+.qty::before { content: ""; }

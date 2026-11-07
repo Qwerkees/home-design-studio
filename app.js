@@ -74,6 +74,34 @@ function computeCost() {
 }
 function money(n) { return "$" + n.toLocaleString("en-US"); }
 
+/* ---------- Material quantity estimate ----------
+   Rough "how much to buy" from the size slider. Only for categories that scale
+   with area in a defensible way (flooring, paint walls, trim run, siding, roof);
+   per-unit items (counters, cabinets, fixtures, doors, garage, landscaping,
+   textiles) return "" and show no estimate. Planning numbers, not a takeoff. */
+function quantityFor(cat, o) {
+  var a = state.area, n;
+  switch (cat) {
+    case "flooring":
+      n = Math.ceil(a * 1.10);
+      return "~" + Math.ceil(n / 20) + " boxes (" + n.toLocaleString("en-US") + " sq ft incl. 10% waste)";
+    case "paint":
+      // wall area ≈ perimeter of a square room × 8 ft ceiling, less ~15% openings
+      n = Math.max(1, Math.ceil((4 * Math.sqrt(a) * 8 * 0.85 * 2) / 350));
+      return "~" + n + " gal (walls, 2 coats)";
+    case "trim":
+      return "~" + Math.round(4 * Math.sqrt(a)) + " linear ft";
+    case "siding":
+      n = Math.round(a * 1.2);
+      return "~" + Math.ceil(n / 100) + " squares (" + n.toLocaleString("en-US") + " sq ft)";
+    case "roof":
+      n = Math.round(a * 1.15);
+      return "~" + Math.ceil(n / 100) + " roofing squares";
+    default:
+      return "";
+  }
+}
+
 /* ---------- Render ---------- */
 function renderSpaces() {
   var el = $("spaceTabs"); el.innerHTML = "";
@@ -157,9 +185,10 @@ function renderBoard() {
 
   var list = $("finishList"); list.innerHTML = "";
   sp.cats.forEach(function (c) {
-    var o = optById(c, state.picks[c]), li = document.createElement("li");
+    var o = optById(c, state.picks[c]), li = document.createElement("li"), q = quantityFor(c, o);
     li.innerHTML = '<span class="fsw" style="' + swatchStyle(o) + '"></span>'
       + '<span><span class="ft">' + catMeta(c).label + '</span><br><span class="fn">' + o.label + '</span>'
+      + (q ? '<span class="qty">Need about ' + q + '</span>' : '')
       + installHTML(o) + '</span>';
     list.appendChild(li);
   });
@@ -187,7 +216,10 @@ function renderSummary(cost) {
   L.push("Palette: " + p.colors.map(function (c) { return c[0] + " (" + c[1] + ")"; }).join(", "));
   L.push("");
   L.push("FINISHES & SHOPPING LIST");
-  cost.lines.forEach(function (ln) { L.push("- " + ln.label + ": " + ln.opt + "  (" + money(ln.lo) + "–" + money(ln.hi) + ")"); });
+  cost.lines.forEach(function (ln) {
+    var q = quantityFor(ln.cat, optById(ln.cat, state.picks[ln.cat]));
+    L.push("- " + ln.label + ": " + ln.opt + "  (" + money(ln.lo) + "–" + money(ln.hi) + ")" + (q ? "  — need about " + q : ""));
+  });
   L.push("");
   L.push("BALLPARK TOTAL: " + money(cost.lo) + " – " + money(cost.hi));
   L.push("(Arizona, 2026 planning range — materials + typical install. Not a quote; confirm with a local bid.)");
@@ -261,8 +293,9 @@ function boot(data) {
   var ld = $("loading"); if (ld) ld.remove();
   load(); ensurePicks(); initTheme(); renderAll();
   $("area").addEventListener("input", function () {
-    state.area = +this.value; $("areaVal").textContent = state.area.toLocaleString("en-US") + " sq ft";
-    var cost = computeCost(); $("costAmt").textContent = money(cost.lo) + " – " + money(cost.hi); renderSummary(cost); save();
+    state.area = +this.value;
+    // renderBoard keeps the live board, summary, cost AND the material quantities in sync.
+    renderBoard(); save();
   });
   $("copyBtn").addEventListener("click", copySummary);
   $("resetBtn").addEventListener("click", function () { applyStyleDefaults(); save(); renderCats(); renderBoard(); announce("Finishes reset to the " + STYLE_BY_ID[state.style].name + " style"); });
