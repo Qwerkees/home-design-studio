@@ -548,6 +548,24 @@
         "lo": 4,
         "hi": 8,
         "install": "floor-tile"
+      },
+      {
+        "id": "slatetile",
+        "label": "Natural Slate Tile",
+        "img": "flooring-slate.webp",
+        "color": "#5B5F63",
+        "lo": 6,
+        "hi": 14,
+        "install": "floor-tile"
+      },
+      {
+        "id": "terrazzo",
+        "label": "Terrazzo",
+        "img": "flooring-terrazzo.webp",
+        "color": "#D8D3C8",
+        "lo": 10,
+        "hi": 25,
+        "install": "floor-tile"
       }
     ],
     "paint": [
@@ -659,6 +677,24 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "terracotta",
+        "label": "Terracotta",
+        "img": "paint-terracotta.webp",
+        "color": "#B5663F",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "forestgreen",
+        "label": "Forest Green",
+        "img": "paint-forestgreen.webp",
+        "color": "#2E3D30",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -738,6 +774,13 @@
         "label": "Rift White Oak",
         "img": "cabinetry-riftoak.webp",
         "color": "#CBAE86",
+        "install": "cabinets"
+      },
+      {
+        "id": "walnutcab",
+        "label": "Walnut Slab",
+        "img": "cabinetry-walnut.webp",
+        "color": "#5A3E2B",
         "install": "cabinets"
       }
     ],
@@ -834,6 +877,13 @@
         "img": "counter-cambria.webp",
         "color": "#ECEAE4",
         "install": "counter-stone"
+      },
+      {
+        "id": "blackgranite",
+        "label": "Honed Black Granite",
+        "img": "counter-blackgranite.webp",
+        "color": "#2B2B2D",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -900,6 +950,13 @@
         "img": "gunmetal.webp",
         "color": "#4E5257",
         "install": "faucet"
+      },
+      {
+        "id": "agedcopper",
+        "label": "Aged Copper",
+        "img": "fixtures-copper.webp",
+        "color": "#7B4B3A",
+        "install": "faucet"
       }
     ],
     "textiles": [
@@ -938,6 +995,18 @@
         "label": "Sunbrella Fog",
         "img": "sunbrella-fog.webp",
         "color": "#CFC9BE"
+      },
+      {
+        "id": "emeraldvelvet",
+        "label": "Emerald Velvet",
+        "img": "textiles-emeraldvelvet.webp",
+        "color": "#1F5245"
+      },
+      {
+        "id": "woolcharcoal",
+        "label": "Charcoal Wool",
+        "img": "textiles-woolcharcoal.webp",
+        "color": "#3C3E42"
       }
     ],
     "siding": [
@@ -962,6 +1031,7 @@
       {
         "id": "brick",
         "label": "Brick",
+        "img": "brick.webp",
         "color": "repeating-linear-gradient(0deg,#9C6650 0 6px,#8a5847 6px 7px)",
         "lo": 12,
         "hi": 20,
@@ -970,6 +1040,7 @@
       {
         "id": "boardbatten",
         "label": "Board & Batten",
+        "img": "boardbatten.webp",
         "color": "repeating-linear-gradient(90deg,#EDEAE3 0 9px,#DcD8CF 9px 11px)",
         "lo": 9,
         "hi": 16,
@@ -1019,36 +1090,59 @@
         "lo": 6,
         "hi": 11,
         "install": "siding-lap"
+      },
+      {
+        "id": "metalsiding",
+        "label": "Vertical Metal",
+        "img": "siding-metal.webp",
+        "color": "#4A4D50",
+        "lo": 9,
+        "hi": 16,
+        "install": "siding-lap"
+      },
+      {
+        "id": "cedarsiding",
+        "label": "Natural Cedar",
+        "img": "siding-cedarshake.webp",
+        "color": "#9A6B45",
+        "lo": 8,
+        "hi": 15,
+        "install": "siding-lap"
       }
     ],
     "trim": [
       {
         "id": "crispwhite",
         "label": "Crisp White",
+        "img": "trim-crispwhite.webp",
         "color": "#F6F4EF",
         "install": "trim"
       },
       {
         "id": "warmwhite2",
         "label": "Warm White",
+        "img": "trim-warmwhite2.webp",
         "color": "#ECE6DA",
         "install": "trim"
       },
       {
         "id": "charcoaltrim",
         "label": "Charcoal",
+        "img": "trim-charcoal.webp",
         "color": "#3A3E40",
         "install": "trim"
       },
       {
         "id": "blacktrim",
         "label": "Black",
+        "img": "trim-black.webp",
         "color": "#1F2020",
         "install": "trim"
       },
       {
         "id": "greigetrim",
         "label": "Greige",
+        "img": "trim-greige.webp",
         "color": "#B9AF9F",
         "install": "trim"
       },
@@ -1071,18 +1165,21 @@
       {
         "id": "tealdoor",
         "label": "Deep Teal",
+        "img": "door-teal.webp",
         "color": "#2F6B5E",
         "install": "door"
       },
       {
         "id": "navydoor",
         "label": "Navy",
+        "img": "door-navy.webp",
         "color": "#2A3A4C",
         "install": "door"
       },
       {
         "id": "blackdoor",
         "label": "Black",
+        "img": "door-black.webp",
         "color": "#1F2020",
         "install": "door"
       },
@@ -1096,6 +1193,7 @@
       {
         "id": "sagedoor",
         "label": "Sage",
+        "img": "door-sage.webp",
         "color": "#7E8A6E",
         "install": "door"
       },
@@ -1168,6 +1266,15 @@
         "lo": 5,
         "hi": 10,
         "install": "roof-shingle"
+      },
+      {
+        "id": "standingseam",
+        "label": "Standing Seam Metal",
+        "img": "roof-standingseam.webp",
+        "color": "#3A3D40",
+        "lo": 9,
+        "hi": 18,
+        "install": "roof-metal"
       }
     ],
     "garage": [
@@ -1248,6 +1355,13 @@
         "label": "Paver Patio",
         "img": "pavers.webp",
         "color": "#B9A48A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "gravelbed",
+        "label": "Decomposed Granite",
+        "img": "landscape-gravel.webp",
+        "color": "#B8A98C",
         "install": "landscape-general"
       }
     ]
