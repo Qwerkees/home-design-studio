@@ -199,6 +199,10 @@ footer { max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 0; color: va
 .shop { display: inline-block; margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
 .shop:hover { text-decoration: underline; }
 
+/* Units toggle (imperial <-> metric) */
+.unit-btn { background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 12px; min-height: 36px; font-weight: 600; font-size: 13px; color: var(--text); cursor: pointer; margin-left: 8px; }
+.unit-btn:hover { border-color: var(--accent); }
+
 /* Style quiz (find your style) */
 .quiz { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 18px 18px 16px; margin: 0 0 18px; box-shadow: var(--shadow); }
 .quiz-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
