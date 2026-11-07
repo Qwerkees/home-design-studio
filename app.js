@@ -367,6 +367,65 @@ function applyPlanFromHash() {
   return true;
 }
 
+/* ---------- Style quiz ----------
+   A short "find your style" onboarding: each answer scores the existing styles,
+   top score wins (ties break by the catalog's style order), and we apply that
+   style's palette + finish defaults. Shown once per browser; a shared plan link
+   skips it. Pure client-side, no new data beyond data/finishes.json's `quiz`. */
+var QUIZ_KEY = "hds-quiz";
+function quizTaken() { try { return localStorage.getItem(QUIZ_KEY) === "done"; } catch (e) { return false; } }
+function markQuizTaken() { try { localStorage.setItem(QUIZ_KEY, "done"); } catch (e) {} }
+function quizWinner(answers) {
+  var qz = DATA.quiz.questions, sc = {}, order = DATA.styles.map(function (s) { return s.id; }), i, k;
+  for (i = 0; i < qz.length; i++) {
+    if (answers[i] == null) continue;
+    var sco = qz[i].options[answers[i]].scores;
+    for (k in sco) { if (sco.hasOwnProperty(k)) sc[k] = (sc[k] || 0) + sco[k]; }
+  }
+  var best = -1, win = null, j;
+  for (j = 0; j < order.length; j++) { var v = sc[order[j]] || 0; if (v > best) { best = v; win = order[j]; } }
+  return best > 0 ? win : null;
+}
+function renderQuiz() {
+  var qz = DATA.quiz; if (!qz || !qz.questions) return;
+  var host = $("quiz"); host.hidden = false;
+  var answers = [];
+  var h = '<div class="quiz-head"><h2>' + qz.title + '</h2><button type="button" class="quiz-skip" id="quizSkip">Skip</button></div>';
+  if (qz.intro) h += '<p class="quiz-intro">' + qz.intro + '</p>';
+  qz.questions.forEach(function (q, qi) {
+    h += '<div class="quiz-q"><div class="quiz-qt">' + (qi + 1) + '. ' + q.q + '</div><div class="quiz-opts">';
+    q.options.forEach(function (o, oi) {
+      h += '<button type="button" class="quiz-opt" data-q="' + qi + '" data-o="' + oi + '" aria-pressed="false">' + o.label + '</button>';
+    });
+    h += '</div></div>';
+  });
+  h += '<div class="quiz-foot"><button type="button" class="btn primary" id="quizGo" disabled>Show my style</button><span class="quiz-note" id="quizNote"></span></div>';
+  host.innerHTML = h;
+  host.querySelectorAll(".quiz-opt").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var qi = +btn.getAttribute("data-q"), oi = +btn.getAttribute("data-o");
+      host.querySelectorAll('.quiz-opt[data-q="' + qi + '"]').forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      btn.setAttribute("aria-pressed", "true"); answers[qi] = oi;
+      var n = 0, i; for (i = 0; i < qz.questions.length; i++) { if (answers[i] != null) n++; }
+      $("quizGo").disabled = n === 0;
+      $("quizNote").textContent = n < qz.questions.length ? (n + " of " + qz.questions.length + " answered") : "";
+    });
+  });
+  $("quizSkip").addEventListener("click", function () { markQuizTaken(); host.hidden = true; });
+  $("quizGo").addEventListener("click", function () {
+    var win = quizWinner(answers); markQuizTaken(); host.hidden = true;
+    if (win && STYLE_BY_ID[win]) {
+      state.style = win; applyStyleDefaults(); save(); renderAll();
+      announce("Your style: " + STYLE_BY_ID[win].name);
+    }
+  });
+}
+function maybeShowQuiz(skip) {
+  var host = $("quiz"); if (!host) return;
+  if (skip || quizTaken() || !DATA.quiz) { host.hidden = true; return; }
+  renderQuiz();
+}
+
 /* ---------- Theme ---------- */
 function initTheme() {
   var saved; try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
@@ -407,6 +466,7 @@ function boot(data) {
   var fromLink = applyPlanFromHash();
   ensurePicks(); initI18n(); initTheme(); renderAll();
   if (fromLink) { save(); announce("Opened a shared plan"); }
+  maybeShowQuiz(fromLink); // first-time "find your style"; a shared plan skips it
   $("area").addEventListener("input", function () {
     state.area = +this.value;
     // renderBoard keeps the live board, summary, cost AND the material quantities in sync.
