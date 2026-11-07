@@ -9,8 +9,21 @@ var CHEVRON_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" s
 
 var DATA = null;          /* loaded catalog */
 var STYLE_BY_ID = {};     /* id -> style object */
-var state = { space: "kitchen", style: "transitional", area: 200, picks: {} };
+var state = { space: "kitchen", style: "transitional", area: 200, picks: {}, units: "imperial" };
 var LS_KEY = "home-design-studio-v1";
+
+/* ---------- Units (imperial <-> metric) ----------
+   Area is always stored internally in square feet (canonical); units only
+   change what's displayed and the quantity wording. No backend, no catalog
+   change — just localized numbers. */
+function isMetric() { return state.units === "metric"; }
+function toM2(sqft) { return Math.round(sqft * 0.092903); }
+function toM(ft) { return Math.round(ft * 0.3048 * 10) / 10; }
+function toL(gal) { return Math.round(gal * 3.785); }
+function formatArea(sqft) {
+  return isMetric() ? toM2(sqft).toLocaleString("en-US") + " m²"
+                    : sqft.toLocaleString("en-US") + " sq ft";
+}
 
 var $ = function (id) { return document.getElementById(id); };
 
@@ -151,23 +164,25 @@ function money(n) { return "$" + n.toLocaleString("en-US"); }
    per-unit items (counters, cabinets, fixtures, doors, garage, landscaping,
    textiles) return "" and show no estimate. Planning numbers, not a takeoff. */
 function quantityFor(cat, o) {
-  var a = state.area, n;
+  var a = state.area, m = isMetric(), n, lf, gal;
   switch (cat) {
     case "flooring":
       n = Math.ceil(a * 1.10);
-      return "~" + Math.ceil(n / 20) + " boxes (" + n.toLocaleString("en-US") + " sq ft incl. 10% waste)";
+      return "~" + Math.ceil(n / 20) + " boxes (" + (m ? toM2(n) + " m²" : n.toLocaleString("en-US") + " sq ft") + " incl. 10% waste)";
     case "paint":
       // wall area ≈ perimeter of a square room × 8 ft ceiling, less ~15% openings
-      n = Math.max(1, Math.ceil((4 * Math.sqrt(a) * 8 * 0.85 * 2) / 350));
-      return "~" + n + " gal (walls, 2 coats)";
+      gal = Math.max(1, Math.ceil((4 * Math.sqrt(a) * 8 * 0.85 * 2) / 350));
+      return "~" + (m ? toL(gal) + " L" : gal + " gal") + " (walls, 2 coats)";
     case "trim":
-      return "~" + Math.round(4 * Math.sqrt(a)) + " linear ft";
+      lf = 4 * Math.sqrt(a);
+      return "~" + (m ? toM(lf) + " m" : Math.round(lf) + " linear ft");
     case "siding":
       n = Math.round(a * 1.2);
-      return "~" + Math.ceil(n / 100) + " squares (" + n.toLocaleString("en-US") + " sq ft)";
+      return m ? "~" + toM2(n) + " m² of cladding"
+               : "~" + Math.ceil(n / 100) + " squares (" + n.toLocaleString("en-US") + " sq ft)";
     case "roof":
       n = Math.round(a * 1.15);
-      return "~" + Math.ceil(n / 100) + " roofing squares";
+      return m ? "~" + toM2(n) + " m² of roofing" : "~" + Math.ceil(n / 100) + " roofing squares";
     default:
       return "";
   }
@@ -283,7 +298,8 @@ function renderBoard() {
   if (kind === "exterior") { area.min = 800; area.max = 5000; area.step = 50; $("areaLabel").textContent = t("homeSize"); }
   else { area.min = 40; area.max = 800; area.step = 10; $("areaLabel").textContent = t("roomSize"); }
   if (+area.value !== state.area) area.value = state.area;
-  $("areaVal").textContent = state.area.toLocaleString("en-US") + " sq ft";
+  $("areaVal").textContent = formatArea(state.area);
+  if ($("unitBtn")) $("unitBtn").innerHTML = isMetric() ? "sq ft" : "m²";
 
   var cost = computeCost();
   $("costAmt").textContent = money(cost.lo) + " – " + money(cost.hi);
@@ -297,7 +313,7 @@ function renderSummary(cost) {
   var p = STYLE_BY_ID[state.style], sp = spaceById(state.space), L = [];
   L.push("HOME DESIGN STUDIO — DECISION SUMMARY");
   L.push("Space: " + sp.label + "   Style: " + p.name);
-  L.push("Size: " + state.area.toLocaleString("en-US") + " sq ft");
+  L.push("Size: " + formatArea(state.area));
   L.push("");
   L.push("Palette: " + p.colors.map(function (c) { return c[0] + " (" + c[1] + ")"; }).join(", "));
   L.push("");
@@ -338,6 +354,7 @@ function load() {
       state.space = s.space; state.style = s.style;
       state.area = (typeof s.area === "number") ? s.area : defaultAreaFor(spaceById(s.space).kind);
       state.picks = (s.picks && typeof s.picks === "object") ? s.picks : {};
+      state.units = (s.units === "metric") ? "metric" : "imperial";
     }
   } catch (e) {}
 }
@@ -480,6 +497,10 @@ function boot(data) {
     else { window.prompt("Copy this plan link", url); }
   });
   $("resetBtn").addEventListener("click", function () { applyStyleDefaults(); save(); renderCats(); renderBoard(); announce("Finishes reset to the " + STYLE_BY_ID[state.style].name + " style"); });
+  if ($("unitBtn")) $("unitBtn").addEventListener("click", function () {
+    state.units = isMetric() ? "imperial" : "metric"; save(); renderBoard();
+    announce(isMetric() ? "Metric units" : "Imperial units");
+  });
 }
 
 fetch("data/finishes.json")
