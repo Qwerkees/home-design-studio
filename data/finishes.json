@@ -512,6 +512,15 @@
         "lo": 5,
         "hi": 9,
         "install": "floor-engineered"
+      },
+      {
+        "id": "herringbone-oak",
+        "label": "Herringbone Oak",
+        "img": "flooring-herringbone-oak.webp",
+        "color": "#BFA37C",
+        "lo": 3,
+        "hi": 6,
+        "install": "floor-lvp"
       }
     ],
     "paint": [
@@ -736,6 +745,13 @@
         "img": "counter-carrara-marble.webp",
         "color": "#EDEDE8",
         "install": "counter-stone"
+      },
+      {
+        "id": "tajmahal",
+        "label": "Taj Mahal Quartzite",
+        "img": "counter-tajmahal.webp",
+        "color": "#E8E0D2",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -787,6 +803,13 @@
         "label": "Champagne Bronze",
         "img": "champagnebronze.webp",
         "color": "#C9A77C",
+        "install": "faucet"
+      },
+      {
+        "id": "moen-stainless",
+        "label": "Spot Resist Stainless",
+        "img": "moen-stainless.webp",
+        "color": "#B8BBBE",
         "install": "faucet"
       }
     ],
@@ -955,6 +978,13 @@
         "label": "Sage",
         "color": "#7E8A6E",
         "install": "door"
+      },
+      {
+        "id": "reddoor",
+        "label": "Classic Red",
+        "img": "reddoor.webp",
+        "color": "#8C2B22",
+        "install": "door"
       }
     ],
     "roof": [
@@ -1032,6 +1062,13 @@
         "color": "#9C6B3F",
         "img": "woodlook.webp",
         "install": "garage-door"
+      },
+      {
+        "id": "modernblack",
+        "label": "Modern Steel Black",
+        "img": "modernblack.webp",
+        "color": "#2B2C2E",
+        "install": "garage-door"
       }
     ],
     "landscaping": [
@@ -1061,6 +1098,13 @@
         "label": "Modern Minimal",
         "color": "#BFC4BD",
         "img": "minimal.webp",
+        "install": "landscape-general"
+      },
+      {
+        "id": "pavers",
+        "label": "Paver Patio",
+        "img": "pavers.webp",
+        "color": "#B9A48A",
         "install": "landscape-general"
       }
     ]
