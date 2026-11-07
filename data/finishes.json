@@ -699,8 +699,7 @@
         "label": "Board & Batten",
         "color": "repeating-linear-gradient(90deg,#EDEAE3 0 9px,#DcD8CF 9px 11px)",
         "lo": 9,
-        "hi": 16,
-        "img": "boardbatten.png"
+        "hi": 16
       },
       {
         "id": "stone",
@@ -715,32 +714,27 @@
       {
         "id": "crispwhite",
         "label": "Crisp White",
-        "color": "#F6F4EF",
-        "img": "crispwhite.png"
+        "color": "#F6F4EF"
       },
       {
         "id": "warmwhite2",
         "label": "Warm White",
-        "color": "#ECE6DA",
-        "img": "warmwhite2.png"
+        "color": "#ECE6DA"
       },
       {
         "id": "charcoaltrim",
         "label": "Charcoal",
-        "color": "#3A3E40",
-        "img": "charcoaltrim.png"
+        "color": "#3A3E40"
       },
       {
         "id": "blacktrim",
         "label": "Black",
-        "color": "#1F2020",
-        "img": "blacktrim.png"
+        "color": "#1F2020"
       },
       {
         "id": "greigetrim",
         "label": "Greige",
-        "color": "#B9AF9F",
-        "img": "greigetrim.png"
+        "color": "#B9AF9F"
       }
     ],
     "door": [
@@ -753,20 +747,17 @@
       {
         "id": "tealdoor",
         "label": "Deep Teal",
-        "color": "#2F6B5E",
-        "img": "tealdoor.png"
+        "color": "#2F6B5E"
       },
       {
         "id": "navydoor",
         "label": "Navy",
-        "color": "#2A3A4C",
-        "img": "navydoor.png"
+        "color": "#2A3A4C"
       },
       {
         "id": "blackdoor",
         "label": "Black",
-        "color": "#1F2020",
-        "img": "blackdoor.png"
+        "color": "#1F2020"
       },
       {
         "id": "claydoor",
@@ -777,8 +768,7 @@
       {
         "id": "sagedoor",
         "label": "Sage",
-        "color": "#7E8A6E",
-        "img": "sagedoor.png"
+        "color": "#7E8A6E"
       }
     ],
     "roof": [
