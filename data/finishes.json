@@ -629,6 +629,42 @@
         "lo": 8,
         "hi": 16,
         "install": "floor-hardwood"
+      },
+      {
+        "id": "darkbamboo",
+        "label": "Dark Bamboo",
+        "img": "flooring-darkbamboo.webp",
+        "color": "#6B4A30",
+        "lo": 4,
+        "hi": 9,
+        "install": "floor-engineered"
+      },
+      {
+        "id": "encaustic",
+        "label": "Encaustic Pattern Tile",
+        "img": "flooring-encaustic.webp",
+        "color": "#B0A89A",
+        "lo": 10,
+        "hi": 22,
+        "install": "floor-tile"
+      },
+      {
+        "id": "whitewashoak",
+        "label": "Whitewashed Oak",
+        "img": "flooring-whitewashoak.webp",
+        "color": "#D8C9B4",
+        "lo": 6,
+        "hi": 12,
+        "install": "floor-hardwood"
+      },
+      {
+        "id": "greytile",
+        "label": "Large Grey Tile",
+        "img": "flooring-greytile.webp",
+        "color": "#B7B5B0",
+        "lo": 7,
+        "hi": 14,
+        "install": "floor-tile"
       }
     ],
     "paint": [
@@ -830,6 +866,42 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "halenavy",
+        "label": "Hale Navy",
+        "img": "paint-halenavy.webp",
+        "color": "#39434E",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "reposegray",
+        "label": "Repose Gray",
+        "img": "paint-reposegray.webp",
+        "color": "#C9C3B8",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "coralblush",
+        "label": "Coral",
+        "img": "paint-coralblush.webp",
+        "color": "#D98E78",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
+      },
+      {
+        "id": "olivegreen",
+        "label": "Olive",
+        "img": "paint-olivegreen.webp",
+        "color": "#6B6A3E",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -965,6 +1037,27 @@
         "label": "Cherry Wood",
         "img": "cabinetry-cherrywood.webp",
         "color": "#7A3B2E",
+        "install": "cabinets"
+      },
+      {
+        "id": "barnred",
+        "label": "Barn Red",
+        "img": "cabinetry-barnred.webp",
+        "color": "#7A2E2A",
+        "install": "cabinets"
+      },
+      {
+        "id": "highglosswhite",
+        "label": "High-Gloss White",
+        "img": "cabinetry-highglosswhite.webp",
+        "color": "#F2F0EB",
+        "install": "cabinets"
+      },
+      {
+        "id": "twotoneblue",
+        "label": "Navy & Oak",
+        "img": "cabinetry-twotoneblue.webp",
+        "color": "#3A4A5E",
         "install": "cabinets"
       }
     ],
@@ -1124,6 +1217,27 @@
         "img": "counter-veinedquartz.webp",
         "color": "#ECEAE6",
         "install": "counter-stone"
+      },
+      {
+        "id": "recycledglass",
+        "label": "Recycled Glass",
+        "img": "counter-recycledglass.webp",
+        "color": "#BCCBC2",
+        "install": "counter-stone"
+      },
+      {
+        "id": "zinc",
+        "label": "Zinc Metal",
+        "img": "counter-zinc.webp",
+        "color": "#8A8C8E",
+        "install": "counter-stone"
+      },
+      {
+        "id": "porcelainmarble",
+        "label": "Porcelain Marble",
+        "img": "counter-porcelainmarble.webp",
+        "color": "#ECEAE6",
+        "install": "counter-stone"
       }
     ],
     "fixtures": [
@@ -1239,6 +1353,27 @@
         "img": "fixtures-brushednickel.webp",
         "color": "#B7B8B5",
         "install": "faucet"
+      },
+      {
+        "id": "antiquebrass",
+        "label": "Antique Brass",
+        "img": "fixtures-antiquebrass.webp",
+        "color": "#9C7B45",
+        "install": "faucet"
+      },
+      {
+        "id": "mattewhite",
+        "label": "Matte White",
+        "img": "fixtures-mattewhite.webp",
+        "color": "#ECE9E3",
+        "install": "faucet"
+      },
+      {
+        "id": "graphite",
+        "label": "Graphite",
+        "img": "fixtures-graphite.webp",
+        "color": "#4A4C4E",
+        "install": "faucet"
       }
     ],
     "textiles": [
@@ -1325,6 +1460,24 @@
         "label": "Rust Velvet",
         "img": "textiles-rustvelvet.webp",
         "color": "#9E4F32"
+      },
+      {
+        "id": "tweedgrey",
+        "label": "Grey Tweed",
+        "img": "textiles-tweedgrey.webp",
+        "color": "#8E8B82"
+      },
+      {
+        "id": "chenille",
+        "label": "Cream Chenille",
+        "img": "textiles-chenille.webp",
+        "color": "#DCD3C2"
+      },
+      {
+        "id": "mohairteal",
+        "label": "Teal Mohair",
+        "img": "textiles-mohairteal.webp",
+        "color": "#2E6B66"
       }
     ],
     "siding": [
@@ -1480,6 +1633,33 @@
         "lo": 7,
         "hi": 12,
         "install": "siding-lap"
+      },
+      {
+        "id": "corrugatedmetal",
+        "label": "Corrugated Metal",
+        "img": "siding-corrugatedmetal.webp",
+        "color": "#9A9DA0",
+        "lo": 8,
+        "hi": 15,
+        "install": "siding-lap"
+      },
+      {
+        "id": "greystucco",
+        "label": "Grey Stucco",
+        "img": "siding-greystucco.webp",
+        "color": "#B7B2A8",
+        "lo": 7,
+        "hi": 12,
+        "install": "siding-stucco"
+      },
+      {
+        "id": "reclaimedwood",
+        "label": "Reclaimed Wood",
+        "img": "siding-reclaimedwood.webp",
+        "color": "#7A6450",
+        "lo": 9,
+        "hi": 18,
+        "install": "siding-lap"
       }
     ],
     "trim": [
@@ -1565,6 +1745,27 @@
         "label": "Bronze Trim",
         "img": "trim-bronzetrim.webp",
         "color": "#6B5436",
+        "install": "trim"
+      },
+      {
+        "id": "creamtrim",
+        "label": "Cream Trim",
+        "img": "trim-creamtrim.webp",
+        "color": "#ECE4D4",
+        "install": "trim"
+      },
+      {
+        "id": "slatetrim",
+        "label": "Slate Trim",
+        "img": "trim-slatetrim.webp",
+        "color": "#4E565C",
+        "install": "trim"
+      },
+      {
+        "id": "walnuttrim",
+        "label": "Oiled Walnut Trim",
+        "img": "trim-walnuttrim.webp",
+        "color": "#5A3E2B",
         "install": "trim"
       }
     ],
@@ -1679,6 +1880,34 @@
         "label": "Wood & Glass",
         "img": "door-woodglassdoor.webp",
         "color": "#9A6B3F",
+        "install": "door"
+      },
+      {
+        "id": "greydoor",
+        "label": "Dovetail Grey",
+        "img": "door-greydoor.webp",
+        "color": "#8E8C86",
+        "install": "door"
+      },
+      {
+        "id": "charcoaldoor",
+        "label": "Charcoal",
+        "img": "door-charcoaldoor.webp",
+        "color": "#3A3E40",
+        "install": "door"
+      },
+      {
+        "id": "creamdoor",
+        "label": "Cream",
+        "img": "door-creamdoor.webp",
+        "color": "#ECE4D4",
+        "install": "door"
+      },
+      {
+        "id": "mintdoor",
+        "label": "Soft Mint",
+        "img": "door-mintdoor.webp",
+        "color": "#AEC7B4",
         "install": "door"
       }
     ],
@@ -1799,6 +2028,33 @@
         "lo": 8,
         "hi": 16,
         "install": "roof-shingle"
+      },
+      {
+        "id": "greyslate",
+        "label": "Grey Slate",
+        "img": "roof-greyslate.webp",
+        "color": "#6E7377",
+        "lo": 12,
+        "hi": 30,
+        "install": "roof-tile"
+      },
+      {
+        "id": "solarshingle",
+        "label": "Solar Shingle",
+        "img": "roof-solarshingle.webp",
+        "color": "#2A2C30",
+        "lo": 10,
+        "hi": 25,
+        "install": "roof-shingle"
+      },
+      {
+        "id": "terracottaflat",
+        "label": "Flat Terracotta Tile",
+        "img": "roof-terracottaflat.webp",
+        "color": "#B5693F",
+        "lo": 8,
+        "hi": 18,
+        "install": "roof-tile"
       }
     ],
     "garage": [
@@ -1885,6 +2141,27 @@
         "img": "garage-coastalbluegarage.webp",
         "color": "#3E6B82",
         "install": "garage-door"
+      },
+      {
+        "id": "whiteraised",
+        "label": "White Raised Panel",
+        "img": "garage-whiteraised.webp",
+        "color": "#ECE9E1",
+        "install": "garage-door"
+      },
+      {
+        "id": "blackcarriage",
+        "label": "Black Carriage",
+        "img": "garage-blackcarriage.webp",
+        "color": "#2A2A2A",
+        "install": "garage-door"
+      },
+      {
+        "id": "woodslat",
+        "label": "Wood Slat Modern",
+        "img": "garage-woodslat.webp",
+        "color": "#9A6B45",
+        "install": "garage-door"
       }
     ],
     "landscaping": [
@@ -1970,6 +2247,34 @@
         "label": "Stepping Stones",
         "img": "landscaping-steppingstone.webp",
         "color": "#AEA69A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "rockgarden",
+        "label": "Rock Garden",
+        "img": "landscaping-rockgarden.webp",
+        "color": "#9A948A",
+        "install": "landscape-general"
+      },
+      {
+        "id": "raisedbeds",
+        "label": "Raised Garden Beds",
+        "img": "landscaping-raisedbeds.webp",
+        "color": "#7A6450",
+        "install": "landscape-general"
+      },
+      {
+        "id": "lawnstripe",
+        "label": "Striped Lawn",
+        "img": "landscaping-lawnstripe.webp",
+        "color": "#5E7A3E",
+        "install": "landscape-general"
+      },
+      {
+        "id": "desertagave",
+        "label": "Agave & Gravel",
+        "img": "landscaping-desertagave.webp",
+        "color": "#A7A58C",
         "install": "landscape-general"
       }
     ]
