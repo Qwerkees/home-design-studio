@@ -521,6 +521,15 @@
         "lo": 3,
         "hi": 6,
         "install": "floor-lvp"
+      },
+      {
+        "id": "bruce-hickory",
+        "label": "Hickory Natural",
+        "img": "flooring-bruce-hickory.webp",
+        "color": "#C08E5A",
+        "lo": 6,
+        "hi": 11,
+        "install": "floor-hardwood"
       }
     ],
     "paint": [
@@ -605,6 +614,15 @@
         "lo": 1.5,
         "hi": 3,
         "install": "paint"
+      },
+      {
+        "id": "naval",
+        "label": "Naval Navy",
+        "img": "paint-naval.webp",
+        "color": "#2E3B4E",
+        "lo": 1.5,
+        "hi": 3,
+        "install": "paint"
       }
     ],
     "cabinetry": [
@@ -670,6 +688,13 @@
         "label": "Shaker Java",
         "img": "cabinetry-shakerjava.webp",
         "color": "#4A3626",
+        "install": "cabinets"
+      },
+      {
+        "id": "sagecab",
+        "label": "Sage Green",
+        "img": "cabinetry-sagecab.webp",
+        "color": "#7E8A6E",
         "install": "cabinets"
       }
     ],
@@ -752,6 +777,13 @@
         "img": "counter-tajmahal.webp",
         "color": "#E8E0D2",
         "install": "counter-stone"
+      },
+      {
+        "id": "boos-walnut",
+        "label": "Walnut Butcher Block",
+        "img": "counter-boos-walnut.webp",
+        "color": "#5A3C28",
+        "install": "counter-butcherblock"
       }
     ],
     "fixtures": [
@@ -843,6 +875,12 @@
         "label": "Woven Jute",
         "color": "repeating-linear-gradient(45deg,#CDBD9C 0 4px,#C2B08A 4px 8px)",
         "img": "jute.webp"
+      },
+      {
+        "id": "sunbrella-fog",
+        "label": "Sunbrella Fog",
+        "img": "sunbrella-fog.webp",
+        "color": "#CFC9BE"
       }
     ],
     "siding": [
@@ -906,6 +944,15 @@
         "lo": 7,
         "hi": 12,
         "install": "siding-lap"
+      },
+      {
+        "id": "stone-cliffstone",
+        "label": "Cliffstone Veneer",
+        "img": "stone-cliffstone.webp",
+        "color": "#8C8277",
+        "lo": 12,
+        "hi": 25,
+        "install": "siding-masonry"
       }
     ],
     "trim": [
