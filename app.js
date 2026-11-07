@@ -27,6 +27,77 @@ function formatArea(sqft) {
 
 var $ = function (id) { return document.getElementById(id); };
 
+/* ---------- i18n scaffold ----------
+   App-chrome strings only (headings, buttons, labels, notes). Static text is
+   tagged with data-i="<key>" in index.html and filled by applyStaticText();
+   dynamic labels set in JS call t(). Add a language by adding a block to STR.
+   Product content (style names, finish labels) stays as authored for now. */
+var STR = {
+  en: {
+    tagline: "decide the look before you spend",
+    chooseSpace: "Choose a space",
+    pickStyle: "1 · Pick a style",
+    pickStyleNote: "Sets a starting palette and finishes. Tweak anything after.",
+    chooseFinishes: "2 · Choose your finishes",
+    finishNote: "Each swatch is a real finish option with a cost range built in.",
+    yourPlan: "Your plan",
+    ballpark: "Ballpark budget",
+    roomSize: "Room size",
+    homeSize: "Home size",
+    copySummary: "Copy decision summary",
+    copyPlan: "Copy plan link",
+    reset: "Reset to style",
+    summaryLabel: "Decision summary & shopping list",
+    costInterior: "Flooring and paint scale with room size; cabinetry, counters, fixtures scale by scope.",
+    costExterior: "Assumes siding ≈ 1.2× and roof ≈ 1.15× home size. Ballpark only.",
+    shareH: "Share this studio",
+    shareNote: "Scan to open LUKE’S Design Studio on a phone — or copy the link.",
+    copyLink: "Copy link",
+    copied: "Copied!",
+    footer: "Ballpark figures are rough planning ranges for Arizona, 2026 (materials + typical install), not a quote. Get a local contractor bid before you commit. Your choices save in this browser only."
+  },
+  es: {
+    tagline: "decide el estilo antes de gastar",
+    chooseSpace: "Elige un espacio",
+    pickStyle: "1 · Elige un estilo",
+    pickStyleNote: "Define una paleta y acabados de inicio. Ajusta lo que quieras después.",
+    chooseFinishes: "2 · Elige tus acabados",
+    finishNote: "Cada muestra es una opción real de acabado con su rango de costo.",
+    yourPlan: "Tu plan",
+    ballpark: "Presupuesto aproximado",
+    roomSize: "Tamaño del cuarto",
+    homeSize: "Tamaño de la casa",
+    copySummary: "Copiar resumen",
+    copyPlan: "Copiar enlace del plan",
+    reset: "Restablecer al estilo",
+    summaryLabel: "Resumen de decisión y lista de compra",
+    costInterior: "El piso y la pintura escalan con el tamaño del cuarto; gabinetes, cubiertas y gritería escalan por alcance.",
+    costExterior: "Asume revestimiento ≈ 1.2× y techo ≈ 1.15× del tamaño de la casa. Aproximado.",
+    shareH: "Comparte este estudio",
+    shareNote: "Escanea para abrir LUKE’S Design Studio en el teléfono — o copia el enlace.",
+    copyLink: "Copiar enlace",
+    copied: "¡Copiado!",
+    footer: "Las cifras son rangos de planeación aproximados para Arizona, 2026 (materiales + instalación típica), no una cotización. Pide una oferta local antes de comprometerte. Tus elecciones se guardan solo en este navegador."
+  }
+};
+var LANG = "en";
+function getLang() { try { return localStorage.getItem("hds-lang") === "es" ? "es" : "en"; } catch (e) { return "en"; } }
+function setLang(l) { LANG = (l === "es") ? "es" : "en"; try { localStorage.setItem("hds-lang", LANG); } catch (e) {} }
+function t(k) { return (STR[LANG] && STR[LANG][k]) || STR.en[k] || k; }
+function applyStaticText() {
+  var nodes = document.querySelectorAll("[data-i]"), i;
+  for (i = 0; i < nodes.length; i++) { nodes[i].textContent = t(nodes[i].getAttribute("data-i")); }
+  document.documentElement.setAttribute("lang", LANG);
+  var lb = $("langBtn"); if (lb) lb.textContent = LANG === "es" ? "EN" : "ES";
+}
+function initI18n() {
+  LANG = getLang(); applyStaticText();
+  var lb = $("langBtn");
+  if (lb) lb.addEventListener("click", function () {
+    setLang(LANG === "es" ? "en" : "es"); applyStaticText(); renderAll();
+  });
+}
+
 /* ---------- Lookups ---------- */
 function spaceById(id) { var a = DATA.spaces, i; for (i = 0; i < a.length; i++) { if (a[i].id === id) return a[i]; } return a[0]; }
 function catMeta(c) { return DATA.categories[c]; }
@@ -178,7 +249,7 @@ function renderStyles() {
 function renderCats() {
   var host = $("catList"); host.innerHTML = "";
   var cats = spaceById(state.space).cats;
-  $("finishNote").textContent = "Each swatch is a real finish option with a cost range built in.";
+  $("finishNote").textContent = t("finishNote");
   cats.forEach(function (c) {
     var wrap = document.createElement("div"); wrap.className = "cat";
     var cur = optById(c, state.picks[c]);
@@ -224,8 +295,8 @@ function renderBoard() {
   });
 
   var kind = sp.kind, area = $("area");
-  if (kind === "exterior") { area.min = 800; area.max = 5000; area.step = 50; $("areaLabel").textContent = "Home size"; }
-  else { area.min = 40; area.max = 800; area.step = 10; $("areaLabel").textContent = "Room size"; }
+  if (kind === "exterior") { area.min = 800; area.max = 5000; area.step = 50; $("areaLabel").textContent = t("homeSize"); }
+  else { area.min = 40; area.max = 800; area.step = 10; $("areaLabel").textContent = t("roomSize"); }
   if (+area.value !== state.area) area.value = state.area;
   $("areaVal").textContent = formatArea(state.area);
   if ($("unitBtn")) $("unitBtn").innerHTML = isMetric() ? "sq ft" : "m²";
@@ -233,8 +304,8 @@ function renderBoard() {
   var cost = computeCost();
   $("costAmt").textContent = money(cost.lo) + " – " + money(cost.hi);
   $("costNote").textContent = kind === "exterior"
-    ? "Assumes siding ≈ 1.2× and roof ≈ 1.15× home size. Ballpark only."
-    : "Flooring and paint scale with room size; cabinetry, counters, fixtures scale by scope.";
+    ? t("costExterior")
+    : t("costInterior");
   renderSummary(cost);
 }
 
@@ -389,7 +460,7 @@ function initTheme() {
 function announce(msg) { $("liveRegion").textContent = msg; }
 function copySummary() {
   var txt = $("summaryText").textContent, btn = $("copyBtn");
-  function ok() { btn.textContent = "Copied"; btn.classList.add("ok"); setTimeout(function () { btn.textContent = "Copy decision summary"; btn.classList.remove("ok"); }, 1800); }
+  function ok() { btn.textContent = t("copied"); btn.classList.add("ok"); setTimeout(function () { btn.textContent = t("copySummary"); btn.classList.remove("ok"); }, 1800); }
   function fallback() {
     try {
       $("summaryWrap").open = true; var r = document.createRange(); r.selectNodeContents($("summaryText"));
@@ -410,7 +481,7 @@ function boot(data) {
   load();
   // A shared plan link (#p=...) wins over whatever was saved in this browser.
   var fromLink = applyPlanFromHash();
-  ensurePicks(); initTheme(); renderAll();
+  ensurePicks(); initI18n(); initTheme(); renderAll();
   if (fromLink) { save(); announce("Opened a shared plan"); }
   maybeShowQuiz(fromLink); // first-time "find your style"; a shared plan skips it
   $("area").addEventListener("input", function () {
@@ -421,7 +492,7 @@ function boot(data) {
   $("copyBtn").addEventListener("click", copySummary);
   $("planLinkBtn").addEventListener("click", function () {
     var url = planLink(), btn = $("planLinkBtn");
-    function ok() { btn.textContent = "Plan link copied"; setTimeout(function () { btn.textContent = "Copy plan link"; }, 1800); }
+    function ok() { btn.textContent = t("copied"); setTimeout(function () { btn.textContent = t("copyPlan"); }, 1800); }
     if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(ok).catch(function () { window.prompt("Copy this plan link", url); }); }
     else { window.prompt("Copy this plan link", url); }
   });
@@ -446,7 +517,7 @@ fetch("data/finishes.json")
   if (!sb) return;
   sb.addEventListener("click", function () {
     var url = location.origin + "/";
-    function ok() { sb.textContent = "Copied!"; setTimeout(function () { sb.textContent = "Copy link"; }, 1500); }
+    function ok() { sb.textContent = t("copied"); setTimeout(function () { sb.textContent = t("copyLink"); }, 1500); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(url).then(ok).catch(function () { window.prompt("Copy this link", url); });
     } else { window.prompt("Copy this link", url); }

@@ -203,6 +203,9 @@ footer { max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 0; color: va
 .unit-btn { background: var(--surface-2); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 12px; min-height: 36px; font-weight: 600; font-size: 13px; color: var(--text); cursor: pointer; margin-left: 8px; }
 .unit-btn:hover { border-color: var(--accent); }
 
+/* Header actions (language + theme) */
+.head-actions { display: flex; gap: 8px; align-items: center; }
+
 /* Style quiz (find your style) */
 .quiz { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 18px 18px 16px; margin: 0 0 18px; box-shadow: var(--shadow); }
 .quiz-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
