@@ -478,6 +478,32 @@
         "color": "linear-gradient(135deg,#E2D4B6,#C9B58E)",
         "lo": 15,
         "hi": 30
+      },
+      {
+        "id": "lifeproof-lvp",
+        "label": "LifeProof Rigid Core LVP",
+        "img": "flooring-lifeproof-lvp.webp",
+        "color": "#C9A879",
+        "lo": 3,
+        "hi": 8,
+        "product": "LifeProof Rigid Core Luxury Vinyl Plank",
+        "source": "The Home Depot",
+        "video": "https://www.homedepot.com/c/ah/how-to-install-vinyl-plank-flooring/9ba683603be9fa5395fab90188fe437f",
+        "tools": [
+          "Tape measure",
+          "Utility knife + straightedge (score & snap)",
+          "Jigsaw or miter saw (notches)",
+          "Tapping block & rubber mallet",
+          "Spacers",
+          "Vacuum",
+          "Knee pads, safety glasses, gloves"
+        ],
+        "parts": [
+          "LVP planks (+10% overage)",
+          "Underlayment (if not pre-attached)",
+          "Quarter-round / transition trim",
+          "100% silicone caulk (wet areas)"
+        ]
       }
     ],
     "paint": [
@@ -528,6 +554,32 @@
         "lo": 1.5,
         "hi": 3,
         "img": "paleblue.webp"
+      },
+      {
+        "id": "greige-marquee",
+        "label": "Warm Greige",
+        "img": "paint-greige-marquee.webp",
+        "color": "#B8AE9E",
+        "lo": 1.5,
+        "hi": 3,
+        "product": "Behr Marquee Interior Paint & Primer",
+        "source": "The Home Depot",
+        "video": "https://www.homedepot.com/c/ah/how-to-paint-a-room/9ba683603be9fa5395fab90e9ab8187",
+        "tools": [
+          "Roller frame + synthetic covers",
+          "Angled sash brush",
+          "Paint tray",
+          "Painter's tape",
+          "Drop cloths",
+          "Sanding block (220-grit)",
+          "Respirator mask"
+        ],
+        "parts": [
+          "Interior paint (satin/eggshell; ~1 gal per 400 sq ft)",
+          "Primer (bare or patched walls)",
+          "Spackle",
+          "Caulk"
+        ]
       }
     ],
     "cabinetry": [
@@ -566,6 +618,33 @@
         "label": "Two-Tone",
         "img": "cabinetry-twotone.webp",
         "color": "linear-gradient(90deg,#EDEAE3 50%,#C2996A 50%)"
+      },
+      {
+        "id": "shaker-diamond",
+        "label": "Diamond NOW Shaker",
+        "img": "cabinetry-shaker-diamond.webp",
+        "color": "#E7E3DA",
+        "product": "Diamond NOW Shaker Kitchen Cabinets",
+        "source": "Lowe's",
+        "video": "https://www.lowes.com/n/video/kitchens-bath/kitchen-cabinet-installation-step-by-step-video-guide-lowes/81003911",
+        "tools": [
+          "Drill/driver + bits",
+          "Stud finder",
+          "Level",
+          "Clamps",
+          "Hole saw (plumbing)",
+          "Tape measure",
+          "Hammer & nail set"
+        ],
+        "parts": [
+          "Cabinets",
+          "Cabinet/mounting screws",
+          "Shims",
+          "Fill strips",
+          "Toe kicks",
+          "Finish nails",
+          "Ledger board"
+        ]
       }
     ],
     "counter": [
@@ -604,6 +683,57 @@
         "label": "Concrete",
         "color": "#AEAAA3",
         "img": "concretetop.webp"
+      },
+      {
+        "id": "butcherblock-oak",
+        "label": "Oak Butcher Block",
+        "img": "counter-butcherblock.webp",
+        "color": "#C79A5B",
+        "product": "Hardwood Reflections Butcher Block Countertop",
+        "source": "The Home Depot",
+        "video": "https://www.homedepot.com/c/ah/how-to-install-butcher-block-countertops/9ba683603be9fa5395fab901f01afa17",
+        "tools": [
+          "Circular or track saw",
+          "Jigsaw (sink cutout)",
+          "Drill/driver",
+          "Clamps",
+          "Orbital sander",
+          "Tape measure, level"
+        ],
+        "parts": [
+          "Butcher block slab",
+          "Heavy-duty construction adhesive",
+          "#6 wood screws",
+          "Food-safe mineral oil or polyurethane",
+          "Sandpaper 120-220"
+        ]
+      },
+      {
+        "id": "subwaytile-white",
+        "label": "White Subway Tile",
+        "img": "counter-subwaytile.webp",
+        "color": "#EDEDEA",
+        "product": "Subway Tile Backsplash",
+        "source": "Lowe's",
+        "video": "https://www.lowes.com/n/video/millwork/how-to-install-subway-tile-backsplash/79813523",
+        "tools": [
+          "Tape measure & level",
+          "Notched trowel",
+          "Tile cutter or wet saw + nippers",
+          "Rubber grout float",
+          "Sponge & bucket",
+          "Caulk gun",
+          "Eye protection & gloves"
+        ],
+        "parts": [
+          "Subway tile",
+          "Thinset mortar or mastic",
+          "Tile spacers",
+          "Grout",
+          "Tile caulk",
+          "Grout sealer",
+          "Ledger board + screws"
+        ]
       }
     ],
     "fixtures": [
@@ -636,6 +766,29 @@
         "label": "Aged Bronze",
         "color": "#5E4B38",
         "img": "bronze.webp"
+      },
+      {
+        "id": "faucet-single",
+        "label": "Single-Handle Faucet",
+        "img": "fixtures-faucet-single.webp",
+        "color": "#9AA0A3",
+        "product": "Single-Handle Kitchen Faucet",
+        "source": "The Home Depot",
+        "video": "https://www.homedepot.com/c/ah/how-to-install-a-kitchen-faucet/9ba683603be9fa5395fab904f5b3ed0",
+        "tools": [
+          "Basin wrench",
+          "Adjustable wrench",
+          "Screwdriver set",
+          "Putty knife",
+          "Flashlight",
+          "Bucket & towels"
+        ],
+        "parts": [
+          "Kitchen faucet",
+          "Braided supply lines",
+          "Plumber's putty or silicone",
+          "Plumber's (Teflon) tape"
+        ]
       }
     ],
     "textiles": [
