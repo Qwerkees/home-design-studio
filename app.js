@@ -197,10 +197,10 @@ function spaceExists(id) { var i; for (i = 0; i < DATA.spaces.length; i++) { if 
 /* ---------- Theme ---------- */
 function initTheme() {
   var saved; try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
-  if (saved === "dark" || saved === "light") document.documentElement.setAttribute("data-theme", saved);
+  // Default to light; dark only when the user previously chose it.
+  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
   $("themeBtn").addEventListener("click", function () {
-    var cur = document.documentElement.getAttribute("data-theme");
-    var isDark = cur ? cur === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
     var next = isDark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("hds-theme", next); } catch (e) {}

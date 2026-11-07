@@ -9,15 +9,8 @@
   --maxw: 1180px;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #17150F; --surface: #201D16; --surface-2: #2A261D; --line: #39352B;
-    --text: #F1ECE2; --muted: #A69E8E; --accent: #5BA895; --accent-ink: #14120D;
-    --good: #6FB882; --warn: #D8A24E;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.45);
-    color-scheme: dark;
-  }
-}
+/* Light is the default. Dark applies only when the user taps the Theme button
+   (data-theme="dark"); the app no longer auto-follows the device's dark mode. */
 :root[data-theme="dark"] {
   --bg: #17150F; --surface: #201D16; --surface-2: #2A261D; --line: #39352B;
   --text: #F1ECE2; --muted: #A69E8E; --accent: #5BA895; --accent-ink: #14120D;
