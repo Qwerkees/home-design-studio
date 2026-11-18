@@ -64,8 +64,10 @@ function cleanMedia(input) {
     let u;
     try { u = new URL(m.url); } catch { continue; }
     if (u.protocol !== 'https:' || !BLOB_HOST_RE.test(u.hostname)) continue;
-    const pathname = typeof m.pathname === 'string' ? m.pathname : decodeURIComponent(u.pathname.replace(/^\//, ''));
-    if (!pathname || !pathname.startsWith('uploads/') || pathname.includes('..')) continue;
+    let urlPath, pathname;
+    try { urlPath = decodeURIComponent(u.pathname.replace(/^\\//, '')); } catch { continue; }
+    pathname = typeof m.pathname === 'string' ? m.pathname : urlPath;
+    if (u.search || u.hash || pathname !== urlPath || !pathname.startsWith('uploads/') || pathname.includes('..')) continue;
     const ct = typeof m.contentType === 'string' ? m.contentType.slice(0, 80) : '';
     out.push({ url: u.href, pathname, private: true, contentType: ct, name: sanitizeText(m.name, 160) });
   }
