@@ -10,10 +10,10 @@
 //   3. Media refs must live in our own Blob store.
 //   4. verifyBlobMedia: HEAD (size) + ranged GET (magic bytes) — rejects
 //      spoofed/oversize/non-media files.
-//   5. scanMedia: VirusTotal scan when VIRUSTOTAL_API_KEY is set (malicious ->
-//      reject); otherwise flagged for manual review.
-//   6. detectAIGen: Sightengine genai when configured (records a score/flag).
-//   7. Store (optionally AES-256-GCM encrypted) + notify owner.
+//   5. Private media is NOT sent to URL-based third-party scanners; it is queued
+//      for manual review until a privacy-preserving scanner workflow is added.
+//   6. Store in private Blob storage (optional AES-256-GCM defense-in-depth).
+//   7. Notify owner with RFQ ID/space/file count only — never customer PII.
 
 const crypto = require('node:crypto');
 const L = require('./_lib.js');
