@@ -256,3 +256,11 @@ button:disabled, input:disabled, [role="button"][aria-disabled="true"] {
   color: #6C6558 !important;
   opacity: .65;
 }
+
+/* Step 2: one compact category dropdown keeps the finish chooser uncluttered. */
+.finish-category-picker { display:flex; flex-direction:column; gap:7px; margin:4px 0 14px; color:var(--muted); font-size:13px; font-weight:700; }
+.finish-category-picker select { width:100%; min-height:50px; padding:10px 42px 10px 14px; border:1.5px solid var(--line); border-radius:11px; background:var(--surface-2); color:var(--text); font:inherit; font-size:15px; cursor:pointer; }
+.finish-category-picker select:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.cat-current { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; border-bottom:1px solid var(--line); }
+.cat-current .cat-title { font-weight:700; color:var(--text); }
+.cat-current .pick { color:var(--muted); font-size:12px; text-align:right; }
