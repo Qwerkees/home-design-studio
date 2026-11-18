@@ -5,6 +5,7 @@ const A = require('../_admin.js');
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') { res.setHeader('Allow', 'GET'); return res.status(405).json({ error: 'Method not allowed' }); }
   if (!A.isAdmin(req, process.env)) return res.status(401).json({ error: 'Owner login required.' });
+  res.setHeader('Vary', 'Cookie');
   const pathname = String((req.query && req.query.pathname) || '');
   if (!pathname.startsWith('uploads/') || pathname.includes('..') || pathname.indexOf(String.fromCharCode(92)) !== -1) {
     return res.status(400).json({ error: 'Invalid media path.' });
