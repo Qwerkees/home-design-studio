@@ -9,8 +9,14 @@ function headers() { ipN += 1; return { host: 'studio.test', origin: 'https://st
 function goodBody(extra) {
   return Object.assign({ declaredReal: true, contact: 'me@example.com', space: 'Kitchen', media: [{ url: BLOB('a.jpg'), contentType: 'image/jpeg', name: 'a.jpg' }] }, extra || {});
 }
-function env(extra) { return Object.assign({ BLOB_READ_WRITE_TOKEN: 'tok' }, extra || {}); }
+function env(extra) { return Object.assign({ BLOB_READ_WRITE_TOKEN: 'tok', RFQ_INTAKE_ENABLED: 'true' }, extra || {}); }
 function blobObjects() { return { [BLOB('a.jpg')]: { size: 2048, storeType: 'image/jpeg', magic: MAGIC.jpeg } }; }
+
+test('fails closed while the RFQ intake feature flag is off', async () => {
+  const out = await processRfq({ body: goodBody(), headers: headers(), env: {}, fetchFn: makeFetch(blobObjects()), blobPut: async () => {} });
+  assert.equal(out.status, 503);
+  assert.match(out.json.error, /temporarily paused/i);
+});
 
 test('rejects a cross-site origin (403)', async () => {
   const out = await processRfq({ body: goodBody(), headers: { host: 'studio.test', origin: 'https://evil.test', 'x-forwarded-for': '9.9.9.1' }, env: env(), fetchFn: makeFetch(blobObjects()), blobPut: async () => {} });
@@ -81,7 +87,7 @@ test('rejects a malicious file when the scanner is configured (422)', async () =
 });
 
 test('without a storage token, logs but returns 501', async () => {
-  const out = await processRfq({ body: goodBody(), headers: headers(), env: {}, fetchFn: makeFetch(blobObjects()), blobPut: null });
+  const out = await processRfq({ body: goodBody(), headers: headers(), env: { RFQ_INTAKE_ENABLED: 'true' }, fetchFn: makeFetch(blobObjects()), blobPut: null });
   assert.equal(out.status, 501);
   assert.match(out.json.id, /^RFQ-/);
 });
