@@ -90,14 +90,19 @@ space and request 3 design options back within 36 hours — no account.
   videos bypass the serverless body limit), authorized by `/api/blob-upload`.
   A mandatory self-declaration ("real and mine, not AI-generated") gates submit.
 - **Back end (Vercel serverless, `/api`):**
-  - `api/blob-upload.js` — mints a scoped Blob upload token (type + 75 MB cap).
-  - `api/rfq.js` — validates, stores the RFQ in Blob (`rfqs/<id>.json`, optional
-    AES-256-GCM encryption), and notifies the owner.
-- **Config** (`.env.example`): `BLOB_READ_WRITE_TOKEN` (connect a Vercel Blob
-  store — required to store anything), `RFQ_NOTIFY_WEBHOOK` (optional owner
-  ping), `LDS_DATA_KEY` (optional at-rest encryption).
+  - `api/blob-upload.js` — mints a scoped **private** Blob upload token (type + 75 MB cap).
+  - `api/rfq.js` — verifies private uploads server-side, stores the RFQ in a
+    **private** Blob object (`rfqs/<id>.json`), and sends a minimal owner ping.
+  - `api/_lib.js` — validates private Blob paths, inspects file magic bytes,
+    rejects malformed encryption keys, and strips customer PII from webhooks.
+- **Config** (`.env.example`): connect a Vercel Blob store configured for
+  **private access** and set `BLOB_READ_WRITE_TOKEN`; optionally set
+  `RFQ_NOTIFY_WEBHOOK` for a minimal ping and `LDS_DATA_KEY` for extra AES-256-GCM
+  encryption. A public-only Blob store is not an acceptable fallback.
 
-**Honest status:** content-type + size are enforced; **malware scanning and
-AI-generated detection are not yet machine-performed** — the gate is the
-self-declaration and every RFQ is flagged `review:"manual"` for the owner.
-Wiring a real scanner is a tracked follow-up.
+**Honest status:** uploaded files and RFQ records are designed for private
+storage; the project still needs a connected private Blob store and an
+owner-authenticated inbox/retrieval screen before real customer submissions
+should be accepted. URL-based VirusTotal and Sightengine checks are deliberately
+not sent private customer files; they remain queued for manual review. The
+customer page states that automated checks are not enabled.
