@@ -319,19 +319,28 @@ function renderCats() {
   var cur = optById(c, state.picks[c]);
   var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
   var head = '<div class="cat-current"><span class="cat-title">' + attr(label) + '</span><span class="pick">' + attr(cur.label) + '</span></div>';
-  var tools = '<div class="cat-tools">'
+  var tools = c === "paint" ? "" : '<div class="cat-tools">'
     + '<input class="cat-search" type="search" autocomplete="off" aria-label="' + t("filterHint") + " " + attr(label) + '" placeholder="' + t("filterHint") + '" value="' + attr(ui.q) + '">'
     + (hasPicks ? '<button type="button" class="cat-chip" data-act="picks" aria-pressed="' + (ui.picksOnly ? "true" : "false") + '">' + STAR_SVG + '<span>' + t("topPicks") + '</span></button>' : "")
     + '<button type="button" class="cat-chip" data-act="surprise" aria-label="' + t("surprise") + " " + attr(label) + '">' + SHUFFLE_SVG + '<span>' + t("surprise") + '</span></button>'
     + '<span class="cat-count" aria-hidden="true"></span></div>';
-  var opts = '<div class="opts">';
-  finishes(c).forEach(function (o) {
-    var on = o.id === state.picks[c], pick = isPick(c, o.id);
-    opts += '<span class="opt"><button type="button" data-cat="' + c + '" data-id="' + o.id + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' + attr(o.label) + (pick ? " (top pick)" : "") + '">'
-      + '<span class="sw" style="' + swatchStyle(o) + '">' + (pick ? '<span class="pb" title="Top pick">' + STAR_SVG + '</span>' : "")
-      + '</span><span class="tick" aria-hidden="true">' + CHECK_SVG_SM + '</span><span class="lbl">' + o.label + '</span></button></span>';
-  });
-  opts += '</div><div class="cat-none" role="status" hidden>' + t("noMatches") + '</div>';
+  var opts;
+  if (c === "paint") {
+    opts = '<label class="wall-paint-picker"><span>Choose wall paint color</span><span class="wall-paint-control"><span class="wall-paint-swatch" id="wallPaintSwatch" style="' + swatchStyle(cur) + '" aria-hidden="true"></span><select id="wallPaintSelect" aria-label="Choose wall paint color">';
+    finishes(c).forEach(function (o) {
+      opts += '<option value="' + attr(o.id) + '"' + (o.id === state.picks[c] ? ' selected' : '') + '>' + attr(o.label) + '</option>';
+    });
+    opts += '</select></span><span class="wall-paint-current" id="wallPaintCurrent">' + attr(cur.label) + '</span></label>';
+  } else {
+    opts = '<div class="opts">';
+    finishes(c).forEach(function (o) {
+      var on = o.id === state.picks[c], pick = isPick(c, o.id);
+      opts += '<span class="opt"><button type="button" data-cat="' + c + '" data-id="' + o.id + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' + attr(o.label) + (pick ? " (top pick)" : "") + '">'
+        + '<span class="sw" style="' + swatchStyle(o) + '">' + (pick ? '<span class="pb" title="Top pick">' + STAR_SVG + '</span>' : "")
+        + '</span><span class="tick" aria-hidden="true">' + CHECK_SVG_SM + '</span><span class="lbl">' + o.label + '</span></button></span>';
+    });
+    opts += '</div><div class="cat-none" role="status" hidden>' + t("noMatches") + '</div>';
+  }
   wrap.innerHTML = head + '<div class="cat-content">' + tools + opts + '</div>';
   host.appendChild(wrap);
   $("finishCategorySelect").addEventListener("change", function () {
@@ -344,15 +353,26 @@ function renderCats() {
       save(); renderCats(); renderBoard();
     });
   });
+  var paintSelect = wrap.querySelector("#wallPaintSelect");
+  if (paintSelect) paintSelect.addEventListener("change", function () {
+    state.picks.paint = this.value;
+    var chosen = optById("paint", this.value);
+    var swatch = wrap.querySelector("#wallPaintSwatch");
+    if (swatch) swatch.setAttribute("style", swatchStyle(chosen));
+    var current = wrap.querySelector("#wallPaintCurrent");
+    if (current) current.textContent = chosen.label;
+    save(); renderCats(); renderBoard();
+  });
   var search = wrap.querySelector(".cat-search");
-  search.addEventListener("input", function () { catUI[c].q = this.value.trim().toLowerCase(); applyCatFilter(c); });
+  if (search) search.addEventListener("input", function () { catUI[c].q = this.value.trim().toLowerCase(); applyCatFilter(c); });
   var pchip = wrap.querySelector('.cat-chip[data-act="picks"]');
   if (pchip) pchip.addEventListener("click", function () {
     catUI[c].picksOnly = !catUI[c].picksOnly;
     this.setAttribute("aria-pressed", catUI[c].picksOnly ? "true" : "false");
     applyCatFilter(c);
   });
-  wrap.querySelector('.cat-chip[data-act="surprise"]').addEventListener("click", function () {
+  var surprise = wrap.querySelector('.cat-chip[data-act="surprise"]');
+  if (surprise) surprise.addEventListener("click", function () {
     var vis = [];
     wrap.querySelectorAll(".opt:not(.hide) button[data-id]").forEach(function (b) { vis.push(b.getAttribute("data-id")); });
     if (!vis.length) return;
@@ -360,7 +380,7 @@ function renderCats() {
     save(); renderCats(); renderBoard();
     announce(catMeta(c).label + ": " + optById(c, state.picks[c]).label);
   });
-  applyCatFilter(c);
+  if (c !== "paint") applyCatFilter(c);
 }
 /* Escape a value destined for an HTML attribute (labels/filter text). */
 function attr(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
