@@ -5,6 +5,7 @@
 
 var MAX_FILES = 10;
 var MAX_BYTES = 75 * 1024 * 1024;
+var INTAKE_ENABLED = false; // Re-enable only after private storage + owner authentication are verified.
 var SPACES_FALLBACK = [
   { id: "kitchen", label: "Kitchen" },
   { id: "living", label: "Living Room" },
@@ -107,6 +108,7 @@ function setBusy(busy) {
 }
 
 async function uploadAll(files) {
+  if (!INTAKE_ENABLED) throw new Error("Photo/video requests are temporarily paused during a privacy and security upgrade.");
   if (!window.LDSBlob || typeof window.LDSBlob.upload !== "function") {
     throw new Error("Uploads aren't available right now. Please try again shortly.");
   }
@@ -127,6 +129,7 @@ async function uploadAll(files) {
 
 function onSubmit(e) {
   e.preventDefault();
+  if (!INTAKE_ENABLED) { msg("Photo/video requests are temporarily paused during a privacy and security upgrade.", "warn-msg"); return; }
   msg("");
   var declared = $("declaredReal");
   var contact = $("contact");
