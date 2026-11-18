@@ -49,18 +49,10 @@ function msg(text, kind) {
   el.className = "disclaimer" + (kind ? " " + kind : "");
 }
 
-/* ---------- Theme (light default; dark only on explicit toggle) ---------- */
+/* ---------- Theme (light-only across the entire studio) ---------- */
 function initTheme() {
-  var saved;
-  try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
-  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
-  var btn = $("themeBtn");
-  if (btn) btn.addEventListener("click", function () {
-    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    var next = isDark ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("hds-theme", next); } catch (e) {}
-  });
+  document.documentElement.setAttribute("data-theme", "light");
+  try { localStorage.setItem("hds-theme", "light"); } catch (e) {}
 }
 
 /* ---------- Space options ---------- */
