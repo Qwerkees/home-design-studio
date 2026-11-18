@@ -27,7 +27,6 @@ module.exports = async function handler(req, res) {
       onBeforeGenerateToken: async (pathname) => {
         if (typeof pathname !== 'string' || !pathname.startsWith('uploads/')) throw new Error('Invalid upload path');
         return {
-        access: 'private',
         allowedContentTypes: L.ALLOWED_TYPES,
         maximumSizeInBytes: L.MAX_BYTES,
         addRandomSuffix: true,
