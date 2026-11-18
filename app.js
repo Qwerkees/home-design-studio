@@ -279,9 +279,15 @@ function renderSpaces() {
 }
 
 function renderStyles() {
-  var el = $("styleGrid"); el.innerHTML = "";
+  var el = $("styleGrid"); el.innerHTML = ""; el.className = "style-picker";
+  var details = document.createElement("details"); details.className = "style-dropdown";
+  var summary = document.createElement("summary"); summary.className = "style-summary";
+  var current = document.createElement("span"); current.className = "style-current"; current.textContent = "Current style: " + STYLE_BY_ID[state.style].name;
+  var hint = document.createElement("span"); hint.className = "style-hint"; hint.textContent = "Change style";
+  summary.appendChild(current); summary.appendChild(hint); details.appendChild(summary);
+  var options = document.createElement("div"); options.className = "styles"; details.appendChild(options); el.appendChild(details);
   function restore() {
-    el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
+    options.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
     paintBoardVisual(STYLE_BY_ID[state.style]);
   }
   DATA.styles.forEach(function (p) {
@@ -300,14 +306,14 @@ function renderStyles() {
     // Live preview: hovering/focusing a style shows its look on the board
     // (title + palette + tagline) without changing saved picks; leaving reverts.
     function preview() {
-      el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
+      options.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
       b.classList.add("previewing"); paintBoardVisual(p);
     }
     b.addEventListener("mouseenter", preview);
     b.addEventListener("focus", preview);
     b.addEventListener("mouseleave", restore);
     b.addEventListener("blur", restore);
-    el.appendChild(b);
+    options.appendChild(b);
   });
 }
 
@@ -317,10 +323,10 @@ function renderCats() {
   $("finishNote").textContent = t("finishNote");
   cats.forEach(function (c) {
     var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
-    var wrap = document.createElement("div"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
+    var wrap = document.createElement("details"); wrap.className = "cat"; wrap.setAttribute("data-cat", c); wrap.open = host.children.length === 0;
     var cur = optById(c, state.picks[c]);
     var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
-    var head = '<div class="cat-head"><h3>' + label + '</h3><span class="pick">' + cur.label + '</span></div>';
+    var head = '<summary class="cat-summary"><span class="cat-title">' + label + '</span><span class="pick">' + cur.label + '</span><span class="cat-chevron" aria-hidden="true">⌄</span></summary>';
     var tools = '<div class="cat-tools">'
       + '<input class="cat-search" type="search" autocomplete="off" aria-label="' + t("filterHint") + " " + label + '" placeholder="' + t("filterHint") + '" value="' + attr(ui.q) + '">'
       + (hasPicks ? '<button type="button" class="cat-chip" data-act="picks" aria-pressed="' + (ui.picksOnly ? "true" : "false") + '">' + STAR_SVG + '<span>' + t("topPicks") + '</span></button>' : "")
@@ -335,7 +341,7 @@ function renderCats() {
         + '<span class="lbl">' + o.label + '</span></button></span>';
     });
     opts += '</div><div class="cat-none" role="status" hidden>' + t("noMatches") + '</div>';
-    wrap.innerHTML = head + tools + opts;
+    wrap.innerHTML = head + '<div class="cat-content">' + tools + opts + '</div>';
     host.appendChild(wrap);
   });
   host.querySelectorAll("button[data-cat]").forEach(function (btn) {
