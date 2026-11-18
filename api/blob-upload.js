@@ -24,11 +24,14 @@ module.exports = async function handler(req, res) {
     const body = await L.readJsonBody(req);
     const json = await handleUpload({
       body, request: req, token,
-      onBeforeGenerateToken: async () => ({
+      onBeforeGenerateToken: async (pathname) => {
+        if (typeof pathname !== 'string' || !pathname.startsWith('uploads/') || pathname.split('/').length !== 2 || pathname.includes('..') || pathname.indexOf(String.fromCharCode(92)) !== -1) throw new Error('Invalid upload path');
+        return {
         allowedContentTypes: L.ALLOWED_TYPES,
         maximumSizeInBytes: L.MAX_BYTES,
         addRandomSuffix: true,
-      }),
+      };
+      },
       onUploadCompleted: async () => { /* RFQ is attached client-side via /api/rfq */ },
     });
     return res.status(200).json(json);

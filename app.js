@@ -37,7 +37,9 @@ var $ = function (id) { return document.getElementById(id); };
 var STR = {
   en: {
     tagline: "decide the look before you spend",
-    chooseSpace: "Choose a space",
+    chooseSpace: "Design your space",
+    spaceLabel: "Room or area",
+    styleLabel: "Design style",
     pickStyle: "1 · Pick a style",
     pickStyleNote: "Sets a starting palette and finishes. Tweak anything after.",
     chooseFinishes: "2 · Choose your finishes",
@@ -66,7 +68,9 @@ var STR = {
   },
   es: {
     tagline: "decide el estilo antes de gastar",
-    chooseSpace: "Elige un espacio",
+    chooseSpace: "Diseña tu espacio",
+    spaceLabel: "Cuarto o área",
+    styleLabel: "Estilo de diseño",
     pickStyle: "1 · Elige un estilo",
     pickStyleNote: "Define una paleta y acabados de inicio. Ajusta lo que quieras después.",
     chooseFinishes: "2 · Elige tus acabados",
@@ -246,97 +250,102 @@ function shopUrl(cat, o) {
    "Pick a style" panel into view and focus its first style, so the cursor and
    attention land where they choose next (honors reduced-motion). */
 function focusStylePicker() {
-  var sg = $("styleGrid"); if (!sg) return;
+  var sg = $("styleSelect"); if (!sg) return;
   var panel = sg.closest ? sg.closest(".panel") : null;
   var reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
   (panel || sg).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  var first = sg.querySelector("button");
-  if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
+  try { sg.focus({ preventScroll: true }); } catch (e) { sg.focus(); }
 }
 function renderSpaces() {
-  var el = $("spaceTabs"); el.innerHTML = "";
+  var el = $("spaceSelect");
+  if (!el) return;
+  el.innerHTML = "";
   DATA.spaces.forEach(function (sp) {
-    var b = document.createElement("button");
-    b.className = "space-card"; b.type = "button";
-    b.setAttribute("aria-pressed", sp.id === state.space ? "true" : "false");
-    b.setAttribute("aria-label", sp.label);
-    var img = roomImg(sp);
-    b.innerHTML = '<span class="thumb" style="' + (img ? "background-image:url(" + img + ")" : "") + '"></span>'
-      + '<span class="cap">' + sp.label + '</span>'
-      + '<span class="chk" aria-hidden="true">' + CHECK_SVG + '</span>';
-    b.addEventListener("click", function () {
-      if (state.space === sp.id) return;
-      state.space = sp.id; state.area = defaultAreaFor(sp.kind);
-      applyStyleDefaults(); save(); renderAll();
-      announce(sp.label + " selected");
-      focusStylePicker();
-    });
-    el.appendChild(b);
+    var option = document.createElement("option");
+    option.value = sp.id; option.textContent = sp.label;
+    el.appendChild(option);
   });
-  $("kindLabel").textContent = spaceById(state.space).kind === "exterior"
+  el.value = state.space;
+  el.onchange = function () {
+    var sp = spaceById(this.value);
+    if (!sp || state.space === sp.id) return;
+    state.space = sp.id; state.area = defaultAreaFor(sp.kind);
+    applyStyleDefaults(); save(); renderAll();
+    announce(sp.label + " selected");
+  };
+  var selected = spaceById(state.space), img = roomImg(selected), preview = $("spacePreview");
+  preview.innerHTML = (img ? '<img src="' + img + '" alt="' + attr(selected.label) + ' inspiration">' : '')
+    + '<span><strong>' + selected.label + '</strong><small>' + (selected.kind === "exterior" ? "Exterior design" : "Interior design") + '</small></span>';
+  $("kindLabel").textContent = selected.kind === "exterior"
     ? "Exterior — body, trim, door, roof, garage, and landscaping."
     : "Interior — paint, surfaces, flooring, and fixtures for this room.";
 }
 
 function renderStyles() {
-  var el = $("styleGrid"); el.innerHTML = "";
-  function restore() {
-    el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
-    paintBoardVisual(STYLE_BY_ID[state.style]);
-  }
+  var el = $("styleSelect");
+  if (!el) return;
+  el.innerHTML = "";
   DATA.styles.forEach(function (p) {
-    var b = document.createElement("button");
-    b.className = "style"; b.type = "button";
-    b.setAttribute("aria-pressed", p.id === state.style ? "true" : "false");
-    var chips = '<span class="chips" aria-hidden="true">', i;
-    for (i = 0; i < p.colors.length; i++) { chips += '<span style="background:' + p.colors[i][1] + '"></span>'; }
-    chips += '</span>';
-    b.innerHTML = chips + '<span class="nm">' + p.name + '</span>';
-    b.addEventListener("click", function () {
-      if (state.style === p.id) return;
-      state.style = p.id; applyStyleDefaults(); save(); renderAll();
-      announce(p.name + " style applied");
-    });
-    // Live preview: hovering/focusing a style shows its look on the board
-    // (title + palette + tagline) without changing saved picks; leaving reverts.
-    function preview() {
-      el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
-      b.classList.add("previewing"); paintBoardVisual(p);
-    }
-    b.addEventListener("mouseenter", preview);
-    b.addEventListener("focus", preview);
-    b.addEventListener("mouseleave", restore);
-    b.addEventListener("blur", restore);
-    el.appendChild(b);
+    var option = document.createElement("option");
+    option.value = p.id; option.textContent = p.name;
+    el.appendChild(option);
   });
+  el.value = state.style;
+  el.onchange = function () {
+    var p = STYLE_BY_ID[this.value];
+    if (!p || state.style === p.id) return;
+    state.style = p.id; applyStyleDefaults(); save(); renderAll();
+    announce(p.name + " style applied");
+  };
+  var selected = STYLE_BY_ID[state.style];
+  $("styleGuidance").textContent = selected.name + " — " + selected.tag;
 }
 
+var selectedFinishCat = null;
 function renderCats() {
-  var host = $("catList"); host.innerHTML = "";
+  var host = $("catList");
   var cats = spaceById(state.space).cats;
+  if (cats.indexOf(selectedFinishCat) === -1) selectedFinishCat = cats[0];
   $("finishNote").textContent = t("finishNote");
+  var chooser = '<label class="finish-category-picker"><span>Finish category</span><select id="finishCategorySelect" aria-label="Choose a finish category">';
   cats.forEach(function (c) {
-    var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
-    var wrap = document.createElement("div"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
-    var cur = optById(c, state.picks[c]);
-    var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
-    var head = '<div class="cat-head"><h3>' + label + '</h3><span class="pick">' + cur.label + '</span></div>';
-    var tools = '<div class="cat-tools">'
-      + '<input class="cat-search" type="search" autocomplete="off" aria-label="' + t("filterHint") + " " + label + '" placeholder="' + t("filterHint") + '" value="' + attr(ui.q) + '">'
-      + (hasPicks ? '<button type="button" class="cat-chip" data-act="picks" aria-pressed="' + (ui.picksOnly ? "true" : "false") + '">' + STAR_SVG + '<span>' + t("topPicks") + '</span></button>' : "")
-      + '<button type="button" class="cat-chip" data-act="surprise" aria-label="' + t("surprise") + " " + label + '">' + SHUFFLE_SVG + '<span>' + t("surprise") + '</span></button>'
-      + '<span class="cat-count" aria-hidden="true"></span></div>';
-    var opts = '<div class="opts">';
+    chooser += '<option value="' + attr(c) + '"' + (c === selectedFinishCat ? ' selected' : '') + '>' + attr(catMeta(c).label) + '</option>';
+  });
+  chooser += '</select></label>';
+  host.innerHTML = chooser;
+  var c = selectedFinishCat;
+  var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
+  var wrap = document.createElement("section"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
+  var cur = optById(c, state.picks[c]);
+  var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
+  var head = '<div class="cat-current"><span class="cat-title">' + attr(label) + '</span><span class="pick">' + attr(cur.label) + '</span></div>';
+  var tools = c === "paint" ? "" : '<div class="cat-tools">'
+    + '<input class="cat-search" type="search" autocomplete="off" aria-label="' + t("filterHint") + " " + attr(label) + '" placeholder="' + t("filterHint") + '" value="' + attr(ui.q) + '">'
+    + (hasPicks ? '<button type="button" class="cat-chip" data-act="picks" aria-pressed="' + (ui.picksOnly ? "true" : "false") + '">' + STAR_SVG + '<span>' + t("topPicks") + '</span></button>' : "")
+    + '<button type="button" class="cat-chip" data-act="surprise" aria-label="' + t("surprise") + " " + attr(label) + '">' + SHUFFLE_SVG + '<span>' + t("surprise") + '</span></button>'
+    + '<span class="cat-count" aria-hidden="true"></span></div>';
+  var opts;
+  if (c === "paint") {
+    opts = '<label class="wall-paint-picker"><span>Choose wall paint color</span><span class="wall-paint-control"><span class="wall-paint-swatch" id="wallPaintSwatch" style="' + swatchStyle(cur) + '" aria-hidden="true"></span><select id="wallPaintSelect" aria-label="Choose wall paint color">';
+    finishes(c).forEach(function (o) {
+      opts += '<option value="' + attr(o.id) + '"' + (o.id === state.picks[c] ? ' selected' : '') + '>' + attr(o.label) + '</option>';
+    });
+    opts += '</select></span><span class="wall-paint-current" id="wallPaintCurrent">' + attr(cur.label) + '</span></label>';
+  } else {
+    opts = '<div class="opts">';
     finishes(c).forEach(function (o) {
       var on = o.id === state.picks[c], pick = isPick(c, o.id);
       opts += '<span class="opt"><button type="button" data-cat="' + c + '" data-id="' + o.id + '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' + attr(o.label) + (pick ? " (top pick)" : "") + '">'
-        + '<span class="sw" style="' + swatchStyle(o) + '">' + (pick ? '<span class="pb" title="Top pick">' + STAR_SVG + '</span>' : "") + '</span>'
-        + '<span class="tick" aria-hidden="true">' + CHECK_SVG_SM + '</span>'
-        + '<span class="lbl">' + o.label + '</span></button></span>';
+        + '<span class="sw" style="' + swatchStyle(o) + '">' + (pick ? '<span class="pb" title="Top pick">' + STAR_SVG + '</span>' : "")
+        + '</span><span class="tick" aria-hidden="true">' + CHECK_SVG_SM + '</span><span class="lbl">' + o.label + '</span></button></span>';
     });
     opts += '</div><div class="cat-none" role="status" hidden>' + t("noMatches") + '</div>';
-    wrap.innerHTML = head + tools + opts;
-    host.appendChild(wrap);
+  }
+  wrap.innerHTML = head + '<div class="cat-content">' + tools + opts + '</div>';
+  host.appendChild(wrap);
+  $("finishCategorySelect").addEventListener("change", function () {
+    selectedFinishCat = this.value;
+    renderCats();
   });
   host.querySelectorAll("button[data-cat]").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -344,26 +353,34 @@ function renderCats() {
       save(); renderCats(); renderBoard();
     });
   });
-  host.querySelectorAll(".cat").forEach(function (wrap) {
-    var c = wrap.getAttribute("data-cat");
-    var search = wrap.querySelector(".cat-search");
-    search.addEventListener("input", function () { catUI[c].q = this.value.trim().toLowerCase(); applyCatFilter(c); });
-    var pchip = wrap.querySelector('.cat-chip[data-act="picks"]');
-    if (pchip) pchip.addEventListener("click", function () {
-      catUI[c].picksOnly = !catUI[c].picksOnly;
-      this.setAttribute("aria-pressed", catUI[c].picksOnly ? "true" : "false");
-      applyCatFilter(c);
-    });
-    wrap.querySelector('.cat-chip[data-act="surprise"]').addEventListener("click", function () {
-      var vis = [];
-      wrap.querySelectorAll(".opt:not(.hide) button[data-id]").forEach(function (b) { vis.push(b.getAttribute("data-id")); });
-      if (!vis.length) return;
-      state.picks[c] = vis[Math.floor(Math.random() * vis.length)];
-      save(); renderCats(); renderBoard();
-      announce(catMeta(c).label + ": " + optById(c, state.picks[c]).label);
-    });
+  var paintSelect = wrap.querySelector("#wallPaintSelect");
+  if (paintSelect) paintSelect.addEventListener("change", function () {
+    state.picks.paint = this.value;
+    var chosen = optById("paint", this.value);
+    var swatch = wrap.querySelector("#wallPaintSwatch");
+    if (swatch) swatch.setAttribute("style", swatchStyle(chosen));
+    var current = wrap.querySelector("#wallPaintCurrent");
+    if (current) current.textContent = chosen.label;
+    save(); renderCats(); renderBoard();
+  });
+  var search = wrap.querySelector(".cat-search");
+  if (search) search.addEventListener("input", function () { catUI[c].q = this.value.trim().toLowerCase(); applyCatFilter(c); });
+  var pchip = wrap.querySelector('.cat-chip[data-act="picks"]');
+  if (pchip) pchip.addEventListener("click", function () {
+    catUI[c].picksOnly = !catUI[c].picksOnly;
+    this.setAttribute("aria-pressed", catUI[c].picksOnly ? "true" : "false");
     applyCatFilter(c);
   });
+  var surprise = wrap.querySelector('.cat-chip[data-act="surprise"]');
+  if (surprise) surprise.addEventListener("click", function () {
+    var vis = [];
+    wrap.querySelectorAll(".opt:not(.hide) button[data-id]").forEach(function (b) { vis.push(b.getAttribute("data-id")); });
+    if (!vis.length) return;
+    state.picks[c] = vis[Math.floor(Math.random() * vis.length)];
+    save(); renderCats(); renderBoard();
+    announce(catMeta(c).label + ": " + optById(c, state.picks[c]).label);
+  });
+  if (c !== "paint") applyCatFilter(c);
 }
 /* Escape a value destined for an HTML attribute (labels/filter text). */
 function attr(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
@@ -547,16 +564,14 @@ function maybeShowQuiz(skip) {
 }
 
 /* ---------- Theme ---------- */
+// Permanent product rule: all LUKE apps use light backgrounds only.
+// Ignore legacy dark preferences and remove the theme switch so it cannot
+// reintroduce a dark palette on any screen.
 function initTheme() {
-  var saved; try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
-  // Default to light; dark only when the user previously chose it.
-  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
-  $("themeBtn").addEventListener("click", function () {
-    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    var next = isDark ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("hds-theme", next); } catch (e) {}
-  });
+  document.documentElement.setAttribute("data-theme", "light");
+  try { localStorage.setItem("hds-theme", "light"); } catch (e) {}
+  var toggle = $("themeBtn");
+  if (toggle) toggle.hidden = true;
 }
 
 /* ---------- Misc ---------- */

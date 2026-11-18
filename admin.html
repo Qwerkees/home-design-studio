@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Owner inbox — LUKE'S Design Studio</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.admin-wrap{max-width:1000px;margin:30px auto;padding:0 16px 60px}.admin-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);margin:16px 0}.admin-form{display:flex;gap:10px;flex-wrap:wrap}.admin-form input{flex:1;min-width:220px}.admin-form input,.admin-form button{min-height:44px;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font:inherit}.admin-record{border-top:1px solid var(--line);padding:18px 0}.admin-record:first-child{border-top:0}.admin-meta{color:var(--muted);font-size:13px}.admin-media{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.admin-media img,.admin-media video{max-width:220px;max-height:180px;border-radius:9px;border:1px solid var(--line);background:var(--surface-2)}.admin-error{color:#a22}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header><div class="head-in"><div class="brand"><span class="dot" aria-hidden="true"></span><h1>LUKE&rsquo;S Design Studio</h1><small>private owner inbox</small></div></div></header>
+<main class="admin-wrap">
+  <section class="admin-card" id="loginCard">
+    <h2>Owner sign in</h2>
+    <p>Use the owner password configured for this deployment. This area is not a customer account.</p>
+    <form id="loginForm" class="admin-form"><input id="password" type="password" autocomplete="current-password" required placeholder="Owner password"><button class="btn primary" type="submit">Sign in</button></form>
+    <p id="loginMsg" class="disclaimer" aria-live="polite"></p>
+  </section>
+  <section class="admin-card" id="inboxCard" hidden>
+    <div class="admin-top"><h2>Customer requests</h2><button id="logoutBtn" class="btn" type="button">Sign out</button></div>
+    <p id="inboxMsg" class="disclaimer" aria-live="polite"></p>
+    <div id="records"></div>
+  </section>
+</main>
+<script src="/admin.js" defer></script>
+</body>
+</html>

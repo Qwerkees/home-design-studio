@@ -44,6 +44,17 @@ function makeFetch(objects, { vt = { malicious: 0 }, aigen = { ai_generated: 0 }
   };
 }
 
-const BLOB = (name) => 'https://store1.public.blob.vercel-storage.com/' + name;
+const BLOB = (name) => 'https://store1.private.blob.vercel-storage.com/' + (String(name).startsWith('uploads/') ? name : 'uploads/' + name);
+function makeBlobGet(objects) {
+  return async function blobGet(pathname, options) {
+    if (!options || options.access !== 'private') throw new Error('Private access required');
+    const item = objects[BLOB(pathname)];
+    if (!item) return null;
+    return {
+      blob: { size: item.size, contentType: item.storeType },
+      stream: new ReadableStream({ start(controller) { controller.enqueue(item.magic); controller.close(); } }),
+    };
+  };
+}
 
-module.exports = { MAGIC, makeFetch, resp, BLOB, pad };
+module.exports = { MAGIC, makeFetch, makeBlobGet, resp, BLOB, pad };

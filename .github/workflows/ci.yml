@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [ main ]
+    branches: [ main, audit/privacy-commercial-readiness ]
   pull_request:
 jobs:
   test:
@@ -10,8 +10,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       - run: npm ci
       - run: npm test
       - name: Syntax-check serverless functions
-        run: node --check api/_lib.js && node --check api/blob-upload.js && node --check api/rfq.js
+        run: |
+          for file in api/*.js api/admin/*.js; do
+            node --check "$file"
+          done

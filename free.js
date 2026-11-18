@@ -115,12 +115,13 @@ async function uploadAll(files) {
     var file = files[i];
     if (file.size > MAX_BYTES) continue;
     var ct = pickContentType(file);
-    var res = await window.LDSBlob.upload(file.name, file, {
-      access: "public",
+    var path = "uploads/" + window.crypto.randomUUID() + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    var res = await window.LDSBlob.upload(path, file, {
+      access: "private",
       handleUploadUrl: "/api/blob-upload",
       contentType: ct || undefined,
     });
-    out.push({ url: res.url, contentType: ct || res.contentType || "", name: file.name });
+    out.push({ url: res.url, pathname: res.pathname, contentType: ct || res.contentType || "", name: file.name });
   }
   return out;
 }

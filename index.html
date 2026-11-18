@@ -34,16 +34,22 @@
     <span class="free-cta-text"><strong>Just show us the space.</strong> Upload photos or a video and get 3 design options back in 36 hours — no account.</span>
     <span class="free-cta-arrow" aria-hidden="true">&rarr;</span>
   </a>
-  <div class="eyebrow" data-i="chooseSpace">Choose a space</div>
-  <div class="spaces" role="group" aria-label="Choose a space to design" id="spaceTabs"></div>
-  <div class="kind-label" id="kindLabel"></div>
+  <section class="panel workflow-panel" aria-label="Design navigation">
+    <h2 data-i="chooseSpace">Choose a space</h2>
+    <div class="body workflow-controls">
+      <label class="workflow-field"><span data-i="spaceLabel">Space</span><select id="spaceSelect" aria-label="Choose a space to design"></select></label>
+      <div class="space-preview" id="spacePreview" aria-live="polite"></div>
+      <label class="workflow-field"><span data-i="styleLabel">Design style</span><select id="styleSelect" aria-label="Choose a design style"></select></label>
+    </div>
+    <div class="section-note" id="kindLabel"></div>
+  </section>
 
   <div class="layout">
     <div>
       <section class="panel">
-        <h2 data-i="pickStyle">1 &middot; Pick a style</h2>
-        <div class="section-note" data-i="pickStyleNote">Sets a starting palette and finishes. Tweak anything after.</div>
-        <div class="body"><div class="styles" id="styleGrid" role="group" aria-label="Design style"></div></div>
+        <h2 data-i="pickStyle">Your design style</h2>
+        <div class="section-note" data-i="pickStyleNote">Change the style above at any time. Your palette and starting finishes update automatically.</div>
+        <div class="body style-guidance" id="styleGuidance">Choose a style from the navigation above to update your design board.</div>
       </section>
 
       <section class="panel">
