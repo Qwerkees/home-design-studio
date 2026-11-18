@@ -564,16 +564,14 @@ function maybeShowQuiz(skip) {
 }
 
 /* ---------- Theme ---------- */
+// Permanent product rule: all LUKE apps use light backgrounds only.
+// Ignore legacy dark preferences and remove the theme switch so it cannot
+// reintroduce a dark palette on any screen.
 function initTheme() {
-  var saved; try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
-  // Default to light; dark only when the user previously chose it.
-  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
-  $("themeBtn").addEventListener("click", function () {
-    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    var next = isDark ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("hds-theme", next); } catch (e) {}
-  });
+  document.documentElement.setAttribute("data-theme", "light");
+  try { localStorage.setItem("hds-theme", "light"); } catch (e) {}
+  var toggle = $("themeBtn");
+  if (toggle) toggle.hidden = true;
 }
 
 /* ---------- Misc ---------- */
