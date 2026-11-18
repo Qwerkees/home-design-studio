@@ -264,3 +264,12 @@ button:disabled, input:disabled, [role="button"][aria-disabled="true"] {
 .cat-current { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; border-bottom:1px solid var(--line); }
 .cat-current .cat-title { font-weight:700; color:var(--text); }
 .cat-current .pick { color:var(--muted); font-size:12px; text-align:right; }
+
+
+/* Step 2: wall paint uses a compact dropdown instead of a wall of color tiles. */
+.wall-paint-picker { display:flex; flex-direction:column; gap:8px; margin:8px 0 14px; color:var(--muted); font-size:13px; font-weight:700; }
+.wall-paint-control { display:flex; align-items:center; gap:10px; }
+.wall-paint-swatch { flex:0 0 42px; width:42px; height:42px; border:1px solid var(--line); border-radius:10px; background-size:cover; background-position:center; box-shadow:inset 0 0 0 1px rgba(0,0,0,.05); }
+.wall-paint-control select { flex:1; width:100%; min-width:0; min-height:50px; padding:10px 42px 10px 14px; border:1.5px solid var(--line); border-radius:11px; background:var(--surface-2); color:var(--text); font:inherit; font-size:15px; cursor:pointer; }
+.wall-paint-control select:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.wall-paint-current { color:var(--text); font-size:14px; font-weight:700; }
