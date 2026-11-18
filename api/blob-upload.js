@@ -25,7 +25,7 @@ module.exports = async function handler(req, res) {
     const json = await handleUpload({
       body, request: req, token,
       onBeforeGenerateToken: async (pathname) => {
-        if (typeof pathname !== 'string' || !pathname.startsWith('uploads/')) throw new Error('Invalid upload path');
+        if (typeof pathname !== 'string' || !pathname.startsWith('uploads/') || pathname.split('/').length !== 2 || pathname.includes('..') || pathname.indexOf(String.fromCharCode(92)) !== -1) throw new Error('Invalid upload path');
         return {
         allowedContentTypes: L.ALLOWED_TYPES,
         maximumSizeInBytes: L.MAX_BYTES,
