@@ -65,7 +65,7 @@ function cleanMedia(input) {
     try { u = new URL(m.url); } catch { continue; }
     if (u.protocol !== 'https:' || !BLOB_HOST_RE.test(u.hostname)) continue;
     let urlPath, pathname;
-    try { urlPath = decodeURIComponent(u.pathname.replace(/^\\//, '')); } catch { continue; }
+    try { urlPath = decodeURIComponent(u.pathname.slice(1)); } catch { continue; }
     pathname = typeof m.pathname === 'string' ? m.pathname : urlPath;
     if (u.search || u.hash || pathname !== urlPath || !pathname.startsWith('uploads/') || pathname.includes('..')) continue;
     const ct = typeof m.contentType === 'string' ? m.contentType.slice(0, 80) : '';
