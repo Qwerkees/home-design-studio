@@ -19,7 +19,7 @@ module.exports = async function handler(req, res) {
   if (!A.isAdmin(req, process.env)) return res.status(401).json({ error: 'Owner login required.' });
   try {
     const { list, get } = require('@vercel/blob');
-    const result = await list({ prefix: 'rfqs/', limit: 100, access: 'private' });
+    const result = await list({ prefix: 'rfqs/', limit: 100 });
     const records = [];
     for (const blob of (result.blobs || [])) {
       const rfq = await readPrivateJson(get, blob.pathname, process.env);
