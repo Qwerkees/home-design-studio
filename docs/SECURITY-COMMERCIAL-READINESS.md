@@ -70,3 +70,26 @@ The current app has no customer authentication, cloud-synced projects, tenant is
 - Keep this application independent from other apps: its own repository, storage, credentials, deployment, and customer records.
 - Keep the production branch untouched until the preview passes security and functional checks.
 - Preserve the homeowner-facing design workflow and the existing finish catalog while improving the underlying architecture.
+
+
+## Implementation progress on `audit/privacy-commercial-readiness`
+
+The following changes have been committed on this branch and opened as draft PR #31:
+
+- Browser uploads request `access: 'private'`; the token endpoint restricts paths to the `uploads/` folder and retains the existing file-type and size limits.
+- The server verifies private Blob objects using authenticated SDK reads and magic-byte inspection.
+- RFQ JSON is written with `access: 'private'`; malformed optional encryption keys now fail closed.
+- Owner webhook messages contain only RFQ ID, space, and file count — no name, contact details, notes, or media URLs.
+- A single-owner inbox is implemented at `/admin` with password login, signed eight-hour HttpOnly/Secure/SameSite=Strict sessions, owner-only RFQ listing, and authenticated media streaming.
+- Owner authentication requires `LDS_ADMIN_PASSWORD` (16+ characters) and `LDS_SESSION_SECRET` (32+ characters) in Vercel Environment Variables. No values are stored in GitHub.
+- Private media is not sent to URL-based third-party scanners. The UI explicitly says that automated malware and AI-image checks are not enabled; manual review is required.
+- CI was expanded to test this branch and syntax-check all API routes.
+
+## Still required before accepting real customer requests
+
+1. Connect a Vercel Blob store configured for **private access** and confirm the existing project environment variable points to it. No store was created or changed in this work.
+2. Configure the two owner-inbox secrets and optionally a separate encryption key in Vercel Environment Variables.
+3. Confirm the Vercel SDK client-upload flow creates private blobs in the connected private store; test a real upload, server verification, RFQ persistence, inbox listing, and authenticated media viewing.
+4. Re-run and confirm the complete GitHub Actions test suite on the latest branch commit. The first CI run exposed five test failures; the affected tests were revised, but a clean post-fix CI result has not yet been observed.
+5. Verify the preview in a signed-out browser and on a mobile device.
+6. Review and merge PR #31 only after those checks. Production has not been modified.
