@@ -23,7 +23,7 @@ function rfqId() {
   return 'RFQ-' + stamp + '-' + crypto.randomBytes(4).toString('hex').toUpperCase();
 }
 
-async function processRfq({ body, headers, env, fetchFn, blobPut }) {
+async function processRfq({ body, headers, env, fetchFn, blobPut, blobGet }) {
   if (!L.sameOrigin(headers)) return { status: 403, json: { error: 'Blocked cross-site request.' } };
   if (L.rateLimit('rfq:' + L.clientIp(headers), 8, 60_000)) {
     return { status: 429, json: { error: 'Too many requests — give it a minute.' } };
@@ -49,7 +49,7 @@ async function processRfq({ body, headers, env, fetchFn, blobPut }) {
   // 4) Verify every file against its actual bytes.
   let media = [];
   try {
-    for (const r of refs) media.push(await L.verifyBlobMedia(r, fetchFn));
+    for (const r of refs) media.push(await L.verifyBlobMedia(r, blobGet));
   } catch (e) {
     return { status: e.httpStatus || 400, json: { error: e.message || 'A file could not be verified.' } };
   }
@@ -75,7 +75,7 @@ async function processRfq({ body, headers, env, fetchFn, blobPut }) {
   try {
     const { body: stored, encrypted } = L.maybeEncrypt(JSON.stringify(rfq), env);
     await blobPut('rfqs/' + rfq.id + '.json', stored, {
-      access: 'public', token: env.BLOB_READ_WRITE_TOKEN, contentType: 'application/json', addRandomSuffix: true,
+      access: 'private', token: env.BLOB_READ_WRITE_TOKEN, contentType: 'application/json', addRandomSuffix: true,
     });
     rfq.stored = true; rfq.encryptedAtRest = encrypted;
   } catch (e) {
@@ -95,11 +95,11 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ error: 'Method not allowed' }); }
   let body;
   try { body = await L.readJsonBody(req); } catch { body = {}; }
-  let blobPut = null;
+  let blobPut = null, blobGet = null;
   if (process.env.BLOB_READ_WRITE_TOKEN) {
-    try { blobPut = require('@vercel/blob').put; } catch {}
+    try { const blob = require('@vercel/blob'); blobPut = blob.put; blobGet = blob.get; } catch {}
   }
-  const out = await processRfq({ body, headers: req.headers, env: process.env, fetchFn: globalThis.fetch, blobPut });
+  const out = await processRfq({ body, headers: req.headers, env: process.env, fetchFn: globalThis.fetch, blobPut, blobGet });
   return res.status(out.status).json(out.json);
 };
 module.exports.processRfq = processRfq;
