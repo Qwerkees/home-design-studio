@@ -37,7 +37,9 @@ var $ = function (id) { return document.getElementById(id); };
 var STR = {
   en: {
     tagline: "decide the look before you spend",
-    chooseSpace: "Choose a space",
+    chooseSpace: "Design your space",
+    spaceLabel: "Room or area",
+    styleLabel: "Design style",
     pickStyle: "1 · Pick a style",
     pickStyleNote: "Sets a starting palette and finishes. Tweak anything after.",
     chooseFinishes: "2 · Choose your finishes",
@@ -66,7 +68,9 @@ var STR = {
   },
   es: {
     tagline: "decide el estilo antes de gastar",
-    chooseSpace: "Elige un espacio",
+    chooseSpace: "Diseña tu espacio",
+    spaceLabel: "Cuarto o área",
+    styleLabel: "Estilo de diseño",
     pickStyle: "1 · Elige un estilo",
     pickStyleNote: "Define una paleta y acabados de inicio. Ajusta lo que quieras después.",
     chooseFinishes: "2 · Elige tus acabados",
@@ -246,69 +250,55 @@ function shopUrl(cat, o) {
    "Pick a style" panel into view and focus its first style, so the cursor and
    attention land where they choose next (honors reduced-motion). */
 function focusStylePicker() {
-  var sg = $("styleGrid"); if (!sg) return;
+  var sg = $("styleSelect"); if (!sg) return;
   var panel = sg.closest ? sg.closest(".panel") : null;
   var reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
   (panel || sg).scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  var first = sg.querySelector("button");
-  if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
+  try { sg.focus({ preventScroll: true }); } catch (e) { sg.focus(); }
 }
 function renderSpaces() {
-  var el = $("spaceTabs"); el.innerHTML = "";
+  var el = $("spaceSelect");
+  if (!el) return;
+  el.innerHTML = "";
   DATA.spaces.forEach(function (sp) {
-    var b = document.createElement("button");
-    b.className = "space-card"; b.type = "button";
-    b.setAttribute("aria-pressed", sp.id === state.space ? "true" : "false");
-    b.setAttribute("aria-label", sp.label);
-    var img = roomImg(sp);
-    b.innerHTML = '<span class="thumb" style="' + (img ? "background-image:url(" + img + ")" : "") + '"></span>'
-      + '<span class="cap">' + sp.label + '</span>'
-      + '<span class="chk" aria-hidden="true">' + CHECK_SVG + '</span>';
-    b.addEventListener("click", function () {
-      if (state.space === sp.id) return;
-      state.space = sp.id; state.area = defaultAreaFor(sp.kind);
-      applyStyleDefaults(); save(); renderAll();
-      announce(sp.label + " selected");
-      focusStylePicker();
-    });
-    el.appendChild(b);
+    var option = document.createElement("option");
+    option.value = sp.id; option.textContent = sp.label;
+    el.appendChild(option);
   });
-  $("kindLabel").textContent = spaceById(state.space).kind === "exterior"
+  el.value = state.space;
+  el.onchange = function () {
+    var sp = spaceById(this.value);
+    if (!sp || state.space === sp.id) return;
+    state.space = sp.id; state.area = defaultAreaFor(sp.kind);
+    applyStyleDefaults(); save(); renderAll();
+    announce(sp.label + " selected");
+  };
+  var selected = spaceById(state.space), img = roomImg(selected), preview = $("spacePreview");
+  preview.innerHTML = (img ? '<img src="' + img + '" alt="' + attr(selected.label) + ' inspiration">' : '')
+    + '<span><strong>' + selected.label + '</strong><small>' + (selected.kind === "exterior" ? "Exterior design" : "Interior design") + '</small></span>';
+  $("kindLabel").textContent = selected.kind === "exterior"
     ? "Exterior — body, trim, door, roof, garage, and landscaping."
     : "Interior — paint, surfaces, flooring, and fixtures for this room.";
 }
 
 function renderStyles() {
-  var el = $("styleGrid"); el.innerHTML = "";
-  function restore() {
-    el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
-    paintBoardVisual(STYLE_BY_ID[state.style]);
-  }
+  var el = $("styleSelect");
+  if (!el) return;
+  el.innerHTML = "";
   DATA.styles.forEach(function (p) {
-    var b = document.createElement("button");
-    b.className = "style"; b.type = "button";
-    b.setAttribute("aria-pressed", p.id === state.style ? "true" : "false");
-    var chips = '<span class="chips" aria-hidden="true">', i;
-    for (i = 0; i < p.colors.length; i++) { chips += '<span style="background:' + p.colors[i][1] + '"></span>'; }
-    chips += '</span>';
-    b.innerHTML = chips + '<span class="nm">' + p.name + '</span>';
-    b.addEventListener("click", function () {
-      if (state.style === p.id) return;
-      state.style = p.id; applyStyleDefaults(); save(); renderAll();
-      announce(p.name + " style applied");
-    });
-    // Live preview: hovering/focusing a style shows its look on the board
-    // (title + palette + tagline) without changing saved picks; leaving reverts.
-    function preview() {
-      el.querySelectorAll(".style.previewing").forEach(function (x) { x.classList.remove("previewing"); });
-      b.classList.add("previewing"); paintBoardVisual(p);
-    }
-    b.addEventListener("mouseenter", preview);
-    b.addEventListener("focus", preview);
-    b.addEventListener("mouseleave", restore);
-    b.addEventListener("blur", restore);
-    el.appendChild(b);
+    var option = document.createElement("option");
+    option.value = p.id; option.textContent = p.name;
+    el.appendChild(option);
   });
+  el.value = state.style;
+  el.onchange = function () {
+    var p = STYLE_BY_ID[this.value];
+    if (!p || state.style === p.id) return;
+    state.style = p.id; applyStyleDefaults(); save(); renderAll();
+    announce(p.name + " style applied");
+  };
+  var selected = STYLE_BY_ID[state.style];
+  $("styleGuidance").textContent = selected.name + " — " + selected.tag;
 }
 
 function renderCats() {
@@ -317,10 +307,11 @@ function renderCats() {
   $("finishNote").textContent = t("finishNote");
   cats.forEach(function (c) {
     var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
-    var wrap = document.createElement("div"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
+    var wrap = document.createElement("details"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
+    if (cats.indexOf(c) === 0) wrap.open = true;
     var cur = optById(c, state.picks[c]);
     var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
-    var head = '<div class="cat-head"><h3>' + label + '</h3><span class="pick">' + cur.label + '</span></div>';
+    var head = '<summary class="cat-summary"><span class="cat-title">' + label + '</span><span class="pick">' + cur.label + '</span><span class="cat-chevron" aria-hidden="true">⌄</span></summary><div class="cat-content">';
     var tools = '<div class="cat-tools">'
       + '<input class="cat-search" type="search" autocomplete="off" aria-label="' + t("filterHint") + " " + label + '" placeholder="' + t("filterHint") + '" value="' + attr(ui.q) + '">'
       + (hasPicks ? '<button type="button" class="cat-chip" data-act="picks" aria-pressed="' + (ui.picksOnly ? "true" : "false") + '">' + STAR_SVG + '<span>' + t("topPicks") + '</span></button>' : "")
@@ -335,7 +326,7 @@ function renderCats() {
         + '<span class="lbl">' + o.label + '</span></button></span>';
     });
     opts += '</div><div class="cat-none" role="status" hidden>' + t("noMatches") + '</div>';
-    wrap.innerHTML = head + tools + opts;
+    wrap.innerHTML = head + tools + opts + "</div>";
     host.appendChild(wrap);
   });
   host.querySelectorAll("button[data-cat]").forEach(function (btn) {
