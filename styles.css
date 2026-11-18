@@ -1,14 +1,14 @@
 /* LUKE'S Design Studio — layout: photo-card space picker over a two-column body
    (finish pickers left, a sticky board right); one column under 860px. */
 :root {
-  --bg: #F2EEE7; --surface: #FBF9F5; --surface-2: #EDE8DF; --line: #DBD3C6;
+  --bg: #FFFCF6; --surface: #FFFFFF; --surface-2: #FFF7E9; --line: #E8DDCB;
   --text: #221F1A; --muted: #6C6558; --accent: #2F6B5E; --accent-ink: #FBFAF6;
   --good: #3C7A4E; --warn: #9A6B1E;
   --radius: 14px; --radius-sm: 10px;
   --shadow: 0 1px 2px rgba(34,31,26,.06), 0 8px 24px rgba(34,31,26,.07);
   --maxw: 1180px;
-  --button-cream: #F2E2C5;
-  --button-cream-hover: #EAD6B3;
+  --button-cream: #FFF1D6;
+  --button-cream-hover: #FBE6C1;
   color-scheme: light;
 }
 :root[data-theme="dark"] {
@@ -78,7 +78,7 @@ header { border-bottom: 1px solid var(--line); background: var(--surface); posit
 @media (max-width: 860px) { .board { position: static; } }
 .palette-strip { display: grid; grid-template-columns: repeat(5, 1fr); height: 84px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line); }
 .palette-strip span { position: relative; }
-.palette-strip .pc-name { position: absolute; left: 7px; bottom: 6px; font-size: 10.5px; font-weight: 600; padding: 2px 5px; border-radius: 5px; background: rgba(251,249,245,.82); color: #221F1A; white-space: nowrap; }
+.palette-strip .pc-name { position: absolute; left: 7px; bottom: 6px; font-size: 10.5px; font-weight: 600; padding: 2px 5px; border-radius: 5px; background: rgba(255,255,255,.88); color: #221F1A; white-space: nowrap; }
 .tagline { color: var(--muted); font-size: 13.5px; margin: 10px 2px 0; font-style: italic; }
 .finish-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 9px; }
 .finish-list li { display: flex; align-items: center; gap: 12px; }
