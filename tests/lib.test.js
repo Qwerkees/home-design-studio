@@ -31,6 +31,9 @@ test('cleanMedia keeps only our blob URLs and caps count', () => {
   ]);
   assert.equal(got.length, 1);
   assert.equal(got[0].url, BLOB('a.jpg'));
+  assert.equal(got[0].pathname, 'uploads/a.jpg');
+  assert.equal(L.cleanMedia([{ url: BLOB('a.jpg'), pathname: 'uploads/other.jpg' }]).length, 0);
+  assert.equal(L.cleanMedia([{ url: 'https://store1.public.blob.vercel-storage.com/uploads/a.jpg' }]).length, 0);
   const many = Array.from({ length: 20 }, (_, i) => ({ url: BLOB(i + '.jpg') }));
   assert.equal(L.cleanMedia(many).length, L.MAX_FILES);
 });
