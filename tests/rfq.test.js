@@ -103,3 +103,17 @@ test('private media is not sent to an external AI-image scanner', async () => {
   assert.equal(out.json.flagged, false);
   assert.match(stored, /"aiChecked":false/);
 });
+
+test('owner webhook receives no customer contact details or media URLs', async () => {
+  let sent = '';
+  const { notifyOwner } = require('../api/_lib.js');
+  await notifyOwner({
+    id: 'RFQ-TEST', space: 'Kitchen', contact: 'private@example.com',
+    name: 'Private Name', notes: 'private note', media: [{ pathname: 'uploads/secret.jpg', url: BLOB('secret.jpg') }],
+  }, { RFQ_NOTIFY_WEBHOOK: 'https://hooks.example.test/notify' }, async (url, options) => {
+    sent = options.body;
+    return { ok: true };
+  });
+  assert.match(sent, /RFQ-TEST/);
+  assert.doesNotMatch(sent, /private@example.com|Private Name|private note|secret.jpg/);
+});
