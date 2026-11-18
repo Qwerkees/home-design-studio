@@ -302,13 +302,16 @@ function renderStyles() {
 }
 
 function renderCats() {
-  var host = $("catList"); host.innerHTML = "";
+  var host = $("catList");
+  var active = host.querySelector(".cat[open]");
+  var activeCat = active ? active.getAttribute("data-cat") : null;
+  host.innerHTML = "";
   var cats = spaceById(state.space).cats;
   $("finishNote").textContent = t("finishNote");
   cats.forEach(function (c) {
     var ui = catUI[c] || (catUI[c] = { q: "", picksOnly: false });
     var wrap = document.createElement("details"); wrap.className = "cat"; wrap.setAttribute("data-cat", c);
-    if (cats.indexOf(c) === 0) wrap.open = true;
+    if (c === activeCat || (!activeCat && cats.indexOf(c) === 0)) wrap.open = true;
     var cur = optById(c, state.picks[c]);
     var label = catMeta(c).label, hasPicks = editorPicks(c).length > 0;
     var head = '<summary class="cat-summary"><span class="cat-title">' + label + '</span><span class="pick">' + cur.label + '</span><span class="cat-chevron" aria-hidden="true">⌄</span></summary><div class="cat-content">';
