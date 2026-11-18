@@ -61,6 +61,7 @@ test('encrypts at rest when LDS_DATA_KEY is set', async () => {
   const out = await processRfq({
     body: goodBody(), headers: headers(), env: env({ LDS_DATA_KEY: key }),
     fetchFn: makeFetch(blobObjects()),
+    blobGet: makeBlobGet(blobObjects()),
     blobPut: async (path, body) => { stored = body; },
   });
   assert.equal(out.status, 200);
@@ -99,6 +100,6 @@ test('private media is not sent to an external AI-image scanner', async () => {
     blobPut: async (p, b) => { stored = b; },
   });
   assert.equal(out.status, 200);
-  assert.equal(out.json.flagged, true);
-  assert.match(stored, /"aiGenFlag":true/);
+  assert.equal(out.json.flagged, false);
+  assert.match(stored, /"aiChecked":false/);
 });
