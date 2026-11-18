@@ -267,6 +267,7 @@ button:disabled, input:disabled, [role="button"][aria-disabled="true"] {
 
 
 /* Step 2: wall paint uses a compact dropdown instead of a wall of color tiles. */
+/* Wall-paint dropdown styling revision 2. */
 .wall-paint-picker { display:flex; flex-direction:column; gap:8px; margin:8px 0 14px; color:var(--muted); font-size:13px; font-weight:700; }
 .wall-paint-control { display:flex; align-items:center; gap:10px; }
 .wall-paint-swatch { flex:0 0 42px; width:42px; height:42px; border:1px solid var(--line); border-radius:10px; background-size:cover; background-position:center; box-shadow:inset 0 0 0 1px rgba(0,0,0,.05); }
