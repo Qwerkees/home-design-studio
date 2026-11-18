@@ -12,7 +12,7 @@ const ALLOWED_TYPES = [
 ];
 const MAX_BYTES = 75 * 1024 * 1024; // 75 MB/file
 const MAX_FILES = 10;
-const BLOB_HOST_RE = /\.public\.blob\.vercel-storage\.com$/i;
+const BLOB_HOST_RE = /\.private\.blob\.vercel-storage\.com$/i;
 
 // ---- Text -----------------------------------------------------------------
 function sanitizeText(s, max = 500) {
@@ -64,34 +64,46 @@ function cleanMedia(input) {
     let u;
     try { u = new URL(m.url); } catch { continue; }
     if (u.protocol !== 'https:' || !BLOB_HOST_RE.test(u.hostname)) continue;
+    const pathname = typeof m.pathname === 'string' ? m.pathname : decodeURIComponent(u.pathname.replace(/^\\//, ''));
+    if (!pathname || !pathname.startsWith('uploads/') || pathname.includes('..')) continue;
     const ct = typeof m.contentType === 'string' ? m.contentType.slice(0, 80) : '';
-    out.push({ url: u.href, contentType: ct, name: sanitizeText(m.name, 160) });
+    out.push({ url: u.href, pathname, private: true, contentType: ct, name: sanitizeText(m.name, 160) });
   }
   return out;
 }
 
-// Server-side verification of an uploaded blob: HEAD for size + content-type,
-// ranged GET for magic bytes. Rejects spoofed types / oversize / non-media.
-// `fetchFn` is injected for tests.
-async function verifyBlobMedia(ref, fetchFn) {
-  const f = fetchFn || globalThis.fetch;
-  // Size + declared content type from the store.
-  const head = await f(ref.url, { method: 'HEAD' });
-  if (!head || !head.ok) throw httpErr(400, 'A file could not be verified.');
-  const len = Number(head.headers.get('content-length') || '0');
+// Verify a private Blob using the authenticated server-side SDK. Read only the
+// first 32 bytes for magic-byte sniffing; cancel the stream immediately.
+async function verifyBlobMedia(ref, blobGet) {
+  if (typeof blobGet !== 'function') throw httpErr(503, 'Private file verification is not configured.');
+  const result = await blobGet(ref.pathname, { access: 'private' });
+  if (!result || !result.stream || !result.blob) throw httpErr(400, 'A file could not be verified.');
+  const len = Number(result.blob.size || 0);
   if (!(len > 0) || len > MAX_BYTES) throw httpErr(400, 'A file is missing or over 75 MB.');
-  const storeType = (head.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
-  // Magic bytes.
-  const range = await f(ref.url, { headers: { Range: 'bytes=0-31' } });
-  if (!range || !range.ok) throw httpErr(400, 'A file could not be read.');
-  const ab = await range.arrayBuffer();
-  const sniffed = sniffAllowed(Buffer.from(ab));
-  if (!sniffed) throw httpErr(415, 'A file is not an accepted photo/video type.');
-  // The store's own content type must also be in policy and the same family.
-  if (ALLOWED_TYPES.indexOf(storeType) === -1 || typeFamily(storeType) !== typeFamily(sniffed)) {
-    throw httpErr(415, 'A file type did not match its contents.');
+  const storeType = String(result.blob.contentType || '').split(';')[0].trim().toLowerCase();
+  if (ALLOWED_TYPES.indexOf(storeType) === -1) throw httpErr(415, 'A file type is not accepted.');
+  const reader = result.stream.getReader();
+  const chunks = [];
+  let total = 0;
+  try {
+    while (total < 32) {
+      const part = await reader.read();
+      if (part.done) break;
+      const b = Buffer.from(part.value);
+      chunks.push(b); total += b.length;
+    }
+  } finally {
+    try { await reader.cancel(); } catch {}
   }
-  return { url: ref.url, name: ref.name, size: len, contentType: storeType, sniffed, kind: typeFamily(sniffed) === 'video' ? 'video' : 'image' };
+  const sample = Buffer.concat(chunks).subarray(0, 32);
+  const sniffed = sniffAllowed(sample);
+  if (!sniffed) throw httpErr(415, 'A file is not an accepted photo/video type.');
+  if (typeFamily(storeType) !== typeFamily(sniffed)) throw httpErr(415, 'A file type did not match its contents.');
+  return {
+    pathname: ref.pathname, name: ref.name, size: len, contentType: storeType,
+    sniffed, kind: typeFamily(sniffed) === 'video' ? 'video' : 'image',
+    private: true, scanStatus: 'manual-review-required',
+  };
 }
 
 // ---- Malware scan (real when a provider key is configured) ----------------
@@ -100,7 +112,8 @@ async function verifyBlobMedia(ref, fetchFn) {
 async function scanMedia(items, env, fetchFn) {
   const key = env.VIRUSTOTAL_API_KEY;
   const f = fetchFn || globalThis.fetch;
-  if (!key) return items.map((it) => ({ ...it, scanned: false }));
+  if (!key) return items.map((it) => ({ ...it, scanned: false, scanStatus: 'manual-review-required' }));
+  if (items.some((it) => it.private)) return items.map((it) => ({ ...it, scanned: false, scanStatus: 'manual-review-required' }));
   const out = [];
   for (const it of items) {
     try {
@@ -134,7 +147,7 @@ async function scanMedia(items, env, fetchFn) {
 async function detectAIGen(items, env, fetchFn) {
   const user = env.SIGHTENGINE_USER, secret = env.SIGHTENGINE_SECRET;
   const f = fetchFn || globalThis.fetch;
-  if (!user || !secret) return items.map((it) => ({ ...it, aiChecked: false }));
+  if (!user || !secret || items.some((it) => it.private)) return items.map((it) => ({ ...it, aiChecked: false }));
   const out = [];
   for (const it of items) {
     if (it.kind !== 'image') { out.push({ ...it, aiChecked: false }); continue; }
@@ -157,14 +170,7 @@ function maybeEncrypt(jsonString, env) {
   const keyB64 = env.LDS_DATA_KEY;
   if (!keyB64) return { body: jsonString, encrypted: false };
   const key = Buffer.from(keyB64, 'base64');
-  if (key.length !== 32) {
-    // Key is set but malformed. RFQ blobs are stored with public access, so a
-    // silent plaintext downgrade would expose PII. Keep the funnel working
-    // (don't brick submissions over a typo) but make the misconfig impossible
-    // to miss in the logs so it gets fixed immediately.
-    try { console.error('[rfq] LDS_DATA_KEY is set but is not 32 bytes after base64 decode (got ' + key.length + '); storing WITHOUT encryption. Regenerate with: node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'base64\'))"'); } catch {}
-    return { body: jsonString, encrypted: false };
-  }
+  if (key.length !== 32) throw httpErr(500, 'The configured encryption key is invalid.');
   const iv = crypto.randomBytes(12);
   const c = crypto.createCipheriv('aes-256-gcm', key, iv);
   const ct = Buffer.concat([c.update(jsonString, 'utf8'), c.final()]);
@@ -223,9 +229,11 @@ async function notifyOwner(rfq, env, fetchFn) {
   if (!hook) return;
   const f = fetchFn || globalThis.fetch;
   try {
+    // Never send customer contact details, notes, or file references to a
+    // third-party webhook. The owner inbox retrieves the private RFQ record.
     await f(hook, {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ text: `New RFQ ${rfq.id} — ${rfq.space || 'space'} — ${(rfq.media || []).length} file(s)`, rfq }),
+      body: JSON.stringify({ text: `New RFQ ${rfq.id} — ${rfq.space || 'space'} — ${(rfq.media || []).length} file(s)`, id: rfq.id, space: rfq.space || '', fileCount: (rfq.media || []).length }),
     });
   } catch (e) { try { console.error('[RFQ] notify failed', e && e.message); } catch {} }
 }
