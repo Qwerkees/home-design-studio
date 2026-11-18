@@ -95,14 +95,20 @@ space and request 3 design options back within 36 hours — no account.
     **private** Blob object (`rfqs/<id>.json`), and sends a minimal owner ping.
   - `api/_lib.js` — validates private Blob paths, inspects file magic bytes,
     rejects malformed encryption keys, and strips customer PII from webhooks.
+  - `/admin` — single-owner inbox protected by a signed HttpOnly session; it
+    lists RFQs and streams private media only after owner authentication.
+  - `api/admin/*` — password login, logout, RFQ listing, and authenticated
+    private-media delivery.
 - **Config** (`.env.example`): connect a Vercel Blob store configured for
   **private access** and set `BLOB_READ_WRITE_TOKEN`; optionally set
-  `RFQ_NOTIFY_WEBHOOK` for a minimal ping and `LDS_DATA_KEY` for extra AES-256-GCM
-  encryption. A public-only Blob store is not an acceptable fallback.
+  `RFQ_NOTIFY_WEBHOOK` for a minimal ping, `LDS_DATA_KEY` for extra AES-256-GCM
+  encryption, `LDS_ADMIN_PASSWORD` (16+ characters), and `LDS_SESSION_SECRET`
+  (32+ characters) for the owner inbox. A public-only Blob store is not an
+  acceptable fallback.
 
 **Honest status:** uploaded files and RFQ records are designed for private
 storage; the project still needs a connected private Blob store and an
-owner-authenticated inbox/retrieval screen before real customer submissions
-should be accepted. URL-based VirusTotal and Sightengine checks are deliberately
+private Blob store and owner-inbox secrets configured before real customer
+submissions should be accepted. URL-based VirusTotal and Sightengine checks are deliberately
 not sent private customer files; they remain queued for manual review. The
 customer page states that automated checks are not enabled.
