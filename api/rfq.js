@@ -24,6 +24,7 @@ function rfqId() {
 }
 
 async function processRfq({ body, headers, env, fetchFn, blobPut }) {
+  if (env.RFQ_INTAKE_ENABLED !== 'true') return { status: 503, json: { error: 'Photo/video requests are temporarily paused while private storage and owner-only access are completed.' } };
   if (!L.sameOrigin(headers)) return { status: 403, json: { error: 'Blocked cross-site request.' } };
   if (L.rateLimit('rfq:' + L.clientIp(headers), 8, 60_000)) {
     return { status: 429, json: { error: 'Too many requests — give it a minute.' } };
