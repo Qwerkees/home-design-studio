@@ -13,6 +13,7 @@ const L = require('./_lib.js');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ error: 'Method not allowed' }); }
+  if (process.env.RFQ_INTAKE_ENABLED !== 'true') return res.status(503).json({ error: 'Photo/video uploads are temporarily paused while private storage and owner-only access are completed.' });
   if (!L.sameOrigin(req.headers)) return res.status(403).json({ error: 'Blocked cross-site request.' });
   if (L.rateLimit('upload:' + L.clientIp(req.headers), 30, 60_000)) {
     return res.status(429).json({ error: 'Too many uploads — slow down a moment.' });
