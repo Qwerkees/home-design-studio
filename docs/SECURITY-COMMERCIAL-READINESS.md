@@ -93,3 +93,7 @@ The following changes have been committed on this branch and opened as draft PR 
 4. Re-run and confirm the complete GitHub Actions test suite on the latest branch commit. The first CI run exposed five test failures; the affected tests were revised, but a clean post-fix CI result has not yet been observed.
 5. Verify the preview in a signed-out browser and on a mobile device.
 6. Review and merge PR #31 only after those checks. Production has not been modified.
+
+## Permanent visual design standard
+
+All LUKE applications use light backgrounds only. Black and dark page/panel backgrounds, dark mode, and automatic OS dark-theme switching are prohibited. Existing legacy theme preferences must be normalized to light. Use cream, warm white, soft neutral surfaces, and restrained accents while maintaining readable contrast.
