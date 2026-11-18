@@ -17,6 +17,8 @@ async function readPrivateJson(get, pathname, env) {
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') { res.setHeader('Allow', 'GET'); return res.status(405).json({ error: 'Method not allowed' }); }
   if (!A.isAdmin(req, process.env)) return res.status(401).json({ error: 'Owner login required.' });
+  res.setHeader('Cache-Control', 'private, no-store, max-age=0');
+  res.setHeader('Vary', 'Cookie');
   try {
     const { list, get } = require('@vercel/blob');
     const result = await list({ prefix: 'rfqs/', limit: 100 });
