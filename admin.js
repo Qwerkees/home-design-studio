@@ -36,6 +36,8 @@ function renderRecords(records) {
 }
 async function loadInbox() {
   var msg = document.getElementById('inboxMsg');
+  document.getElementById('loginCard').hidden = true;
+  document.getElementById('inboxCard').hidden = false;
   msg.textContent = 'Loading requests…';
   try {
     var response = await fetch('/api/admin/rfqs', { credentials: 'same-origin' });
