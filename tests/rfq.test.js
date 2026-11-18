@@ -18,7 +18,7 @@ test('rejects a cross-site origin (403)', async () => {
 });
 
 test('requires the self-declaration (400)', async () => {
-  const out = await processRfq({ body: goodBody({ declaredReal: false }), headers: headers(), env: env(), fetchFn: makeFetch(blobObjects()), blobPut: async () => {} });
+  const out = await processRfq({ body: goodBody({ declaredReal: false }), headers: headers(), env: env(), fetchFn: makeFetch(blobObjects()), blobGet: makeBlobGet(blobObjects()), blobPut: async () => {} });
   assert.equal(out.status, 400);
   assert.match(out.json.error, /confirm/i);
 });
@@ -90,7 +90,7 @@ test('without a storage token, logs but returns 501', async () => {
   assert.match(out.json.id, /^RFQ-/);
 });
 
-test('records an AI-gen flag when detection is configured', async () => {
+test('private media is not sent to an external AI-image scanner', async () => {
   let stored = null;
   const out = await processRfq({
     body: goodBody(), headers: headers(), env: env({ SIGHTENGINE_USER: 'u', SIGHTENGINE_SECRET: 's' }),
