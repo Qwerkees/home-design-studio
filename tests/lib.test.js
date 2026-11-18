@@ -2,7 +2,7 @@
 const { test } = require('node:test');
 const assert = require('node:assert');
 const L = require('../api/_lib.js');
-const { MAGIC, makeFetch, BLOB } = require('./helpers.js');
+const { MAGIC, makeFetch, makeBlobGet, BLOB } = require('./helpers.js');
 
 test('sanitizeText caps length and strips control chars', () => {
   assert.equal(L.sanitizeText('a\u0000b\tc', 100), 'a b c');
@@ -60,34 +60,33 @@ test('maybeEncrypt/decrypt round-trips with a 32-byte key; passthrough without',
   const plain = L.maybeEncrypt('{"a":1}', {});
   assert.equal(plain.encrypted, false);
   assert.equal(plain.body, '{"a":1}');
-  assert.equal(L.maybeEncrypt('{}', { LDS_DATA_KEY: 'short' }).encrypted, false);
+  assert.throws(() => L.maybeEncrypt('{}', { LDS_DATA_KEY: 'short' }), /encryption key is invalid/);
 });
 
-test('verifyBlobMedia accepts a real jpeg', async () => {
+test('verifyBlobMedia accepts a real private jpeg', async () => {
   const url = BLOB('a.jpg');
-  const f = makeFetch({ [url]: { size: 1024, storeType: 'image/jpeg', magic: MAGIC.jpeg } });
-  const v = await L.verifyBlobMedia({ url, name: 'a' }, f);
+  const objects = { [url]: { size: 1024, storeType: 'image/jpeg', magic: MAGIC.jpeg } };
+  const pathname = 'uploads/a.jpg';
+  const v = await L.verifyBlobMedia({ pathname, name: 'a' }, makeBlobGet(objects));
   assert.equal(v.contentType, 'image/jpeg');
   assert.equal(v.kind, 'image');
   assert.equal(v.size, 1024);
+  assert.equal(v.private, true);
 });
 
-test('verifyBlobMedia rejects oversize', async () => {
-  const url = BLOB('big.mp4');
-  const f = makeFetch({ [url]: { size: L.MAX_BYTES + 1, storeType: 'video/mp4', magic: MAGIC.mp4 } });
-  await assert.rejects(() => L.verifyBlobMedia({ url }, f), /over 75 MB/);
+test('verifyBlobMedia rejects oversize private uploads', async () => {
+  const objects = { [BLOB('big.mp4')]: { size: L.MAX_BYTES + 1, storeType: 'video/mp4', magic: MAGIC.mp4 } };
+  await assert.rejects(() => L.verifyBlobMedia({ pathname: 'uploads/big.mp4' }, makeBlobGet(objects)), /over 75 MB/);
 });
 
-test('verifyBlobMedia rejects a spoofed type (store says jpeg, bytes are webm)', async () => {
-  const url = BLOB('fake.jpg');
-  const f = makeFetch({ [url]: { size: 500, storeType: 'image/jpeg', magic: MAGIC.webm } });
-  await assert.rejects(() => L.verifyBlobMedia({ url }, f), /did not match its contents/);
+test('verifyBlobMedia rejects a spoofed private file type', async () => {
+  const objects = { [BLOB('fake.jpg')]: { size: 500, storeType: 'image/jpeg', magic: MAGIC.webm } };
+  await assert.rejects(() => L.verifyBlobMedia({ pathname: 'uploads/fake.jpg' }, makeBlobGet(objects)), /did not match its contents/);
 });
 
-test('verifyBlobMedia rejects non-media bytes', async () => {
-  const url = BLOB('x.jpg');
-  const f = makeFetch({ [url]: { size: 10, storeType: 'image/jpeg', magic: MAGIC.junk } });
-  await assert.rejects(() => L.verifyBlobMedia({ url }, f), /not an accepted/);
+test('verifyBlobMedia rejects private non-media bytes', async () => {
+  const objects = { [BLOB('x.jpg')]: { size: 10, storeType: 'image/jpeg', magic: MAGIC.junk } };
+  await assert.rejects(() => L.verifyBlobMedia({ pathname: 'uploads/x.jpg' }, makeBlobGet(objects)), /not an accepted/);
 });
 
 test('scanMedia: no key -> unscanned; malicious -> throws; clean -> scanned', async () => {
