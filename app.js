@@ -548,15 +548,8 @@ function maybeShowQuiz(skip) {
 
 /* ---------- Theme ---------- */
 function initTheme() {
-  var saved; try { saved = localStorage.getItem("hds-theme"); } catch (e) {}
-  // Default to light; dark only when the user previously chose it.
-  document.documentElement.setAttribute("data-theme", saved === "dark" ? "dark" : "light");
-  $("themeBtn").addEventListener("click", function () {
-    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    var next = isDark ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("hds-theme", next); } catch (e) {}
-  });
+  document.documentElement.setAttribute("data-theme", "light");
+  try { localStorage.removeItem("hds-theme"); } catch (e) {}
 }
 
 /* ---------- Misc ---------- */
