@@ -26,7 +26,7 @@ Then open the printed URL.
 
 ```
 index.html            App shell
-styles.css            Tokens, light/dark themes, layout
+styles.css            Light-only design tokens and layout
 app.js                Logic — reads data/finishes.json, renders, costs, summary
 data/finishes.json    The catalog: spaces, styles, categories, finishes  ← edit this
 assets/
