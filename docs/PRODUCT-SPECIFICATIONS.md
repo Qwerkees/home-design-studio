@@ -10,7 +10,7 @@ A guided home/interior design application for exploring spaces, styles, palettes
 - RFQ upload uses Vercel Blob and optional AES encryption.
 - README states malware scanning and AI-generated-content detection are not machine-performed; self-declaration and manual review are used.
 - Budget estimates are indicative, not supplier quotes.
-- README mentions light/dark themes, conflicting with the owner's light-only rule. Remove dark backgrounds and dark-mode toggle.
+- The prior light/dark theme was removed. `styles.css` no longer contains a dark-theme selector; the Theme toggle was removed from `index.html` and `app.js` now clears the legacy saved theme and initializes light mode only.
 
 ## UX requirements
 Simple for older and less technical users: one screen, one purpose, one obvious next step; large labeled cards; flat navigation; clear Back/Home/Next controls; visible choices and budget assumptions; responsive layouts and keyboard/focus support.
