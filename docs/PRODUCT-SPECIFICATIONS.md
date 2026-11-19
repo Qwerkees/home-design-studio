@@ -60,3 +60,6 @@ Customer plans, floor plans, photos, addresses, and quotations are confidential;
 
 ## Global owner standards
 Light-only UI; transparent estimates; privacy-first intake; no paid services/upgrades without owner approval.
+
+## Light-only UI correction
+The prior theme switch and dark palette were removed from `index.html`, `app.js`, and `styles.css`. The application now initializes in light mode only. The deployment for the final theme-toggle removal commit reached READY; full browser interaction testing remains outstanding.
